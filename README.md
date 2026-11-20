@@ -60,6 +60,16 @@ The card is a native `NSPopover`, so it grows out of the menu bar item with the
 system animation, points back at the item with the system arrow, dismisses on an
 outside click, and fades out quickly when closed with `Esc`/the status item.
 
+While the card is open the menu bar title is **frozen** (the newest one is
+applied when it closes). Re-laying-out the status item under a live popover
+would make the card shift or dismiss, so this is what keeps the popover pinned
+in place no matter how many cards you page through.
+
+One click always equals one action: the status item remembers whether the card
+was open at mouse-down, and a click that lands while the popover is closing is
+remembered and honored as soon as it finishes — so open → close → open never
+needs a second click.
+
 ## The decks
 
 | Deck | File | Entries | Contents |

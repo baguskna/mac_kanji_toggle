@@ -9,8 +9,6 @@ static const CGFloat kShadowMargin = 10.0;  // transparent margin that holds the
 static const CGFloat kPadding      = 20.0;  // card inner padding
 static const CGFloat kPillHeight   = 20.0;
 
-// Fade-out duration when the popover is dismissed (AppKit itself closes popovers instantly).
-static const double kPopoverHideDuration = 0.14;
 
 static const CGFloat kContentWidth = kCardWidth - 2 * kPadding;
 static const CGFloat kViewWidth    = kCardWidth + 2 * kShadowMargin;
@@ -123,7 +121,9 @@ static void CopyCardToPasteboard(NSDictionary *card) {
 
 #pragma mark - Forward declarations
 
+static void ShowPopover(void);
 static void HidePopover(BOOL restoreFocus);
+static void HandleStatusItemClick(void);
 static NSEvent *HandleKey(NSEvent *event);
 
 #pragma mark - Card view
@@ -565,10 +565,12 @@ static KBCardView *gCard = nil;
 static KBDelegate *gDelegate = nil;
 static NSMenu *gMenu = nil;
 static id gMonitor = nil;
+static id gClickMonitor = nil;
 static NSMenuItem *gAutoItem = nil;
 static NSMenuItem *gRomajiItem = nil;
 static NSMenuItem *gFuriganaItem = nil;
-static NSTimeInterval gPopoverClosedAt = 0;
+static BOOL gPopoverShownAtMouseDown = NO;     // was the card open when this click started?
+static BOOL gWantedOpen = NO;                  // clicked intent, also survives the close animation
 static double gFixedCardHeight = 0;
 static volatile int gPanelVisibleFlag = 0;
 static BOOL gRestoreFocusOnClose = NO;
@@ -583,7 +585,7 @@ static void DebugFrame(NSString *format, ...) {
     va_start(args, format);
     NSString *line = [[NSString alloc] initWithFormat:format arguments:args];
     va_end(args);
-    fprintf(stderr, "KBDBG %s\n", line.UTF8String);
+    fprintf(stderr, "KBDBG %.3f %s\n", NSProcessInfo.processInfo.systemUptime, line.UTF8String);
     [line release];
 }
 
@@ -612,9 +614,29 @@ static CGFloat EmbeddedContentHeight(void) {
     return MAX(gFixedCardHeight - 2.0 * kShadowMargin, 200.0);
 }
 
+// One click = one action. The click records what the user wants; a click that
+// lands while the popover is still closing is remembered and honored as soon as
+// the close finishes, so reopening never takes two clicks.
+static void HandleStatusItemClick(void) {
+    if (gClosingPopover) {
+        gWantedOpen = YES;
+        if (!gPopover.isShown) ShowPopover(); // close already finished
+        return;
+    }
+    BOOL wasShown = gPopoverShownAtMouseDown || gPopover.isShown;
+    gPopoverShownAtMouseDown = NO;
+    gWantedOpen = !wasShown;
+    if (gWantedOpen) {
+        ShowPopover();
+    } else if (gPopover.isShown) {
+        HidePopover(YES);
+    }
+}
+
 static void ShowPopover(void) {
     if (!gPopover || !gStatus.button) return;
     DebugFrame(@"popover show");
+    gWantedOpen = YES;
     [NSApp activateIgnoringOtherApps:YES];
     // NSPopover animates itself (grows out of the item, arrow included) and
     // dismisses on an outside click thanks to the transient behavior.
@@ -626,35 +648,15 @@ static void ShowPopover(void) {
 }
 
 static void HidePopover(BOOL restoreFocus) {
-    if (!gPopover || !gPopover.isShown || gClosingPopover) return;
+    if (!gPopover || !gPopover.isShown) return;
     DebugFrame(@"popover hide");
+    gWantedOpen = NO;
     gClosingPopover = YES;
     gRestoreFocusOnClose = restoreFocus;
-
-    // AppKit closes popovers instantly; fade the content view briefly first so
-    // dismissal feels deliberate.
-    NSView *content = gPopover.contentViewController.view;
-    if (content == nil) {
-        [gPopover performClose:nil];
-        return;
-    }
-    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *ctx) {
-        ctx.duration = kPopoverHideDuration;
-        ctx.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        content.animator.alphaValue = 0.0;
-    } completionHandler:^{
-        [gPopover performClose:nil];
-        content.alphaValue = 1.0;
-    }];
-}
-
-// A transient popover closes itself on the click outside it, before the status
-// item action fires; this stops the same click from immediately reopening it.
-static BOOL DismissedByCurrentClick(void) {
-    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
-    BOOL recent = (gPopoverClosedAt > 0) && (now - gPopoverClosedAt < 0.35);
-    gPopoverClosedAt = 0;
-    return recent;
+    // Close immediately. A custom fade here would keep the popover in a
+    // "closing" state for a few hundred milliseconds, during which clicks were
+    // ignored (that is what made a quick reopen need two clicks).
+    [gPopover close];
 }
 
 #pragma mark - Keyboard
@@ -713,12 +715,7 @@ static void BuildMenu(void) {
         [NSMenu popUpContextMenu:gMenu withEvent:event forView:sender];
         return;
     }
-    if (gPopover.isShown) {
-        HidePopover(YES);
-        return;
-    }
-    if (DismissedByCurrentClick()) return; // the click that dismissed it
-    ShowPopover();
+    HandleStatusItemClick();
 }
 
 - (void)menuNext:(id)sender { GoNext(); }
@@ -736,13 +733,19 @@ static void BuildMenu(void) {
 
 - (void)popoverDidClose:(NSNotification *)notification {
     gPanelVisibleFlag = 0;
+    BOOL closedByUs = gClosingPopover;
     gClosingPopover = NO;
-    gPopoverClosedAt = [NSDate timeIntervalSinceReferenceDate];
     DebugFrame(@"popover closed");
     if (gPendingTitle) {
         ApplyStatusTitle(gPendingTitle);
         [gPendingTitle release];
         gPendingTitle = nil;
+    }
+    if (!closedByUs) gWantedOpen = NO; // dismissed by an outside click
+    if (gWantedOpen) {
+        // A click arrived while the card was closing: honor it now.
+        ShowPopover();
+        return;
     }
     if (gRestoreFocusOnClose) {
         gRestoreFocusOnClose = NO;
@@ -791,6 +794,13 @@ void KBStart(void) {
         gMonitor = [[NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown
                                                            handler:^NSEvent *(NSEvent *event) {
             return HandleKey(event);
+        }] retain];
+
+        gClickMonitor = [[NSEvent addLocalMonitorForEventsMatchingMask:(NSEventMaskLeftMouseDown |
+                                                                   NSEventMaskRightMouseDown)
+                                                                handler:^NSEvent *(NSEvent *event) {
+            gPopoverShownAtMouseDown = gPopover.isShown && !gClosingPopover;
+            return event;
         }] retain];
     }
 }
