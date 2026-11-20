@@ -13,6 +13,9 @@ import (
 
 const appName = "KanjiBar"
 
+// appVersion is injected at build time: -X main.appVersion=<VERSION>
+var appVersion = "dev"
+
 func main() {
 	// AppKit wants the event loop on the process's main thread.
 	runtime.LockOSThread()
@@ -31,7 +34,7 @@ func main() {
 	flag.Parse()
 
 	if *version {
-		fmt.Printf("%s 1.0.0\n", appName)
+		fmt.Printf("%s %s\n", appName, appVersion)
 		return
 	}
 

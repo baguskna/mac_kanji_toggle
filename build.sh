@@ -9,6 +9,7 @@ cd "$(dirname "$0")"
 
 APP_NAME="KanjiBar"
 BUNDLE="dist/${APP_NAME}.app"
+VERSION="$(cat VERSION 2>/dev/null || echo 0.0.0)"
 
 echo "==> go vet"
 go vet ./...
@@ -19,15 +20,17 @@ go test ./...
 echo "==> go build"
 rm -rf "$BUNDLE"
 mkdir -p "$BUNDLE/Contents/MacOS" "$BUNDLE/Contents/Resources"
-go build -trimpath -ldflags="-s -w" -o "$BUNDLE/Contents/MacOS/${APP_NAME}" .
+go build -trimpath -ldflags="-s -w -X main.appVersion=${VERSION}" -o "$BUNDLE/Contents/MacOS/${APP_NAME}" .
 cp Info.plist "$BUNDLE/Contents/Info.plist"
+/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${VERSION}" "$BUNDLE/Contents/Info.plist" >/dev/null 2>&1 || true
+/usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${VERSION}" "$BUNDLE/Contents/Info.plist" >/dev/null 2>&1 || true
 
 echo "==> ad-hoc sign"
 codesign --force --sign - "$BUNDLE" >/dev/null 2>&1 || {
   echo "warning: ad-hoc codesign failed; the app may still run locally" >&2
 }
 
-echo "==> built $BUNDLE"
+echo "==> built $BUNDLE (version ${VERSION})"
 if [[ "${1:-}" == "--install" ]]; then
   mkdir -p "$HOME/Applications"
   rm -rf "$HOME/Applications/${APP_NAME}.app"

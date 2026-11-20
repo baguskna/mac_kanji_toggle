@@ -15,7 +15,20 @@ Tools — Xcode is not required.
 
 ![Live panel](docs/panel-live.png)
 
-## Install
+## Install with Homebrew (recommended)
+
+```bash
+brew tap baguskna/tap
+brew trust baguskna/tap          # Homebrew 5+ requires trusting third-party taps
+brew install --cask kanjibar
+```
+
+The cask installs `KanjiBar.app` into `/Applications` and clears the quarantine
+flag left by the download (releases are ad-hoc signed for now, not notarized).
+Update with `brew upgrade --cask kanjibar`; remove with
+`brew uninstall --cask kanjibar && brew untap baguskna/tap`.
+
+## Build from source
 
 ```bash
 ./build.sh --install      # builds, ad-hoc signs, copies to ~/Applications, launches
@@ -30,6 +43,18 @@ open dist/KanjiBar.app
 
 The app is a 2 MB bundle, ad-hoc signed, `LSUIElement` (no Dock icon), and keeps
 its state in `~/Library/Application Support/KanjiBar/state.json`.
+
+## Releasing (maintainers)
+
+```bash
+./scripts/package-release.sh            # builds dist/KanjiBar-<VERSION>.zip, stamps Casks/kanjibar.rb
+gh release create v$(cat VERSION) dist/KanjiBar-$(cat VERSION).zip --generate-notes
+cp Casks/kanjibar.rb ../homebrew-tap/Casks/   # then commit/push the tap
+```
+
+See [docs/HOMEBREW.md](docs/HOMEBREW.md) for the full release process, the
+end-user install flow, and what is required to get into the official
+`Homebrew/homebrew-cask` repository.
 
 ## Use
 
