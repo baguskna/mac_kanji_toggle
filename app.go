@@ -20,7 +20,7 @@ const (
 // autoSwitchInterval is how often the widget flips between the 漢字 and 言葉
 // decks. The flip pauses while the card panel is open so reading is not
 // interrupted.
-const autoSwitchInterval = 15 * time.Second
+const autoSwitchInterval = 5 * time.Second
 
 // App owns all study state. The Objective-C layer is a dumb renderer: it calls
 // back into these methods and receives a fresh Card to display.

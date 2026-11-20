@@ -696,7 +696,7 @@ static void BuildMenu(void) {
     AddMenuItem(gMenu, @"Previous Card", @selector(menuPrev:), nil);
     AddMenuItem(gMenu, @"Toggle Kanji / Kotoba", @selector(menuToggleMode:), @"t");
     [gMenu addItem:[NSMenuItem separatorItem]];
-    gAutoItem = AddMenuItem(gMenu, @"Auto-switch 漢字/言葉 every 15 s", @selector(menuToggleAuto:), @"a");
+    gAutoItem = AddMenuItem(gMenu, @"Auto-switch 漢字/言葉 every 5 s", @selector(menuToggleAuto:), @"a");
     gFuriganaItem = AddMenuItem(gMenu, @"Show Furigana in Menu Bar", @selector(menuToggleFurigana:), @"f");
     gRomajiItem = AddMenuItem(gMenu, @"Show Romaji in Menu Bar", @selector(menuToggleRomaji:), @"r");
     [gMenu addItem:[NSMenuItem separatorItem]];

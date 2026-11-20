@@ -3,7 +3,7 @@
 A small macOS **menu bar widget** that shows a JLPT **N3** kanji or vocabulary
 word together with its **furigana**, **romaji** and English meaning — one click,
 no app window, no Dock icon. The widget rotates between the 漢字 and 言葉 decks
-every 15 seconds and pauses while you are reading a card.
+every 5 seconds and pauses while you are reading a card.
 
 Built with **Go** (state, data, romaji, timer) and **AppKit/Objective-C** (the
 native status item and popover-style card). It compiles with the Command Line
@@ -34,14 +34,14 @@ its state in `~/Library/Application Support/KanjiBar/state.json`.
 ## Use
 
 - The menu bar title shows the kanji/word, its **furigana** and its **romaji**
-  (`政 セイ sei`, `経験 けいけん keiken`). Every 15 s it flips between the two
+  (`政 セイ sei`, `経験 けいけん keiken`). Every 5 s it flips between the two
   decks — but **not while the card is open**, so reading is never interrupted.
 - **Left-click the menu bar item** — opens the card.
 - **Right-click** — context menu (next / previous / toggle deck / auto-switch /
   menu bar furigana & romaji / copy / quit).
 - **← →** or **space** — previous / next card while the card is open.
 - **T** — switch between the kanji deck (漢字) and the vocabulary deck (言葉).
-- **A** — toggle the 15 s deck auto-switch (paused while the card is open).
+- **A** — toggle the 5 s deck auto-switch (paused while the card is open).
 - **F** — toggle furigana in the menu bar title (`政 セイ  sei` ⇄ `政  sei`).
 - **R** — toggle romaji in the menu bar title (`政 セイ  sei` ⇄ `政  セイ`).
 - **C** — copy the current card as text.
