@@ -1,7 +1,7 @@
 package main
 
 /*
-#cgo LDFLAGS: -framework Cocoa
+#cgo LDFLAGS: -framework Cocoa -framework QuartzCore
 #include <stdlib.h>
 #include "appkit.h"
 */
@@ -53,6 +53,13 @@ func GoToggleRomaji() {
 	}
 }
 
+//export GoToggleFurigana
+func GoToggleFurigana() {
+	if appRef != nil {
+		appRef.ToggleFurigana()
+	}
+}
+
 // uiStart creates the status item, panel and popover-free card window.
 func uiStart() {
 	C.KBStart()
@@ -82,14 +89,41 @@ func uiSetTitle(title string) {
 	C.KBSetTitle(cs)
 }
 
+// uiPanelVisible reports whether the card panel is currently open, so the
+// 15-second auto-switch can pause while the user is reading.
+func uiPanelVisible() bool {
+	return C.KBIsPanelVisible() != 0
+}
+
+// uiMeasureCardHeight asks the renderer how tall a card naturally is.
+func uiMeasureCardHeight(card Card) float64 {
+	raw, err := json.Marshal(card)
+	if err != nil {
+		return 0
+	}
+	cs := C.CString(string(raw))
+	defer C.free(unsafe.Pointer(cs))
+	return float64(C.KBCardNaturalHeight(cs))
+}
+
+// uiSetFixedCardHeight makes every card render at the same height.
+func uiSetFixedCardHeight(height float64) {
+	C.KBSetFixedCardHeight(C.double(height))
+}
+
 // uiSetMenuState syncs the checkmarks in the context menu.
-func uiSetMenuState(auto, romaji bool) {
-	C.KBSetMenuState(cBool(auto), cBool(romaji))
+func uiSetMenuState(auto, romaji, furigana bool) {
+	C.KBSetMenuState(cBool(auto), cBool(romaji), cBool(furigana))
 }
 
 // uiShowNow opens the panel shortly after launch (dev flag --show).
 func uiShowNow() {
 	C.KBShowNow()
+}
+
+// uiHideNow closes the panel (dev flag --hide-after).
+func uiHideNow() {
+	C.KBHideNow()
 }
 
 // uiQuit terminates the app (dev flag --exit-after).

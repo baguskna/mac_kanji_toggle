@@ -17,8 +17,10 @@ const (
 	ModeKotoba
 )
 
-// autoInterval is how often the menu bar pick changes when auto-advance is on.
-const autoInterval = 15 * time.Minute
+// autoSwitchInterval is how often the widget flips between the 漢字 and 言葉
+// decks. The flip pauses while the card panel is open so reading is not
+// interrupted.
+const autoSwitchInterval = 15 * time.Second
 
 // App owns all study state. The Objective-C layer is a dumb renderer: it calls
 // back into these methods and receives a fresh Card to display.
@@ -29,26 +31,35 @@ type App struct {
 	mode       Mode
 	kanjiIdx   int
 	kotobaIdx  int
-	auto       bool
-	showRomaji bool
+	auto         bool
+	autoInterval time.Duration
+	showRomaji   bool
+	showFurigana bool
 
 	statePath string
+
+	// uiEnabled is false in tests so that state transitions stay headless.
+	uiEnabled bool
 }
 
 type savedState struct {
 	Mode        Mode  `json:"mode"`
 	KanjiIndex  int   `json:"kanjiIndex"`
 	KotobaIndex int   `json:"kotobaIndex"`
-	Auto        bool  `json:"auto"`
-	ShowRomaji  *bool `json:"showRomaji,omitempty"`
+	AutoSwitch   *bool `json:"autoSwitch,omitempty"`
+	ShowRomaji   *bool `json:"showRomaji,omitempty"`
+	ShowFurigana *bool `json:"showFurigana,omitempty"`
 }
 
 // NewApp wires a deck into fresh state (romaji in the menu bar is on by default).
 func NewApp(deck *Deck, statePath string) *App {
 	return &App{
-		deck:       deck,
-		statePath:  statePath,
-		showRomaji: true,
+		deck:         deck,
+		statePath:    statePath,
+		showRomaji:   true,
+		showFurigana: true,
+		auto:         true,
+		autoInterval: autoSwitchInterval,
 	}
 }
 
@@ -72,9 +83,16 @@ func (a *App) LoadState() {
 	}
 	a.kanjiIdx = clamp(s.KanjiIndex, 0, len(a.deck.Kanji))
 	a.kotobaIdx = clamp(s.KotobaIndex, 0, len(a.deck.Kotoba))
-	a.auto = s.Auto
+	// Older state files used "auto" for the 15-minute card advance; a missing
+	// "autoSwitch" means "keep the new default" (on).
+	if s.AutoSwitch != nil {
+		a.auto = *s.AutoSwitch
+	}
 	if s.ShowRomaji != nil {
 		a.showRomaji = *s.ShowRomaji
+	}
+	if s.ShowFurigana != nil {
+		a.showFurigana = *s.ShowFurigana
 	}
 }
 
@@ -95,12 +113,15 @@ func clamp(v, lo, hi int) int {
 func (a *App) SaveState() {
 	a.mu.Lock()
 	showRomaji := a.showRomaji
+	showFurigana := a.showFurigana
+	autoSwitch := a.auto
 	s := savedState{
-		Mode:        a.mode,
-		KanjiIndex:  a.kanjiIdx,
-		KotobaIndex: a.kotobaIdx,
-		Auto:        a.auto,
-		ShowRomaji:  &showRomaji,
+		Mode:         a.mode,
+		KanjiIndex:   a.kanjiIdx,
+		KotobaIndex:  a.kotobaIdx,
+		AutoSwitch:   &autoSwitch,
+		ShowRomaji:   &showRomaji,
+		ShowFurigana: &showFurigana,
 	}
 	a.mu.Unlock()
 
@@ -172,7 +193,7 @@ func (a *App) ToggleMode() {
 	a.refresh()
 }
 
-// ToggleAuto flips the 15-minute auto-advance.
+// ToggleAuto flips the 15-second deck auto-switch.
 func (a *App) ToggleAuto() {
 	a.mu.Lock()
 	a.auto = !a.auto
@@ -186,6 +207,25 @@ func (a *App) ToggleRomaji() {
 	a.showRomaji = !a.showRomaji
 	a.mu.Unlock()
 	a.refresh()
+}
+
+// ToggleFurigana flips whether the kana reading is shown next to the kanji in
+// the menu bar.
+func (a *App) ToggleFurigana() {
+	a.mu.Lock()
+	a.showFurigana = !a.showFurigana
+	a.mu.Unlock()
+	a.refresh()
+}
+
+// SetAutoInterval overrides the auto-switch interval (used by dev flags/tests).
+func (a *App) SetAutoInterval(d time.Duration) {
+	if d <= 0 {
+		return
+	}
+	a.mu.Lock()
+	a.autoInterval = d
+	a.mu.Unlock()
 }
 
 // SetMode/SetIndex are used by the snapshot renderer.
@@ -210,28 +250,51 @@ func (a *App) refresh() {
 	a.mu.Lock()
 	card := a.currentCardLocked()
 	showRomaji := a.showRomaji
+	showFurigana := a.showFurigana
 	auto := a.auto
 	a.mu.Unlock()
 
-	uiShowCard(card)
-	uiSetTitle(card.MenuTitle(showRomaji))
-	uiSetMenuState(auto, showRomaji)
+	if a.uiEnabled {
+		uiShowCard(card)
+		uiSetTitle(card.MenuTitle(showFurigana, showRomaji))
+		uiSetMenuState(auto, showRomaji, showFurigana)
+	}
 	a.SaveState()
 }
 
-// StartAuto runs the auto-advance loop. It is cheap: a tick simply checks the
-// flag and advances only when enabled.
+// StartAuto flips the deck every autoInterval. A tick is skipped while the
+// user has the card open, so the widget never changes underneath them.
 func (a *App) StartAuto() {
 	go func() {
-		t := time.NewTicker(autoInterval)
+		t := time.NewTicker(a.autoInterval)
 		defer t.Stop()
 		for range t.C {
 			a.mu.Lock()
 			on := a.auto
 			a.mu.Unlock()
-			if on {
-				a.Next()
+			if !on {
+				continue
 			}
+			if uiPanelVisible() {
+				continue
+			}
+			a.tickAutoSwitch()
 		}
 	}()
+}
+
+// tickAutoSwitch advances the deck it is about to show, then flips to it, so
+// the widget rotates through new material instead of alternating the same pair.
+// It is exported for tests via refresh being UI-gated.
+func (a *App) tickAutoSwitch() {
+	a.mu.Lock()
+	if a.mode == ModeKanji {
+		a.kotobaIdx = (a.kotobaIdx + 1) % len(a.deck.Kotoba)
+		a.mode = ModeKotoba
+	} else {
+		a.kanjiIdx = (a.kanjiIdx + 1) % len(a.deck.Kanji)
+		a.mode = ModeKanji
+	}
+	a.mu.Unlock()
+	a.refresh()
 }

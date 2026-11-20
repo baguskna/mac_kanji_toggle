@@ -1,4 +1,5 @@
 #import <Cocoa/Cocoa.h>
+#import <QuartzCore/QuartzCore.h>
 #import "appkit.h"
 
 #pragma mark - Layout constants
@@ -7,6 +8,13 @@ static const CGFloat kCardWidth    = 380.0; // visible card width
 static const CGFloat kShadowMargin = 10.0;  // transparent margin that holds the window shadow
 static const CGFloat kPadding      = 20.0;  // card inner padding
 static const CGFloat kPillHeight   = 20.0;
+
+// Popover entrance/exit animation. A small scale-up plus a fade reads like a
+// native menu popping out of the menu bar.
+static const CGFloat kPopoverStartScale  = 0.965;
+static const CGFloat kPopoverEndScale    = 0.98;
+static const double  kPopoverShowDuration = 0.19;
+static const double  kPopoverHideDuration = 0.13;
 static const CGFloat kContentWidth = kCardWidth - 2 * kPadding;
 static const CGFloat kViewWidth    = kCardWidth + 2 * kShadowMargin;
 
@@ -144,9 +152,11 @@ static NSEvent *HandleKey(NSEvent *event);
     NSRect _divider2Rect;
     NSRect _prevButtonRect, _nextButtonRect, _modeButtonRect, _copyButtonRect;
     NSRect _hintRect;
+    CGFloat _minHeight;
 }
 
 - (void)setCardJSON:(NSDictionary *)dict;
+- (void)setMinHeight:(CGFloat)height;
 - (void)relayout;
 - (CGFloat)cardHeight;
 - (NSDictionary *)cardDictionary;
@@ -170,6 +180,13 @@ static NSEvent *HandleKey(NSEvent *event);
     if ([items isKindOfClass:[NSArray class]]) {
         _itemCount = (int)MIN(items.count, 3);
     }
+    [self relayout];
+    [self setNeedsDisplay:YES];
+}
+
+- (void)setMinHeight:(CGFloat)height {
+    if (_minHeight == height) return;
+    _minHeight = height;
     [self relayout];
     [self setNeedsDisplay:YES];
 }
@@ -292,7 +309,6 @@ static NSEvent *HandleKey(NSEvent *event);
     }
 
     // Compound rows: "日本 にほん" on one line, the gloss below.
-    NSArray *items = _card[@"items"];
     for (int i = 0; i < _itemCount; i++) {
         _itemY[i] = y;
         y += 42.0;
@@ -350,7 +366,37 @@ static NSEvent *HandleKey(NSEvent *event);
     _hintRect = NSMakeRect(innerX, y + 8.0, kContentWidth, hintH);
     y = NSMaxY(_hintRect);
 
-    _height = y + kPadding + kShadowMargin;
+    CGFloat naturalHeight = y + kPadding + kShadowMargin;
+
+    // Every card is rendered at exactly the same height so that flipping
+    // through the decks never resizes or moves the panel. Spare space on the
+    // shorter cards is spread across two flexible gaps - one above the
+    // example/compound block, one above the footer - instead of collecting in a
+    // single hole at the bottom.
+    _height = naturalHeight;
+    if (_minHeight > naturalHeight) {
+        CGFloat extra = _minHeight - naturalHeight;
+        CGFloat topShare = round(extra * 0.4);
+
+        // The example/compound block gets its share of the spare space...
+        _divider1Rect.origin.y += topShare;
+        _sectionRect.origin.y += topShare;
+        for (int i = 0; i < _itemCount; i++) _itemY[i] += topShare;
+        _exampleJPRect.origin.y += topShare;
+        _exampleKanaRect.origin.y += topShare;
+        _exampleENRect.origin.y += topShare;
+
+        // ...but the footer is shifted by the FULL remainder, so its position is
+        // identical on every card (no jumping nav buttons when content differs).
+        _divider2Rect.origin.y += extra;
+        _prevButtonRect.origin.y += extra;
+        _nextButtonRect.origin.y += extra;
+        _modeButtonRect.origin.y += extra;
+        _copyButtonRect.origin.y += extra;
+        _hintRect.origin.y += extra;
+
+        _height = _minHeight;
+    }
     _cardRect = NSMakeRect(kShadowMargin, kShadowMargin,
                            kCardWidth, MAX(_height - 2 * kShadowMargin, 1));
 }
@@ -503,6 +549,7 @@ static NSEvent *HandleKey(NSEvent *event);
 - (void)menuToggleMode:(id)sender;
 - (void)menuToggleAuto:(id)sender;
 - (void)menuToggleRomaji:(id)sender;
+- (void)menuToggleFurigana:(id)sender;
 - (void)menuCopy:(id)sender;
 - (void)menuQuit:(id)sender;
 @end
@@ -517,7 +564,22 @@ static NSMenu *gMenu = nil;
 static id gMonitor = nil;
 static NSMenuItem *gAutoItem = nil;
 static NSMenuItem *gRomajiItem = nil;
+static NSMenuItem *gFuriganaItem = nil;
 static NSTimeInterval gPanelResignTime = 0;
+static double gFixedCardHeight = 0;
+static volatile int gPanelVisibleFlag = 0;
+static BOOL gDebugFrame = NO;
+
+// Optional frame/title tracing: KB_DEBUG_FRAME=1 in the environment.
+static void DebugFrame(NSString *format, ...) {
+    if (!gDebugFrame) return;
+    va_list args;
+    va_start(args, format);
+    NSString *line = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    fprintf(stderr, "KBDBG %s\n", line.UTF8String);
+    [line release];
+}
 
 #pragma mark - Panel positioning
 
@@ -544,11 +606,17 @@ static void PositionPanel(void) {
 
     NSScreen *screen = haveButton ? ScreenContaining(buttonScreen) : [NSScreen mainScreen];
     NSRect visible = screen ? screen.visibleFrame : NSMakeRect(0, 0, 1440, 900);
+    DebugFrame(@"pos haveButton=%d button=(%.0f,%.0f %.0fx%.0f) visible=(%.0f,%.0f %.0fx%.0f) panel=%.0fx%.0f",
+               haveButton, buttonScreen.origin.x, buttonScreen.origin.y,
+               buttonScreen.size.width, buttonScreen.size.height,
+               visible.origin.x, visible.origin.y, visible.size.width, visible.size.height,
+               size.width, size.height);
 
     CGFloat x, y;
     if (haveButton) {
-        // Center the card under the menu bar item, hanging just below it.
-        x = NSMidX(buttonScreen) - size.width / 2.0;
+        // Anchor by the item's RIGHT edge, which stays put while the title
+        // grows or shrinks, so the panel never slides sideways.
+        x = NSMaxX(buttonScreen) - size.width - 4.0;
         y = NSMinY(buttonScreen) - size.height - 6.0;
     } else {
         x = NSMaxX(visible) - size.width - 10.0;
@@ -559,25 +627,71 @@ static void PositionPanel(void) {
     if (x < NSMinX(visible) + 8) x = NSMinX(visible) + 8;
     if (y < NSMinY(visible) + 8) y = NSMinY(visible) + 8;
 
+    DebugFrame(@"pos computed x=%.0f y=%.0f", x, y);
     [gPanel setFrameOrigin:NSMakePoint(round(x), round(y))];
 }
 
 static void ShowPanel(void) {
     if (!gPanel || !gCard) return;
+    DebugFrame(@"show");
+    gPanelVisibleFlag = 1;
     PositionPanel();
+
+    CALayer *layer = gCard.layer;
+    if (layer) {
+        [layer removeAllAnimations];
+        layer.transform = CATransform3DMakeScale(kPopoverStartScale, kPopoverStartScale, 1.0);
+    }
+    [gPanel setAlphaValue:0.0];
+
     [NSApp activateIgnoringOtherApps:YES];
-    [gPanel setAlphaValue:0];
     [gPanel makeKeyAndOrderFront:nil];
+
+    // Two coordinated animations: a quick fade (window alpha, so the drop
+    // shadow fades too) and a subtle grow (layer transform), eased out.
+    if (layer) {
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:kPopoverShowDuration];
+        [CATransaction setAnimationTimingFunction:
+            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+        layer.transform = CATransform3DIdentity;
+        [CATransaction commit];
+    }
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *ctx) {
-        ctx.duration = 0.12;
+        ctx.duration = kPopoverShowDuration;
+        ctx.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
         gPanel.animator.alphaValue = 1.0;
     } completionHandler:nil];
 }
 
 static void HidePanel(BOOL restoreFocus) {
     if (!gPanel || !gPanel.isVisible) return;
-    [gPanel orderOut:nil];
-    if (restoreFocus) [NSApp hide:nil];
+    DebugFrame(@"hide");
+    gPanelVisibleFlag = 0;
+
+    CALayer *layer = gCard.layer;
+    if (layer) {
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:kPopoverHideDuration];
+        [CATransaction setAnimationTimingFunction:
+            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+        layer.transform = CATransform3DMakeScale(kPopoverEndScale, kPopoverEndScale, 1.0);
+        [CATransaction commit];
+    }
+
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *ctx) {
+        ctx.duration = kPopoverHideDuration;
+        ctx.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        gPanel.animator.alphaValue = 0.0;
+    } completionHandler:^{
+        [gPanel orderOut:nil];
+        gPanel.alphaValue = 1.0;
+        if (layer) {
+            [layer removeAllAnimations];
+            layer.transform = CATransform3DIdentity;
+        }
+        if (restoreFocus) [NSApp hide:nil];
+    }];
 }
 
 static void TogglePanel(void) {
@@ -612,6 +726,7 @@ static NSEvent *HandleKey(NSEvent *event) {
     if ([chars isEqualToString:@"t"]) { GoToggleMode(); return nil; }
     if ([chars isEqualToString:@"a"]) { GoToggleAuto(); return nil; }
     if ([chars isEqualToString:@"r"]) { GoToggleRomaji(); return nil; }
+    if ([chars isEqualToString:@"f"]) { GoToggleFurigana(); return nil; }
     if ([chars isEqualToString:@"c"]) { CopyCardToPasteboard([gCard cardDictionary]); return nil; }
     if ([chars isEqualToString:@"q"]) { [NSApp terminate:nil]; return nil; }
     return event;
@@ -633,7 +748,8 @@ static void BuildMenu(void) {
     AddMenuItem(gMenu, @"Previous Card", @selector(menuPrev:), nil);
     AddMenuItem(gMenu, @"Toggle Kanji / Kotoba", @selector(menuToggleMode:), @"t");
     [gMenu addItem:[NSMenuItem separatorItem]];
-    gAutoItem = AddMenuItem(gMenu, @"Auto-advance every 15 min", @selector(menuToggleAuto:), @"a");
+    gAutoItem = AddMenuItem(gMenu, @"Auto-switch 漢字/言葉 every 15 s", @selector(menuToggleAuto:), @"a");
+    gFuriganaItem = AddMenuItem(gMenu, @"Show Furigana in Menu Bar", @selector(menuToggleFurigana:), @"f");
     gRomajiItem = AddMenuItem(gMenu, @"Show Romaji in Menu Bar", @selector(menuToggleRomaji:), @"r");
     [gMenu addItem:[NSMenuItem separatorItem]];
     AddMenuItem(gMenu, @"Copy Current Card", @selector(menuCopy:), @"c");
@@ -660,6 +776,7 @@ static void BuildMenu(void) {
 - (void)menuToggleMode:(id)sender { GoToggleMode(); }
 - (void)menuToggleAuto:(id)sender { GoToggleAuto(); }
 - (void)menuToggleRomaji:(id)sender { GoToggleRomaji(); }
+- (void)menuToggleFurigana:(id)sender { GoToggleFurigana(); }
 - (void)menuCopy:(id)sender { CopyCardToPasteboard([gCard cardDictionary]); }
 - (void)menuQuit:(id)sender { [NSApp terminate:nil]; }
 
@@ -711,12 +828,15 @@ void KBStart(void) {
         gPanel.hidesOnDeactivate = NO;
 
         gCard = [[KBCardView alloc] initWithFrame:NSMakeRect(0, 0, kViewWidth, 320)];
+        gCard.wantsLayer = YES;
         gPanel.contentView = gCard;
 
-        gMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown
-                                                        handler:^NSEvent *(NSEvent *event) {
+        gDebugFrame = getenv("KB_DEBUG_FRAME") != NULL;
+
+        gMonitor = [[NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown
+                                                           handler:^NSEvent *(NSEvent *event) {
             return HandleKey(event);
-        }];
+        }] retain];
     }
 }
 
@@ -728,6 +848,12 @@ void KBShowNow(void) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),
                    dispatch_get_main_queue(), ^{
         ShowPanel();
+    });
+}
+
+void KBHideNow(void) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        HidePanel(YES);
     });
 }
 
@@ -750,6 +876,7 @@ void KBShowCard(const char *json) {
             }
             if (card && gCard) {
                 [gCard setCardJSON:card];
+                [gCard setMinHeight:gFixedCardHeight];
                 CGFloat height = [gCard cardHeight];
                 NSRect frame = gPanel.frame;
                 CGFloat top = NSMaxY(frame);
@@ -760,6 +887,9 @@ void KBShowCard(const char *json) {
                 [gCard setNeedsDisplay:YES];
                 [gCard displayIfNeeded];
                 PositionPanel();
+                DebugFrame(@"panel=(%.0f,%.0f %.0fx%.0f) cardH=%.0f",
+                           gPanel.frame.origin.x, gPanel.frame.origin.y,
+                           gPanel.frame.size.width, gPanel.frame.size.height, height);
             }
             [payload release];
         }
@@ -773,16 +903,18 @@ void KBSetTitle(const char *title) {
         @autoreleasepool {
             gStatus.button.title = text;
             gStatus.button.toolTip = text;
+            DebugFrame(@"title=%s", text.UTF8String);
             [text release];
         }
     });
 }
 
-void KBSetMenuState(int autoOn, int romajiOn) {
+void KBSetMenuState(int autoOn, int romajiOn, int furiganaOn) {
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
             if (gAutoItem) gAutoItem.state = autoOn ? NSControlStateValueOn : NSControlStateValueOff;
             if (gRomajiItem) gRomajiItem.state = romajiOn ? NSControlStateValueOn : NSControlStateValueOff;
+            if (gFuriganaItem) gFuriganaItem.state = furiganaOn ? NSControlStateValueOn : NSControlStateValueOff;
         }
     });
 }
@@ -837,4 +969,46 @@ void KBSnapshot(const char *json, const char *path, int dark) {
         [window release];
         [view release];
     }
+}
+
+double KBCardNaturalHeight(const char *json) {
+    @autoreleasepool {
+        [NSApplication sharedApplication];
+        if (json == NULL) return 0;
+        NSString *payload = [[NSString alloc] initWithUTF8String:json];
+        NSData *data = [payload dataUsingEncoding:NSUTF8StringEncoding];
+        [payload release];
+        NSDictionary *card = nil;
+        if (data) {
+            id parsed = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            if ([parsed isKindOfClass:[NSDictionary class]]) card = parsed;
+        }
+        if (!card) return 0;
+
+        KBCardView *view = [[KBCardView alloc] initWithFrame:NSMakeRect(0, 0, kViewWidth, 400)];
+        [view setCardJSON:card];
+        CGFloat height = [view cardHeight];
+        [view release];
+        return (double)height;
+    }
+}
+
+void KBSetFixedCardHeight(double height) {
+    gFixedCardHeight = height;
+    if (!gCard) return;
+    [gCard setMinHeight:height];
+    if (gPanel.isVisible) {
+        CGFloat h = [gCard cardHeight];
+        NSRect frame = gPanel.frame;
+        CGFloat top = NSMaxY(frame);
+        frame.size = NSMakeSize(kViewWidth, h);
+        frame.origin.y = top - h;
+        [gPanel setFrame:frame display:NO];
+        [gCard setFrameSize:NSMakeSize(kViewWidth, h)];
+        PositionPanel();
+    }
+}
+
+int KBIsPanelVisible(void) {
+    return gPanelVisibleFlag;
 }

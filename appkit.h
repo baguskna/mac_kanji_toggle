@@ -12,9 +12,13 @@ void KBStart(void);          /* create status item, panel, menu, key monitor   *
 void KBRun(void);            /* run the AppKit event loop                      */
 void KBShowCard(const char *cardJSON);
 void KBSetTitle(const char *title);
-void KBSetMenuState(int autoOn, int romajiOn);
+void KBSetMenuState(int autoOn, int romajiOn, int furiganaOn);
+double KBCardNaturalHeight(const char *cardJSON);
+void KBSetFixedCardHeight(double height);
+int KBIsPanelVisible(void);
 void KBSnapshot(const char *cardJSON, const char *path, int dark);
 void KBShowNow(void);        /* dev: open the panel shortly after launch      */
+void KBHideNow(void);        /* dev: close the panel                         */
 void KBQuit(void);           /* dev: terminate the app                       */
 
 /* Implemented in Go; called from Objective-C on the main thread. */
@@ -24,6 +28,7 @@ void GoPrev(void);
 void GoToggleMode(void);
 void GoToggleAuto(void);
 void GoToggleRomaji(void);
+void GoToggleFurigana(void);
 
 #ifdef __cplusplus
 }

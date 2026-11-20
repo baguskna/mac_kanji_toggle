@@ -32,9 +32,11 @@ type Card struct {
 	ExampleKana string `json:"exampleKana"`
 	ExampleEN   string `json:"exampleEN"`
 
-	// Title and TitleSub are used for the menu bar item.
-	Title    string `json:"title"`
-	TitleSub string `json:"titleSub"`
+	// Title, TitleKana and TitleSub are used for the menu bar item, e.g.
+	// "対  タイ  tai".
+	Title     string `json:"title"`
+	TitleKana string `json:"titleKana"`
+	TitleSub  string `json:"titleSub"`
 }
 
 // CardItem is one row in the "compounds" list.
@@ -56,6 +58,7 @@ func KanjiCard(k Kanji) Card {
 		Meaning:   k.Meaning,
 		Section:   "Words with " + k.Char,
 		Title:     k.Char,
+		TitleKana: firstReading(k.On, k.Kun),
 	}
 
 	// On'yomi is the primary reading, kun'yomi secondary.
@@ -101,6 +104,7 @@ func KotobaCard(k Kotoba) Card {
 		Reading1:       k.Kana,
 		Reading1Romaji: Romaji(k.Kana),
 		Section:        "Example",
+		TitleKana:      k.Kana,
 		ExampleJP:      k.Example.JP,
 		ExampleKana:    k.Example.Kana,
 		ExampleEN:      k.Example.EN,
@@ -108,6 +112,18 @@ func KotobaCard(k Kotoba) Card {
 		TitleSub:       Romaji(k.Kana),
 	}
 	return c
+}
+
+// firstReading returns the reading shown as furigana in the menu bar: the
+// first on'yomi, falling back to the first kun'yomi.
+func firstReading(on, kun []string) string {
+	if len(on) > 0 {
+		return on[0]
+	}
+	if len(kun) > 0 {
+		return kun[0]
+	}
+	return ""
 }
 
 func firstRomaji(readings []string) string {
@@ -119,11 +135,16 @@ func firstRomaji(readings []string) string {
 	return ""
 }
 
-// MenuTitle composes the status item title. With romaji enabled it looks like
-// "日  nichi" or "食べる  taberu".
-func (c Card) MenuTitle(showRomaji bool) string {
-	if !showRomaji || c.TitleSub == "" {
-		return c.Title
+// MenuTitle composes the status item title. With everything enabled it looks
+// like "対  タイ  tai" (kanji + furigana + romaji) or "経験  けいけん  keiken".
+// Kana-only words skip the furigana part because it would just repeat the word.
+func (c Card) MenuTitle(showFurigana, showRomaji bool) string {
+	parts := []string{c.Title}
+	if showFurigana && c.TitleKana != "" && c.TitleKana != c.Title {
+		parts = append(parts, c.TitleKana)
 	}
-	return c.Title + "  " + c.TitleSub
+	if showRomaji && c.TitleSub != "" {
+		parts = append(parts, c.TitleSub)
+	}
+	return strings.Join(parts, "  ")
 }

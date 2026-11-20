@@ -1,14 +1,15 @@
 # KanjiBar
 
 A small macOS **menu bar widget** that shows a JLPT **N3** kanji or vocabulary
-word with its kana reading, **romaji** and English meaning — one click, no app
-window, no Dock icon.
+word together with its **furigana**, **romaji** and English meaning — one click,
+no app window, no Dock icon. The widget rotates between the 漢字 and 言葉 decks
+every 15 seconds and pauses while you are reading a card.
 
 Built with **Go** (state, data, romaji, timer) and **AppKit/Objective-C** (the
 native status item and popover-style card). It compiles with the Command Line
 Tools — Xcode is not required.
 
-| Menu bar | Kanji card | Kotoba card |
+| Menu bar (`政 セイ sei`) | Kanji card | Kotoba card |
 | --- | --- | --- |
 | ![Menu bar](docs/menubar.png) | ![Kanji card](docs/card-kanji.png) | ![Kotoba card](docs/card-kotoba.png) |
 
@@ -32,19 +33,26 @@ its state in `~/Library/Application Support/KanjiBar/state.json`.
 
 ## Use
 
+- The menu bar title shows the kanji/word, its **furigana** and its **romaji**
+  (`政 セイ sei`, `経験 けいけん keiken`). Every 15 s it flips between the two
+  decks — but **not while the card is open**, so reading is never interrupted.
 - **Left-click the menu bar item** — opens the card.
-- **Right-click** — context menu (next / previous / toggle deck / auto-advance /
-  menu bar romaji / copy / quit).
+- **Right-click** — context menu (next / previous / toggle deck / auto-switch /
+  menu bar furigana & romaji / copy / quit).
 - **← →** or **space** — previous / next card while the card is open.
 - **T** — switch between the kanji deck (漢字) and the vocabulary deck (言葉).
-- **A** — toggle auto-advance (a new card every 15 minutes while the app sits in
-  the menu bar).
-- **R** — toggle romaji in the menu bar title (`連  ren` ⇄ `連`).
+- **A** — toggle the 15 s deck auto-switch (paused while the card is open).
+- **F** — toggle furigana in the menu bar title (`政 セイ  sei` ⇄ `政  sei`).
+- **R** — toggle romaji in the menu bar title (`政 セイ  sei` ⇄ `政  セイ`).
 - **C** — copy the current card as text.
 - **Esc** — close the card.
 
 Clicking anywhere outside the card dismisses it and returns focus to the app you
 were using. The current card, deck and preferences survive restarts.
+
+Every card is rendered at **one fixed size**, and the panel is anchored by the
+right edge of the menu bar item, so flipping decks or advancing cards never
+moves or resizes the widget.
 
 ## The decks
 
@@ -82,7 +90,13 @@ is validated at startup and by `go test`:
 }
 ```
 
-### Where romaji comes from
+### Where furigana and romaji come from
+
+Furigana in the menu bar is the first reading from the deck (on'yomi in
+katakana for kanji, the kana spelling for words); romaji is generated from that
+reading.
+
+
 
 Romaji is **generated at runtime** from the kana rather than stored, so the
 dataset stays small and the transliteration stays consistent. `romaji.go`
@@ -145,12 +159,15 @@ dist/KanjiBar.app/Contents/MacOS/KanjiBar --logfile /tmp/kb.log
 `--snapshot` renders one card to PNG headlessly, which is handy for design
 iterations and for regenerating the images in `docs/`.
 
+`KB_DEBUG_FRAME=1` in the environment prints panel geometry and menu bar title
+changes to stderr — useful when tuning layout.
+
 ## Notes / limitations
 
 - Ad-hoc signed, not notarized. Locally built apps run fine; distributing it to
   another Mac would need a Developer ID signature and notarization.
 - No "launch at login" yet (add `SMAppService` if you want it).
-- The menu bar title is the kanji/word itself, so very long words widen the
-  item; turn off "Show Romaji in Menu Bar" for a tighter fit.
+- The menu bar title is kanji + furigana + romaji, so very long words widen the
+  item; turn off furigana (`F`) or romaji (`R`) for a tighter fit.
 - macOS 26 hosts status items through Control Center scenes; the app deliberately
   keeps every status item mutation on the main thread and retains the item.
