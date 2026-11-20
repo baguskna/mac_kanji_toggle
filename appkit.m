@@ -9,12 +9,9 @@ static const CGFloat kShadowMargin = 10.0;  // transparent margin that holds the
 static const CGFloat kPadding      = 20.0;  // card inner padding
 static const CGFloat kPillHeight   = 20.0;
 
-// Popover entrance/exit animation. A small scale-up plus a fade reads like a
-// native menu popping out of the menu bar.
-static const CGFloat kPopoverStartScale  = 0.965;
-static const CGFloat kPopoverEndScale    = 0.98;
-static const double  kPopoverShowDuration = 0.19;
-static const double  kPopoverHideDuration = 0.13;
+// Fade-out duration when the popover is dismissed (AppKit itself closes popovers instantly).
+static const double kPopoverHideDuration = 0.14;
+
 static const CGFloat kContentWidth = kCardWidth - 2 * kPadding;
 static const CGFloat kViewWidth    = kCardWidth + 2 * kShadowMargin;
 
@@ -126,7 +123,7 @@ static void CopyCardToPasteboard(NSDictionary *card) {
 
 #pragma mark - Forward declarations
 
-static void HidePanel(BOOL restoreFocus);
+static void HidePopover(BOOL restoreFocus);
 static NSEvent *HandleKey(NSEvent *event);
 
 #pragma mark - Card view
@@ -153,10 +150,13 @@ static NSEvent *HandleKey(NSEvent *event);
     NSRect _prevButtonRect, _nextButtonRect, _modeButtonRect, _copyButtonRect;
     NSRect _hintRect;
     CGFloat _minHeight;
+    BOOL _embedded;   // yes when drawn inside an NSPopover (no card chrome)
+    CGFloat _margin;  // 0 when embedded, kShadowMargin for the standalone PNG
 }
 
 - (void)setCardJSON:(NSDictionary *)dict;
 - (void)setMinHeight:(CGFloat)height;
+- (void)setEmbedded:(BOOL)embedded;
 - (void)relayout;
 - (CGFloat)cardHeight;
 - (NSDictionary *)cardDictionary;
@@ -191,6 +191,13 @@ static NSEvent *HandleKey(NSEvent *event);
     [self setNeedsDisplay:YES];
 }
 
+- (void)setEmbedded:(BOOL)embedded {
+    if (_embedded == embedded) return;
+    _embedded = embedded;
+    [self relayout];
+    [self setNeedsDisplay:YES];
+}
+
 - (NSDictionary *)cardDictionary {
     return _card;
 }
@@ -201,8 +208,9 @@ static NSEvent *HandleKey(NSEvent *event);
 
 // Measures where each block goes, in flipped coordinates (top-left origin).
 - (void)relayout {
-    CGFloat innerX = kShadowMargin + kPadding;
-    CGFloat y = kShadowMargin + kPadding;
+    _margin = _embedded ? 0.0 : kShadowMargin;
+    CGFloat innerX = _margin + kPadding;
+    CGFloat y = _margin + kPadding;
     NSString *headword = Str(_card, @"headword");
 
     // Header row: mode pill on the left, JLPT badge on the right.
@@ -366,7 +374,7 @@ static NSEvent *HandleKey(NSEvent *event);
     _hintRect = NSMakeRect(innerX, y + 8.0, kContentWidth, hintH);
     y = NSMaxY(_hintRect);
 
-    CGFloat naturalHeight = y + kPadding + kShadowMargin;
+    CGFloat naturalHeight = y + kPadding + _margin;
 
     // Every card is rendered at exactly the same height so that flipping
     // through the decks never resizes or moves the panel. Spare space on the
@@ -397,8 +405,9 @@ static NSEvent *HandleKey(NSEvent *event);
 
         _height = _minHeight;
     }
-    _cardRect = NSMakeRect(kShadowMargin, kShadowMargin,
-                           kCardWidth, MAX(_height - 2 * kShadowMargin, 1));
+    _cardRect = NSMakeRect(_margin, _margin,
+                           _embedded ? self.bounds.size.width : kCardWidth,
+                           MAX(_height - 2 * _margin, 1));
 }
 
 // Stored so drawRect and hit testing agree on the toggle label.
@@ -409,15 +418,23 @@ static NSEvent *HandleKey(NSEvent *event);
 - (void)drawRect:(NSRect)dirtyRect {
     if (!_card) return;
 
-    // Card background.
-    NSBezierPath *cardPath = [NSBezierPath bezierPathWithRoundedRect:_cardRect
-                                                             xRadius:14
-                                                             yRadius:14];
-    [[[NSColor windowBackgroundColor] colorWithAlphaComponent:0.99] setFill];
-    [cardPath fill];
-    [[[NSColor separatorColor] colorWithAlphaComponent:0.9] setStroke];
-    cardPath.lineWidth = 1.0;
-    [cardPath stroke];
+    if (_embedded) {
+        // The popover's own material is very translucent on current macOS; an
+        // opaque face keeps the kanji crisp over whatever is behind the menu
+        // bar, while the popover still supplies border, shadow and arrow.
+        [[NSColor windowBackgroundColor] setFill];
+        NSRectFill(self.bounds);
+    } else {
+        // Standalone chrome (used for the PNG snapshots).
+        NSBezierPath *cardPath = [NSBezierPath bezierPathWithRoundedRect:_cardRect
+                                                                 xRadius:14
+                                                                 yRadius:14];
+        [[[NSColor windowBackgroundColor] colorWithAlphaComponent:0.99] setFill];
+        [cardPath fill];
+        [[[NSColor separatorColor] colorWithAlphaComponent:0.9] setStroke];
+        cardPath.lineWidth = 1.0;
+        [cardPath stroke];
+    }
 
     // Header.
     DrawPill(_modePill, [[NSColor controlAccentColor] colorWithAlphaComponent:0.15],
@@ -481,16 +498,16 @@ static NSEvent *HandleKey(NSEvent *event);
         NSAttributedString *headA = Text(head, SysFont(16.0, NSFontWeightSemibold),
                                          [NSColor labelColor], NSTextAlignmentLeft, 0.3);
         CGFloat headW = TextWidth(headA);
-        Draw(headA, NSMakeRect(kShadowMargin + kPadding, rowY, headW, 20));
+        Draw(headA, NSMakeRect(_margin + kPadding, rowY, headW, 20));
 
         NSAttributedString *subA = Text(sub, SysFont(12.5, NSFontWeightRegular),
                                         [NSColor secondaryLabelColor], NSTextAlignmentLeft, 0);
         CGFloat subW = MIN(TextWidth(subA), kContentWidth - headW - 8);
-        Draw(subA, NSMakeRect(kShadowMargin + kPadding + headW + 8, rowY + 2, subW, 18));
+        Draw(subA, NSMakeRect(_margin + kPadding + headW + 8, rowY + 2, subW, 18));
 
         NSAttributedString *tailA = Text(tail, SysFont(12.0, NSFontWeightRegular),
                                          [NSColor secondaryLabelColor], NSTextAlignmentLeft, 0);
-        Draw(tailA, NSMakeRect(kShadowMargin + kPadding, rowY + 21, kContentWidth, 16));
+        Draw(tailA, NSMakeRect(_margin + kPadding, rowY + 21, kContentWidth, 16));
     }
 
     // Example.
@@ -526,23 +543,9 @@ static NSEvent *HandleKey(NSEvent *event);
 
 @end
 
-#pragma mark - Panel
-
-@interface KBPanel : NSPanel
-@end
-
-@implementation KBPanel
-- (BOOL)canBecomeKey { return YES; }
-- (BOOL)canBecomeMain { return NO; }
-- (void)keyDown:(NSEvent *)event {
-    NSEvent *kept = HandleKey(event);
-    if (kept) [super keyDown:kept];
-}
-@end
-
 #pragma mark - Delegates
 
-@interface KBDelegate : NSObject <NSWindowDelegate, NSMenuDelegate>
+@interface KBDelegate : NSObject <NSMenuDelegate, NSPopoverDelegate>
 - (void)statusItemClicked:(id)sender;
 - (void)menuNext:(id)sender;
 - (void)menuPrev:(id)sender;
@@ -557,7 +560,7 @@ static NSEvent *HandleKey(NSEvent *event);
 #pragma mark - Globals
 
 static NSStatusItem *gStatus = nil;
-static KBPanel *gPanel = nil;
+static NSPopover *gPopover = nil;
 static KBCardView *gCard = nil;
 static KBDelegate *gDelegate = nil;
 static NSMenu *gMenu = nil;
@@ -565,9 +568,12 @@ static id gMonitor = nil;
 static NSMenuItem *gAutoItem = nil;
 static NSMenuItem *gRomajiItem = nil;
 static NSMenuItem *gFuriganaItem = nil;
-static NSTimeInterval gPanelResignTime = 0;
+static NSTimeInterval gPopoverClosedAt = 0;
 static double gFixedCardHeight = 0;
 static volatile int gPanelVisibleFlag = 0;
+static BOOL gRestoreFocusOnClose = NO;
+static BOOL gClosingPopover = NO;
+static NSString *gPendingTitle = nil;
 static BOOL gDebugFrame = NO;
 
 // Optional frame/title tracing: KB_DEBUG_FRAME=1 in the environment.
@@ -581,145 +587,85 @@ static void DebugFrame(NSString *format, ...) {
     [line release];
 }
 
-#pragma mark - Panel positioning
+#pragma mark - Popover
 
-static NSScreen *ScreenContaining(NSRect rect) {
-    NSPoint center = NSMakePoint(NSMidX(rect), NSMidY(rect));
-    for (NSScreen *screen in [NSScreen screens]) {
-        if (NSPointInRect(center, screen.frame)) return screen;
-    }
-    return [NSScreen mainScreen];
+// Height of the card inside the popover: the measured fixed card height minus
+// the transparent shadow margin the standalone renderer uses.
+static void ApplyStatusTitle(NSString *text) {
+    gStatus.button.title = text;
+    gStatus.button.toolTip = text;
 }
 
-static void PositionPanel(void) {
-    if (!gPanel) return;
-
-    NSSize size = gPanel.frame.size;
-
-    NSRect buttonScreen = NSZeroRect;
-    BOOL haveButton = NO;
-    if (gStatus && gStatus.button && gStatus.button.window) {
-        NSRect inWindow = [gStatus.button convertRect:gStatus.button.bounds toView:nil];
-        buttonScreen = [gStatus.button.window convertRectToScreen:inWindow];
-        haveButton = YES;
+// Changing the status item title re-lays-out the menu bar item while an
+// NSPopover is anchored to it, which makes the popover jump or dismiss. While
+// the card is open we freeze the title and apply the latest one on close.
+static void SetStatusTitle(NSString *text) {
+    if (gPopover.isShown) {
+        [gPendingTitle release];
+        gPendingTitle = [text copy];
+        return;
     }
-
-    NSScreen *screen = haveButton ? ScreenContaining(buttonScreen) : [NSScreen mainScreen];
-    NSRect visible = screen ? screen.visibleFrame : NSMakeRect(0, 0, 1440, 900);
-    DebugFrame(@"pos haveButton=%d button=(%.0f,%.0f %.0fx%.0f) visible=(%.0f,%.0f %.0fx%.0f) panel=%.0fx%.0f",
-               haveButton, buttonScreen.origin.x, buttonScreen.origin.y,
-               buttonScreen.size.width, buttonScreen.size.height,
-               visible.origin.x, visible.origin.y, visible.size.width, visible.size.height,
-               size.width, size.height);
-
-    CGFloat x, y;
-    if (haveButton) {
-        // Anchor by the item's RIGHT edge, which stays put while the title
-        // grows or shrinks, so the panel never slides sideways.
-        x = NSMaxX(buttonScreen) - size.width - 4.0;
-        y = NSMinY(buttonScreen) - size.height - 6.0;
-    } else {
-        x = NSMaxX(visible) - size.width - 10.0;
-        y = NSMaxY(visible) - size.height - 6.0;
-    }
-
-    if (x + size.width > NSMaxX(visible) - 8) x = NSMaxX(visible) - 8 - size.width;
-    if (x < NSMinX(visible) + 8) x = NSMinX(visible) + 8;
-    if (y < NSMinY(visible) + 8) y = NSMinY(visible) + 8;
-
-    DebugFrame(@"pos computed x=%.0f y=%.0f", x, y);
-    [gPanel setFrameOrigin:NSMakePoint(round(x), round(y))];
+    ApplyStatusTitle(text);
 }
 
-static void ShowPanel(void) {
-    if (!gPanel || !gCard) return;
-    DebugFrame(@"show");
-    gPanelVisibleFlag = 1;
-    PositionPanel();
+static CGFloat EmbeddedContentHeight(void) {
+    return MAX(gFixedCardHeight - 2.0 * kShadowMargin, 200.0);
+}
 
-    CALayer *layer = gCard.layer;
-    if (layer) {
-        [layer removeAllAnimations];
-        layer.transform = CATransform3DMakeScale(kPopoverStartScale, kPopoverStartScale, 1.0);
-    }
-    [gPanel setAlphaValue:0.0];
-
+static void ShowPopover(void) {
+    if (!gPopover || !gStatus.button) return;
+    DebugFrame(@"popover show");
     [NSApp activateIgnoringOtherApps:YES];
-    [gPanel makeKeyAndOrderFront:nil];
-
-    // Two coordinated animations: a quick fade (window alpha, so the drop
-    // shadow fades too) and a subtle grow (layer transform), eased out.
-    if (layer) {
-        [CATransaction begin];
-        [CATransaction setAnimationDuration:kPopoverShowDuration];
-        [CATransaction setAnimationTimingFunction:
-            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-        layer.transform = CATransform3DIdentity;
-        [CATransaction commit];
-    }
-    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *ctx) {
-        ctx.duration = kPopoverShowDuration;
-        ctx.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-        gPanel.animator.alphaValue = 1.0;
-    } completionHandler:nil];
+    // NSPopover animates itself (grows out of the item, arrow included) and
+    // dismisses on an outside click thanks to the transient behavior.
+    gClosingPopover = NO;
+    [gPopover showRelativeToRect:gStatus.button.bounds
+                          ofView:gStatus.button
+                  preferredEdge:NSRectEdgeMinY];
+    gPanelVisibleFlag = gPopover.isShown ? 1 : 0;
 }
 
-static void HidePanel(BOOL restoreFocus) {
-    if (!gPanel || !gPanel.isVisible) return;
-    DebugFrame(@"hide");
-    gPanelVisibleFlag = 0;
+static void HidePopover(BOOL restoreFocus) {
+    if (!gPopover || !gPopover.isShown || gClosingPopover) return;
+    DebugFrame(@"popover hide");
+    gClosingPopover = YES;
+    gRestoreFocusOnClose = restoreFocus;
 
-    CALayer *layer = gCard.layer;
-    if (layer) {
-        [CATransaction begin];
-        [CATransaction setAnimationDuration:kPopoverHideDuration];
-        [CATransaction setAnimationTimingFunction:
-            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
-        layer.transform = CATransform3DMakeScale(kPopoverEndScale, kPopoverEndScale, 1.0);
-        [CATransaction commit];
+    // AppKit closes popovers instantly; fade the content view briefly first so
+    // dismissal feels deliberate.
+    NSView *content = gPopover.contentViewController.view;
+    if (content == nil) {
+        [gPopover performClose:nil];
+        return;
     }
-
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *ctx) {
         ctx.duration = kPopoverHideDuration;
         ctx.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        gPanel.animator.alphaValue = 0.0;
+        content.animator.alphaValue = 0.0;
     } completionHandler:^{
-        [gPanel orderOut:nil];
-        gPanel.alphaValue = 1.0;
-        if (layer) {
-            [layer removeAllAnimations];
-            layer.transform = CATransform3DIdentity;
-        }
-        if (restoreFocus) [NSApp hide:nil];
+        [gPopover performClose:nil];
+        content.alphaValue = 1.0;
     }];
 }
 
-static void TogglePanel(void) {
-    if (gPanel && gPanel.isVisible) {
-        HidePanel(YES);
-    } else {
-        ShowPanel();
-    }
-}
-
-// True when the panel was dismissed by the click that is currently being
-// handled (the status item click resigns key right before its action fires).
+// A transient popover closes itself on the click outside it, before the status
+// item action fires; this stops the same click from immediately reopening it.
 static BOOL DismissedByCurrentClick(void) {
     NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
-    BOOL recent = (gPanelResignTime > 0) && (now - gPanelResignTime < 0.3);
-    gPanelResignTime = 0;
+    BOOL recent = (gPopoverClosedAt > 0) && (now - gPopoverClosedAt < 0.35);
+    gPopoverClosedAt = 0;
     return recent;
 }
 
 #pragma mark - Keyboard
 
 static NSEvent *HandleKey(NSEvent *event) {
-    if (!gPanel || !gPanel.isVisible) return event;
+    if (!gPopover || !gPopover.isShown) return event;
     switch (event.keyCode) {
         case 123: GoPrev(); return nil;   // left arrow
         case 124: GoNext(); return nil;   // right arrow
         case 49:  GoNext(); return nil;   // space
-        case 53:  HidePanel(YES); return nil; // escape
+        case 53:  HidePopover(YES); return nil; // escape
         default: break;
     }
     NSString *chars = [event.charactersIgnoringModifiers lowercaseString];
@@ -767,8 +713,12 @@ static void BuildMenu(void) {
         [NSMenu popUpContextMenu:gMenu withEvent:event forView:sender];
         return;
     }
-    if (DismissedByCurrentClick()) return; // the click just closed the card
-    TogglePanel();
+    if (gPopover.isShown) {
+        HidePopover(YES);
+        return;
+    }
+    if (DismissedByCurrentClick()) return; // the click that dismissed it
+    ShowPopover();
 }
 
 - (void)menuNext:(id)sender { GoNext(); }
@@ -780,10 +730,23 @@ static void BuildMenu(void) {
 - (void)menuCopy:(id)sender { CopyCardToPasteboard([gCard cardDictionary]); }
 - (void)menuQuit:(id)sender { [NSApp terminate:nil]; }
 
-- (void)windowDidResignKey:(NSNotification *)notification {
-    if (notification.object == gPanel) {
-        gPanelResignTime = [NSDate timeIntervalSinceReferenceDate];
-        HidePanel(NO);
+- (void)popoverWillShow:(NSNotification *)notification {
+    gPanelVisibleFlag = 1;
+}
+
+- (void)popoverDidClose:(NSNotification *)notification {
+    gPanelVisibleFlag = 0;
+    gClosingPopover = NO;
+    gPopoverClosedAt = [NSDate timeIntervalSinceReferenceDate];
+    DebugFrame(@"popover closed");
+    if (gPendingTitle) {
+        ApplyStatusTitle(gPendingTitle);
+        [gPendingTitle release];
+        gPendingTitle = nil;
+    }
+    if (gRestoreFocusOnClose) {
+        gRestoreFocusOnClose = NO;
+        [NSApp hide:nil]; // hand focus back to the previously active app
     }
 }
 
@@ -810,26 +773,18 @@ void KBStart(void) {
 
         BuildMenu();
 
-        NSRect panelRect = NSMakeRect(0, 0, kViewWidth, 320);
-        gPanel = [[KBPanel alloc] initWithContentRect:panelRect
-                                            styleMask:(NSWindowStyleMaskBorderless |
-                                                       NSWindowStyleMaskNonactivatingPanel)
-                                              backing:NSBackingStoreBuffered
-                                                defer:NO];
-        gPanel.opaque = NO;
-        gPanel.backgroundColor = [NSColor clearColor];
-        gPanel.hasShadow = YES;
-        gPanel.level = NSStatusWindowLevel;
-        gPanel.collectionBehavior = (NSWindowCollectionBehaviorCanJoinAllSpaces |
-                                     NSWindowCollectionBehaviorFullScreenAuxiliary |
-                                     NSWindowCollectionBehaviorIgnoresCycle);
-        gPanel.releasedWhenClosed = NO;
-        gPanel.delegate = gDelegate;
-        gPanel.hidesOnDeactivate = NO;
+        gCard = [[KBCardView alloc] initWithFrame:NSMakeRect(0, 0, kCardWidth, 561)];
+        [gCard setEmbedded:YES];
 
-        gCard = [[KBCardView alloc] initWithFrame:NSMakeRect(0, 0, kViewWidth, 320)];
-        gCard.wantsLayer = YES;
-        gPanel.contentView = gCard;
+        NSViewController *vc = [[NSViewController alloc] init];
+        vc.view = gCard;
+
+        gPopover = [[NSPopover alloc] init];
+        gPopover.behavior = NSPopoverBehaviorTransient;
+        gPopover.animates = YES;
+        gPopover.delegate = gDelegate;
+        gPopover.contentViewController = vc;
+        gPopover.contentSize = NSMakeSize(kCardWidth, 561);
 
         gDebugFrame = getenv("KB_DEBUG_FRAME") != NULL;
 
@@ -847,13 +802,13 @@ void KBRun(void) {
 void KBShowNow(void) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),
                    dispatch_get_main_queue(), ^{
-        ShowPanel();
+        ShowPopover();
     });
 }
 
 void KBHideNow(void) {
     dispatch_async(dispatch_get_main_queue(), ^{
-        HidePanel(YES);
+        HidePopover(YES);
     });
 }
 
@@ -876,20 +831,15 @@ void KBShowCard(const char *json) {
             }
             if (card && gCard) {
                 [gCard setCardJSON:card];
-                [gCard setMinHeight:gFixedCardHeight];
+                [gCard setMinHeight:gFixedCardHeight > 0 ? EmbeddedContentHeight() : 0];
                 CGFloat height = [gCard cardHeight];
-                NSRect frame = gPanel.frame;
-                CGFloat top = NSMaxY(frame);
-                frame.size = NSMakeSize(kViewWidth, height);
-                frame.origin.y = top - height;
-                [gPanel setFrame:frame display:NO];
-                [gCard setFrameSize:NSMakeSize(kViewWidth, height)];
+                [gCard setFrameSize:NSMakeSize(kCardWidth, height)];
+                NSSize desired = NSMakeSize(kCardWidth, height);
+                if (!NSEqualSizes(gPopover.contentSize, desired)) {
+                    gPopover.contentSize = desired;
+                }
                 [gCard setNeedsDisplay:YES];
-                [gCard displayIfNeeded];
-                PositionPanel();
-                DebugFrame(@"panel=(%.0f,%.0f %.0fx%.0f) cardH=%.0f",
-                           gPanel.frame.origin.x, gPanel.frame.origin.y,
-                           gPanel.frame.size.width, gPanel.frame.size.height, height);
+                DebugFrame(@"card content=%.0fx%.0f shown=%d", kCardWidth, height, gPopover.isShown);
             }
             [payload release];
         }
@@ -901,9 +851,8 @@ void KBSetTitle(const char *title) {
     NSString *text = [[NSString alloc] initWithUTF8String:title];
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
-            gStatus.button.title = text;
-            gStatus.button.toolTip = text;
             DebugFrame(@"title=%s", text.UTF8String);
+            SetStatusTitle(text);
             [text release];
         }
     });
@@ -996,17 +945,11 @@ double KBCardNaturalHeight(const char *json) {
 void KBSetFixedCardHeight(double height) {
     gFixedCardHeight = height;
     if (!gCard) return;
-    [gCard setMinHeight:height];
-    if (gPanel.isVisible) {
-        CGFloat h = [gCard cardHeight];
-        NSRect frame = gPanel.frame;
-        CGFloat top = NSMaxY(frame);
-        frame.size = NSMakeSize(kViewWidth, h);
-        frame.origin.y = top - h;
-        [gPanel setFrame:frame display:NO];
-        [gCard setFrameSize:NSMakeSize(kViewWidth, h)];
-        PositionPanel();
-    }
+    CGFloat contentHeight = EmbeddedContentHeight();
+    [gCard setMinHeight:contentHeight];
+    CGFloat h = [gCard cardHeight];
+    [gCard setFrameSize:NSMakeSize(kCardWidth, h)];
+    gPopover.contentSize = NSMakeSize(kCardWidth, h);
 }
 
 int KBIsPanelVisible(void) {

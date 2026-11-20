@@ -50,9 +50,15 @@ its state in `~/Library/Application Support/KanjiBar/state.json`.
 Clicking anywhere outside the card dismisses it and returns focus to the app you
 were using. The current card, deck and preferences survive restarts.
 
-Every card is rendered at **one fixed size**, and the panel is anchored by the
-right edge of the menu bar item, so flipping decks or advancing cards never
-moves or resizes the widget.
+Every card is rendered at **one fixed content size**, and the menu bar item
+anchors the popover's arrow, so flipping decks or advancing cards never moves
+or resizes the widget. The footer (‹ › / deck / copy) is bottom-anchored, so the
+nav buttons stay put no matter how much text a card has. Spare space on shorter
+cards is spread into the card body, not into the footer.
+
+The card is a native `NSPopover`, so it grows out of the menu bar item with the
+system animation, points back at the item with the system arrow, dismisses on an
+outside click, and fades out quickly when closed with `Esc`/the status item.
 
 ## The decks
 
@@ -137,8 +143,11 @@ real `NSStatusItem` instead of a floating window. The whole UI sits behind a
 The cgo/Objective-C code is compiled **without ARC**, so long-lived AppKit
 objects must be retained manually. The status item in particular is
 autoreleased — it has to be `retain`ed or later title updates crash. That is
-also why the panel is a plain borderless `NSPanel` rather than `NSPopover`
-(popovers proved unstable when hosted by a Go main loop on macOS 26).
+also why the status item is retained explicitly; without that, every later
+title update and even showing an `NSPopover` from it crashed. The card itself is
+a native `NSPopover` (`NSPopoverBehaviorTransient`), which supplies the arrow,
+the system show animation and outside-click dismissal; the content view only
+draws the card text on an opaque face.
 
 ## Development
 
