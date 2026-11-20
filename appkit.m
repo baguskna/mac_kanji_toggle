@@ -1,0 +1,840 @@
+#import <Cocoa/Cocoa.h>
+#import "appkit.h"
+
+#pragma mark - Layout constants
+
+static const CGFloat kCardWidth    = 380.0; // visible card width
+static const CGFloat kShadowMargin = 10.0;  // transparent margin that holds the window shadow
+static const CGFloat kPadding      = 20.0;  // card inner padding
+static const CGFloat kPillHeight   = 20.0;
+static const CGFloat kContentWidth = kCardWidth - 2 * kPadding;
+static const CGFloat kViewWidth    = kCardWidth + 2 * kShadowMargin;
+
+#pragma mark - Small helpers
+
+static NSString *Str(NSDictionary *d, NSString *key) {
+    id v = d[key];
+    if ([v isKindOfClass:[NSString class]]) return v;
+    if ([v isKindOfClass:[NSNumber class]]) return [v stringValue];
+    return @"";
+}
+
+static NSFont *SysFont(CGFloat size, NSFontWeight weight) {
+    return [NSFont systemFontOfSize:size weight:weight];
+}
+
+static NSFont *MonoFont(CGFloat size) {
+    return [NSFont monospacedSystemFontOfSize:size weight:NSFontWeightRegular];
+}
+
+static NSMutableParagraphStyle *Para(NSTextAlignment align) {
+    NSMutableParagraphStyle *p = [[[NSMutableParagraphStyle alloc] init] autorelease];
+    p.alignment = align;
+    p.lineBreakMode = NSLineBreakByWordWrapping;
+    return p;
+}
+
+static NSMutableAttributedString *Text(NSString *s, NSFont *font, NSColor *color,
+                                       NSTextAlignment align, CGFloat kern) {
+    NSMutableParagraphStyle *p = Para(align);
+    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+    attrs[NSFontAttributeName] = font;
+    attrs[NSForegroundColorAttributeName] = color;
+    attrs[NSParagraphStyleAttributeName] = p;
+    if (kern != 0.0) attrs[NSKernAttributeName] = @(kern);
+    return [[[NSMutableAttributedString alloc] initWithString:(s ?: @"") attributes:attrs] autorelease];
+}
+
+static CGFloat TextHeight(NSAttributedString *a, CGFloat width) {
+    NSRect r = [a boundingRectWithSize:NSMakeSize(width, CGFLOAT_MAX)
+                               options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)];
+    return ceil(r.size.height);
+}
+
+static CGFloat TextWidth(NSAttributedString *a) {
+    return ceil([a size].width);
+}
+
+static void Draw(NSAttributedString *a, NSRect rect) {
+    [a drawWithRect:rect
+            options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)];
+}
+
+static void DrawPill(NSRect rect, NSColor *fill, NSString *text, NSFont *font,
+                     NSColor *fg, CGFloat kern) {
+    NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:rect
+                                                      xRadius:rect.size.height / 2.0
+                                                      yRadius:rect.size.height / 2.0];
+    [fill setFill];
+    [p fill];
+    NSAttributedString *a = Text(text, font, fg, NSTextAlignmentCenter, kern);
+    CGFloat h = TextHeight(a, rect.size.width);
+    Draw(a, NSMakeRect(rect.origin.x, NSMidY(rect) - h / 2.0, rect.size.width, h));
+}
+
+static void DrawButton(NSRect rect, NSString *title, BOOL primary) {
+    NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:rect xRadius:8 yRadius:8];
+    NSColor *fill = primary ? [[NSColor controlAccentColor] colorWithAlphaComponent:0.16]
+                            : [[NSColor labelColor] colorWithAlphaComponent:0.06];
+    [fill setFill];
+    [p fill];
+    NSColor *stroke = primary ? [[NSColor controlAccentColor] colorWithAlphaComponent:0.35]
+                              : [[NSColor labelColor] colorWithAlphaComponent:0.12];
+    [stroke setStroke];
+    p.lineWidth = 1.0;
+    [p stroke];
+
+    NSColor *fg = primary ? [NSColor controlAccentColor] : [NSColor labelColor];
+    NSAttributedString *a = Text(title, SysFont(12.0, NSFontWeightSemibold), fg,
+                                 NSTextAlignmentCenter, 0);
+    CGFloat h = TextHeight(a, rect.size.width);
+    Draw(a, NSMakeRect(rect.origin.x, NSMidY(rect) - h / 2.0, rect.size.width, h));
+}
+
+static void DrawSeparator(NSRect rect) {
+    [[[NSColor separatorColor] colorWithAlphaComponent:0.8] setFill];
+    NSRectFill(rect);
+}
+
+static void CopyCardToPasteboard(NSDictionary *card) {
+    NSString *head    = Str(card, @"headword");
+    NSString *reading = Str(card, @"reading1");
+    NSString *romaji  = Str(card, @"reading1Romaji");
+    NSString *meaning = Str(card, @"meaning");
+    if (head.length == 0) return;
+
+    NSMutableString *s = [NSMutableString stringWithString:head];
+    if (reading.length > 0) {
+        [s appendFormat:@"（%@", reading];
+        if (romaji.length > 0) [s appendFormat:@" / %@", romaji];
+        [s appendString:@"）"];
+    }
+    if (meaning.length > 0) [s appendFormat:@" — %@", meaning];
+
+    NSPasteboard *pb = [NSPasteboard generalPasteboard];
+    [pb clearContents];
+    [pb setString:s forType:NSPasteboardTypeString];
+}
+
+#pragma mark - Forward declarations
+
+static void HidePanel(BOOL restoreFocus);
+static NSEvent *HandleKey(NSEvent *event);
+
+#pragma mark - Card view
+
+@interface KBCardView : NSView {
+    NSDictionary *_card;
+    BOOL _isKanji;
+    CGFloat _height;
+
+    NSRect _cardRect;
+    NSRect _modePill;
+    NSRect _badgePill;
+    NSRect _headwordRect;
+    NSRect _metaRect;
+    NSRect _r1LabelRect, _r1ValueRect, _r1RomajiRect;
+    NSRect _r2LabelRect, _r2ValueRect, _r2RomajiRect;
+    NSRect _meaningRect;
+    NSRect _divider1Rect;
+    NSRect _sectionRect;
+    CGFloat _itemY[3];
+    int _itemCount;
+    NSRect _exampleJPRect, _exampleKanaRect, _exampleENRect;
+    NSRect _divider2Rect;
+    NSRect _prevButtonRect, _nextButtonRect, _modeButtonRect, _copyButtonRect;
+    NSRect _hintRect;
+}
+
+- (void)setCardJSON:(NSDictionary *)dict;
+- (void)relayout;
+- (CGFloat)cardHeight;
+- (NSDictionary *)cardDictionary;
+- (NSString *)modeButtonTitle;
+@end
+
+@implementation KBCardView
+
+- (BOOL)isFlipped {
+    return YES;
+}
+
+- (void)setCardJSON:(NSDictionary *)dict {
+    if (_card == dict) return;
+    [dict retain];
+    [_card release];
+    _card = dict;
+    _isKanji = [Str(_card, @"modeKind") isEqualToString:@"kanji"];
+    _itemCount = 0;
+    NSArray *items = _card[@"items"];
+    if ([items isKindOfClass:[NSArray class]]) {
+        _itemCount = (int)MIN(items.count, 3);
+    }
+    [self relayout];
+    [self setNeedsDisplay:YES];
+}
+
+- (NSDictionary *)cardDictionary {
+    return _card;
+}
+
+- (CGFloat)cardHeight {
+    return _height;
+}
+
+// Measures where each block goes, in flipped coordinates (top-left origin).
+- (void)relayout {
+    CGFloat innerX = kShadowMargin + kPadding;
+    CGFloat y = kShadowMargin + kPadding;
+    NSString *headword = Str(_card, @"headword");
+
+    // Header row: mode pill on the left, JLPT badge on the right.
+    NSAttributedString *modeA = Text(Str(_card, @"modeLabel"), SysFont(9.5, NSFontWeightSemibold),
+                                     [NSColor controlAccentColor], NSTextAlignmentCenter, 1.4);
+    CGFloat modeW = TextWidth(modeA) + 18.0;
+    _modePill = NSMakeRect(innerX, y, modeW, kPillHeight);
+
+    NSAttributedString *badgeA = Text(Str(_card, @"badge"), SysFont(10.5, NSFontWeightBold),
+                                      [NSColor whiteColor], NSTextAlignmentCenter, 0.6);
+    CGFloat badgeW = TextWidth(badgeA) + 16.0;
+    _badgePill = NSMakeRect(innerX + kContentWidth - badgeW, y, badgeW, kPillHeight);
+
+    y += kPillHeight + 18.0;
+
+    // Headword.
+    CGFloat headwordSize = _isKanji ? 58.0 : 40.0;
+    NSAttributedString *hwA = Text(headword, SysFont(headwordSize, NSFontWeightSemibold),
+                                   [NSColor labelColor], NSTextAlignmentCenter, 0);
+    CGFloat hwH = TextHeight(hwA, kContentWidth);
+    _headwordRect = NSMakeRect(innerX, y, kContentWidth, hwH);
+    y = NSMaxY(_headwordRect) + 4.0;
+
+    // Small meta line under the headword (stroke count or part of speech).
+    NSString *meta = Str(_card, @"meta");
+    if (meta.length > 0) {
+        NSAttributedString *metaA = Text(meta, SysFont(10.5, NSFontWeightMedium),
+                                         [NSColor tertiaryLabelColor], NSTextAlignmentCenter, 0.2);
+        CGFloat mh = TextHeight(metaA, kContentWidth);
+        _metaRect = NSMakeRect(innerX, y, kContentWidth, mh);
+        y = NSMaxY(_metaRect) + 8.0;
+    } else {
+        _metaRect = NSZeroRect;
+        y += 4.0;
+    }
+
+    // Reading groups (on'yomi / kun'yomi for kanji, single reading for kotoba).
+    NSRect *labelRects[2]  = {&_r1LabelRect, &_r2LabelRect};
+    NSRect *valueRects[2]  = {&_r1ValueRect, &_r2ValueRect};
+    NSRect *romajiRects[2] = {&_r1RomajiRect, &_r2RomajiRect};
+    NSString *labelKeys[2]  = {@"reading1Label", @"reading2Label"};
+    NSString *valueKeys[2]  = {@"reading1", @"reading2"};
+    NSString *romajiKeys[2] = {@"reading1Romaji", @"reading2Romaji"};
+
+    for (int i = 0; i < 2; i++) {
+        NSString *value = Str(_card, valueKeys[i]);
+        if (value.length == 0) {
+            *labelRects[i] = NSZeroRect;
+            *valueRects[i] = NSZeroRect;
+            *romajiRects[i] = NSZeroRect;
+            continue;
+        }
+        NSString *label = Str(_card, labelKeys[i]);
+        CGFloat gy = y;
+
+        NSAttributedString *la = Text([label uppercaseString], SysFont(9.5, NSFontWeightSemibold),
+                                      [NSColor tertiaryLabelColor], NSTextAlignmentCenter, 1.1);
+        CGFloat lh = TextHeight(la, kContentWidth);
+        *labelRects[i] = NSMakeRect(innerX, gy, kContentWidth, lh);
+        gy = NSMaxY(*labelRects[i]) + 2.0;
+
+        NSAttributedString *va = Text(value, SysFont(20.0, NSFontWeightMedium),
+                                      [NSColor labelColor], NSTextAlignmentCenter, 0.5);
+        CGFloat vh = TextHeight(va, kContentWidth);
+        *valueRects[i] = NSMakeRect(innerX, gy, kContentWidth, vh);
+        gy = NSMaxY(*valueRects[i]) + 1.0;
+
+        NSString *romaji = Str(_card, romajiKeys[i]);
+        if (romaji.length > 0) {
+            NSAttributedString *ra = Text(romaji, MonoFont(12.5),
+                                          [NSColor secondaryLabelColor], NSTextAlignmentCenter, 0);
+            CGFloat rh = TextHeight(ra, kContentWidth);
+            *romajiRects[i] = NSMakeRect(innerX, gy, kContentWidth, rh);
+            gy = NSMaxY(*romajiRects[i]);
+        } else {
+            *romajiRects[i] = NSZeroRect;
+        }
+
+        y = gy + 14.0;
+    }
+
+    // Meaning.
+    NSAttributedString *ma = Text(Str(_card, @"meaning"), SysFont(15.5, NSFontWeightRegular),
+                                  [NSColor labelColor], NSTextAlignmentCenter, 0.2);
+    CGFloat mh = TextHeight(ma, kContentWidth);
+    _meaningRect = NSMakeRect(innerX, y, kContentWidth, mh);
+    y = NSMaxY(_meaningRect) + 16.0;
+
+    // Divider + section header (only when there is a list or an example).
+    BOOL hasItems = _itemCount > 0;
+    BOOL hasExample = Str(_card, @"exampleJP").length > 0;
+    _divider1Rect = NSMakeRect(innerX + 12, y, kContentWidth - 24, 1);
+    y = NSMaxY(_divider1Rect) + 14.0;
+
+    NSString *section = Str(_card, @"section");
+    if (section.length > 0 && (hasItems || hasExample)) {
+        NSAttributedString *sa = Text([section uppercaseString], SysFont(9.5, NSFontWeightSemibold),
+                                      [NSColor tertiaryLabelColor], NSTextAlignmentLeft, 1.2);
+        CGFloat sh = TextHeight(sa, kContentWidth);
+        _sectionRect = NSMakeRect(innerX, y, kContentWidth, sh);
+        y = NSMaxY(_sectionRect) + 8.0;
+    } else {
+        _sectionRect = NSZeroRect;
+    }
+
+    // Compound rows: "日本 にほん" on one line, the gloss below.
+    NSArray *items = _card[@"items"];
+    for (int i = 0; i < _itemCount; i++) {
+        _itemY[i] = y;
+        y += 42.0;
+    }
+
+    // Example block.
+    if (hasExample) {
+        CGFloat ey = y;
+        NSAttributedString *jpA = Text(Str(_card, @"exampleJP"), SysFont(14.5, NSFontWeightRegular),
+                                       [NSColor labelColor], NSTextAlignmentLeft, 0);
+        CGFloat jpH = TextHeight(jpA, kContentWidth);
+        _exampleJPRect = NSMakeRect(innerX, ey, kContentWidth, jpH);
+        ey = NSMaxY(_exampleJPRect) + 3.0;
+
+        NSString *kana = Str(_card, @"exampleKana");
+        if (kana.length > 0) {
+            NSAttributedString *kanaA = Text(kana, SysFont(11.5, NSFontWeightRegular),
+                                             [NSColor tertiaryLabelColor], NSTextAlignmentLeft, 0);
+            CGFloat kh = TextHeight(kanaA, kContentWidth);
+            _exampleKanaRect = NSMakeRect(innerX, ey, kContentWidth, kh);
+            ey = NSMaxY(_exampleKanaRect) + 4.0;
+        } else {
+            _exampleKanaRect = NSZeroRect;
+        }
+
+        NSAttributedString *enA = Text(Str(_card, @"exampleEN"), SysFont(12.5, NSFontWeightRegular),
+                                       [NSColor secondaryLabelColor], NSTextAlignmentLeft, 0);
+        CGFloat eh = TextHeight(enA, kContentWidth);
+        _exampleENRect = NSMakeRect(innerX, ey, kContentWidth, eh);
+        ey = NSMaxY(_exampleENRect);
+        y = ey + 14.0;
+    } else {
+        _exampleJPRect = _exampleKanaRect = _exampleENRect = NSZeroRect;
+    }
+
+    // Footer: navigation buttons and a hint line.
+    _divider2Rect = NSMakeRect(innerX, y, kContentWidth, 1);
+    y = NSMaxY(_divider2Rect) + 14.0;
+
+    CGFloat buttonHeight = 30.0;
+    CGFloat bx = innerX;
+    _prevButtonRect = NSMakeRect(bx, y, 34, buttonHeight);
+    bx += 34 + 8;
+    _nextButtonRect = NSMakeRect(bx, y, 34, buttonHeight);
+    bx += 34 + 8;
+
+    _modeButtonRect = NSMakeRect(bx, y, 74, buttonHeight);
+    bx += 74 + 8;
+    _copyButtonRect = NSMakeRect(bx, y, 56, buttonHeight);
+    y += buttonHeight;
+
+    NSAttributedString *hintA = Text(@"← → cards   T mode   Esc close", SysFont(10.0, NSFontWeightRegular),
+                                     [NSColor tertiaryLabelColor], NSTextAlignmentCenter, 0);
+    CGFloat hintH = TextHeight(hintA, kContentWidth);
+    _hintRect = NSMakeRect(innerX, y + 8.0, kContentWidth, hintH);
+    y = NSMaxY(_hintRect);
+
+    _height = y + kPadding + kShadowMargin;
+    _cardRect = NSMakeRect(kShadowMargin, kShadowMargin,
+                           kCardWidth, MAX(_height - 2 * kShadowMargin, 1));
+}
+
+// Stored so drawRect and hit testing agree on the toggle label.
+- (NSString *)modeButtonTitle {
+    return [Str(_card, @"modeKind") isEqualToString:@"kanji"] ? @"→ 言葉" : @"→ 漢字";
+}
+
+- (void)drawRect:(NSRect)dirtyRect {
+    if (!_card) return;
+
+    // Card background.
+    NSBezierPath *cardPath = [NSBezierPath bezierPathWithRoundedRect:_cardRect
+                                                             xRadius:14
+                                                             yRadius:14];
+    [[[NSColor windowBackgroundColor] colorWithAlphaComponent:0.99] setFill];
+    [cardPath fill];
+    [[[NSColor separatorColor] colorWithAlphaComponent:0.9] setStroke];
+    cardPath.lineWidth = 1.0;
+    [cardPath stroke];
+
+    // Header.
+    DrawPill(_modePill, [[NSColor controlAccentColor] colorWithAlphaComponent:0.15],
+             Str(_card, @"modeLabel"), SysFont(9.5, NSFontWeightSemibold),
+             [NSColor controlAccentColor], 1.4);
+    DrawPill(_badgePill, [NSColor systemOrangeColor], Str(_card, @"badge"),
+             SysFont(10.5, NSFontWeightBold), [NSColor whiteColor], 0.6);
+
+    // Headword + meta.
+    CGFloat headwordSize = _isKanji ? 58.0 : 40.0;
+    Draw(Text(Str(_card, @"headword"), SysFont(headwordSize, NSFontWeightSemibold),
+              [NSColor labelColor], NSTextAlignmentCenter, 0), _headwordRect);
+    NSString *meta = Str(_card, @"meta");
+    if (meta.length > 0) {
+        Draw(Text(meta, SysFont(10.5, NSFontWeightMedium), [NSColor tertiaryLabelColor],
+                  NSTextAlignmentCenter, 0.2), _metaRect);
+    }
+
+    // Readings.
+    NSRect labelRects[2]  = {_r1LabelRect, _r2LabelRect};
+    NSRect valueRects[2]  = {_r1ValueRect, _r2ValueRect};
+    NSRect romajiRects[2] = {_r1RomajiRect, _r2RomajiRect};
+    NSString *labelKeys[2]  = {@"reading1Label", @"reading2Label"};
+    NSString *valueKeys[2]  = {@"reading1", @"reading2"};
+    NSString *romajiKeys[2] = {@"reading1Romaji", @"reading2Romaji"};
+    for (int i = 0; i < 2; i++) {
+        NSString *value = Str(_card, valueKeys[i]);
+        if (value.length == 0) continue;
+        Draw(Text([Str(_card, labelKeys[i]) uppercaseString], SysFont(9.5, NSFontWeightSemibold),
+                  [NSColor tertiaryLabelColor], NSTextAlignmentCenter, 1.1), labelRects[i]);
+        Draw(Text(value, SysFont(20.0, NSFontWeightMedium), [NSColor labelColor],
+                  NSTextAlignmentCenter, 0.5), valueRects[i]);
+        NSString *romaji = Str(_card, romajiKeys[i]);
+        if (romaji.length > 0) {
+            Draw(Text(romaji, MonoFont(12.5), [NSColor secondaryLabelColor],
+                      NSTextAlignmentCenter, 0), romajiRects[i]);
+        }
+    }
+
+    // Meaning.
+    Draw(Text(Str(_card, @"meaning"), SysFont(15.5, NSFontWeightRegular), [NSColor labelColor],
+              NSTextAlignmentCenter, 0.2), _meaningRect);
+
+    // Divider + section title.
+    DrawSeparator(_divider1Rect);
+    NSString *section = Str(_card, @"section");
+    if (section.length > 0) {
+        Draw(Text([section uppercaseString], SysFont(9.5, NSFontWeightSemibold),
+                  [NSColor tertiaryLabelColor], NSTextAlignmentLeft, 1.2), _sectionRect);
+    }
+
+    // Compound rows.
+    NSArray *items = _card[@"items"];
+    for (int i = 0; i < _itemCount; i++) {
+        NSDictionary *item = items[i];
+        CGFloat rowY = _itemY[i];
+        NSString *head = Str(item, @"head");
+        NSString *sub = Str(item, @"sub");
+        NSString *tail = Str(item, @"tail");
+
+        NSAttributedString *headA = Text(head, SysFont(16.0, NSFontWeightSemibold),
+                                         [NSColor labelColor], NSTextAlignmentLeft, 0.3);
+        CGFloat headW = TextWidth(headA);
+        Draw(headA, NSMakeRect(kShadowMargin + kPadding, rowY, headW, 20));
+
+        NSAttributedString *subA = Text(sub, SysFont(12.5, NSFontWeightRegular),
+                                        [NSColor secondaryLabelColor], NSTextAlignmentLeft, 0);
+        CGFloat subW = MIN(TextWidth(subA), kContentWidth - headW - 8);
+        Draw(subA, NSMakeRect(kShadowMargin + kPadding + headW + 8, rowY + 2, subW, 18));
+
+        NSAttributedString *tailA = Text(tail, SysFont(12.0, NSFontWeightRegular),
+                                         [NSColor secondaryLabelColor], NSTextAlignmentLeft, 0);
+        Draw(tailA, NSMakeRect(kShadowMargin + kPadding, rowY + 21, kContentWidth, 16));
+    }
+
+    // Example.
+    if (_exampleJPRect.size.height > 0) {
+        Draw(Text(Str(_card, @"exampleJP"), SysFont(14.5, NSFontWeightRegular), [NSColor labelColor],
+                  NSTextAlignmentLeft, 0), _exampleJPRect);
+        NSString *kana = Str(_card, @"exampleKana");
+        if (kana.length > 0) {
+            Draw(Text(kana, SysFont(11.5, NSFontWeightRegular), [NSColor tertiaryLabelColor],
+                      NSTextAlignmentLeft, 0), _exampleKanaRect);
+        }
+        Draw(Text(Str(_card, @"exampleEN"), SysFont(12.5, NSFontWeightRegular),
+                  [NSColor secondaryLabelColor], NSTextAlignmentLeft, 0), _exampleENRect);
+    }
+
+    // Footer.
+    DrawSeparator(_divider2Rect);
+    DrawButton(_prevButtonRect, @"‹", NO);
+    DrawButton(_nextButtonRect, @"›", YES);
+    DrawButton(_modeButtonRect, [self modeButtonTitle], NO);
+    DrawButton(_copyButtonRect, @"Copy", NO);
+    Draw(Text(@"← → cards   T mode   Esc close", SysFont(10.0, NSFontWeightRegular),
+              [NSColor tertiaryLabelColor], NSTextAlignmentCenter, 0), _hintRect);
+}
+
+- (void)mouseDown:(NSEvent *)event {
+    NSPoint p = [self convertPoint:event.locationInWindow fromView:nil];
+    if (NSPointInRect(p, _prevButtonRect)) { GoPrev(); return; }
+    if (NSPointInRect(p, _nextButtonRect)) { GoNext(); return; }
+    if (NSPointInRect(p, _modeButtonRect)) { GoToggleMode(); return; }
+    if (NSPointInRect(p, _copyButtonRect)) { CopyCardToPasteboard(_card); return; }
+}
+
+@end
+
+#pragma mark - Panel
+
+@interface KBPanel : NSPanel
+@end
+
+@implementation KBPanel
+- (BOOL)canBecomeKey { return YES; }
+- (BOOL)canBecomeMain { return NO; }
+- (void)keyDown:(NSEvent *)event {
+    NSEvent *kept = HandleKey(event);
+    if (kept) [super keyDown:kept];
+}
+@end
+
+#pragma mark - Delegates
+
+@interface KBDelegate : NSObject <NSWindowDelegate, NSMenuDelegate>
+- (void)statusItemClicked:(id)sender;
+- (void)menuNext:(id)sender;
+- (void)menuPrev:(id)sender;
+- (void)menuToggleMode:(id)sender;
+- (void)menuToggleAuto:(id)sender;
+- (void)menuToggleRomaji:(id)sender;
+- (void)menuCopy:(id)sender;
+- (void)menuQuit:(id)sender;
+@end
+
+#pragma mark - Globals
+
+static NSStatusItem *gStatus = nil;
+static KBPanel *gPanel = nil;
+static KBCardView *gCard = nil;
+static KBDelegate *gDelegate = nil;
+static NSMenu *gMenu = nil;
+static id gMonitor = nil;
+static NSMenuItem *gAutoItem = nil;
+static NSMenuItem *gRomajiItem = nil;
+static NSTimeInterval gPanelResignTime = 0;
+
+#pragma mark - Panel positioning
+
+static NSScreen *ScreenContaining(NSRect rect) {
+    NSPoint center = NSMakePoint(NSMidX(rect), NSMidY(rect));
+    for (NSScreen *screen in [NSScreen screens]) {
+        if (NSPointInRect(center, screen.frame)) return screen;
+    }
+    return [NSScreen mainScreen];
+}
+
+static void PositionPanel(void) {
+    if (!gPanel) return;
+
+    NSSize size = gPanel.frame.size;
+
+    NSRect buttonScreen = NSZeroRect;
+    BOOL haveButton = NO;
+    if (gStatus && gStatus.button && gStatus.button.window) {
+        NSRect inWindow = [gStatus.button convertRect:gStatus.button.bounds toView:nil];
+        buttonScreen = [gStatus.button.window convertRectToScreen:inWindow];
+        haveButton = YES;
+    }
+
+    NSScreen *screen = haveButton ? ScreenContaining(buttonScreen) : [NSScreen mainScreen];
+    NSRect visible = screen ? screen.visibleFrame : NSMakeRect(0, 0, 1440, 900);
+
+    CGFloat x, y;
+    if (haveButton) {
+        // Center the card under the menu bar item, hanging just below it.
+        x = NSMidX(buttonScreen) - size.width / 2.0;
+        y = NSMinY(buttonScreen) - size.height - 6.0;
+    } else {
+        x = NSMaxX(visible) - size.width - 10.0;
+        y = NSMaxY(visible) - size.height - 6.0;
+    }
+
+    if (x + size.width > NSMaxX(visible) - 8) x = NSMaxX(visible) - 8 - size.width;
+    if (x < NSMinX(visible) + 8) x = NSMinX(visible) + 8;
+    if (y < NSMinY(visible) + 8) y = NSMinY(visible) + 8;
+
+    [gPanel setFrameOrigin:NSMakePoint(round(x), round(y))];
+}
+
+static void ShowPanel(void) {
+    if (!gPanel || !gCard) return;
+    PositionPanel();
+    [NSApp activateIgnoringOtherApps:YES];
+    [gPanel setAlphaValue:0];
+    [gPanel makeKeyAndOrderFront:nil];
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *ctx) {
+        ctx.duration = 0.12;
+        gPanel.animator.alphaValue = 1.0;
+    } completionHandler:nil];
+}
+
+static void HidePanel(BOOL restoreFocus) {
+    if (!gPanel || !gPanel.isVisible) return;
+    [gPanel orderOut:nil];
+    if (restoreFocus) [NSApp hide:nil];
+}
+
+static void TogglePanel(void) {
+    if (gPanel && gPanel.isVisible) {
+        HidePanel(YES);
+    } else {
+        ShowPanel();
+    }
+}
+
+// True when the panel was dismissed by the click that is currently being
+// handled (the status item click resigns key right before its action fires).
+static BOOL DismissedByCurrentClick(void) {
+    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+    BOOL recent = (gPanelResignTime > 0) && (now - gPanelResignTime < 0.3);
+    gPanelResignTime = 0;
+    return recent;
+}
+
+#pragma mark - Keyboard
+
+static NSEvent *HandleKey(NSEvent *event) {
+    if (!gPanel || !gPanel.isVisible) return event;
+    switch (event.keyCode) {
+        case 123: GoPrev(); return nil;   // left arrow
+        case 124: GoNext(); return nil;   // right arrow
+        case 49:  GoNext(); return nil;   // space
+        case 53:  HidePanel(YES); return nil; // escape
+        default: break;
+    }
+    NSString *chars = [event.charactersIgnoringModifiers lowercaseString];
+    if ([chars isEqualToString:@"t"]) { GoToggleMode(); return nil; }
+    if ([chars isEqualToString:@"a"]) { GoToggleAuto(); return nil; }
+    if ([chars isEqualToString:@"r"]) { GoToggleRomaji(); return nil; }
+    if ([chars isEqualToString:@"c"]) { CopyCardToPasteboard([gCard cardDictionary]); return nil; }
+    if ([chars isEqualToString:@"q"]) { [NSApp terminate:nil]; return nil; }
+    return event;
+}
+
+#pragma mark - Menu
+
+static NSMenuItem *AddMenuItem(NSMenu *menu, NSString *title, SEL action, NSString *key) {
+    NSMenuItem *item = [[[NSMenuItem alloc] initWithTitle:title action:action keyEquivalent:(key ?: @"")] autorelease];
+    [item setTarget:gDelegate];
+    [menu addItem:item];
+    return item;
+}
+
+static void BuildMenu(void) {
+    gMenu = [[NSMenu alloc] initWithTitle:@"KanjiBar"];
+    gMenu.autoenablesItems = NO;
+    AddMenuItem(gMenu, @"Next Card", @selector(menuNext:), nil);
+    AddMenuItem(gMenu, @"Previous Card", @selector(menuPrev:), nil);
+    AddMenuItem(gMenu, @"Toggle Kanji / Kotoba", @selector(menuToggleMode:), @"t");
+    [gMenu addItem:[NSMenuItem separatorItem]];
+    gAutoItem = AddMenuItem(gMenu, @"Auto-advance every 15 min", @selector(menuToggleAuto:), @"a");
+    gRomajiItem = AddMenuItem(gMenu, @"Show Romaji in Menu Bar", @selector(menuToggleRomaji:), @"r");
+    [gMenu addItem:[NSMenuItem separatorItem]];
+    AddMenuItem(gMenu, @"Copy Current Card", @selector(menuCopy:), @"c");
+    [gMenu addItem:[NSMenuItem separatorItem]];
+    AddMenuItem(gMenu, @"Quit KanjiBar", @selector(menuQuit:), @"q");
+}
+
+#pragma mark - Window delegate
+
+@implementation KBDelegate
+
+- (void)statusItemClicked:(id)sender {
+    NSEvent *event = [NSApp currentEvent];
+    if (event.type == NSEventTypeRightMouseUp) {
+        [NSMenu popUpContextMenu:gMenu withEvent:event forView:sender];
+        return;
+    }
+    if (DismissedByCurrentClick()) return; // the click just closed the card
+    TogglePanel();
+}
+
+- (void)menuNext:(id)sender { GoNext(); }
+- (void)menuPrev:(id)sender { GoPrev(); }
+- (void)menuToggleMode:(id)sender { GoToggleMode(); }
+- (void)menuToggleAuto:(id)sender { GoToggleAuto(); }
+- (void)menuToggleRomaji:(id)sender { GoToggleRomaji(); }
+- (void)menuCopy:(id)sender { CopyCardToPasteboard([gCard cardDictionary]); }
+- (void)menuQuit:(id)sender { [NSApp terminate:nil]; }
+
+- (void)windowDidResignKey:(NSNotification *)notification {
+    if (notification.object == gPanel) {
+        gPanelResignTime = [NSDate timeIntervalSinceReferenceDate];
+        HidePanel(NO);
+    }
+}
+
+@end
+
+#pragma mark - Entry points
+
+void KBStart(void) {
+    @autoreleasepool {
+        [NSApplication sharedApplication];
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+        [NSApp finishLaunching];
+
+        gDelegate = [[KBDelegate alloc] init];
+
+        gStatus = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+        gStatus.button.title = @"漢";
+        gStatus.button.target = gDelegate;
+        gStatus.button.action = @selector(statusItemClicked:);
+        [gStatus.button sendActionOn:(NSEventMaskLeftMouseUp | NSEventMaskRightMouseUp)];
+        [gStatus.button setFont:SysFont(13.0, NSFontWeightMedium)];
+        gStatus.button.lineBreakMode = NSLineBreakByTruncatingTail;
+        gStatus.button.toolTip = @"KanjiBar — click for a kanji / kotoba card";
+
+        BuildMenu();
+
+        NSRect panelRect = NSMakeRect(0, 0, kViewWidth, 320);
+        gPanel = [[KBPanel alloc] initWithContentRect:panelRect
+                                            styleMask:(NSWindowStyleMaskBorderless |
+                                                       NSWindowStyleMaskNonactivatingPanel)
+                                              backing:NSBackingStoreBuffered
+                                                defer:NO];
+        gPanel.opaque = NO;
+        gPanel.backgroundColor = [NSColor clearColor];
+        gPanel.hasShadow = YES;
+        gPanel.level = NSStatusWindowLevel;
+        gPanel.collectionBehavior = (NSWindowCollectionBehaviorCanJoinAllSpaces |
+                                     NSWindowCollectionBehaviorFullScreenAuxiliary |
+                                     NSWindowCollectionBehaviorIgnoresCycle);
+        gPanel.releasedWhenClosed = NO;
+        gPanel.delegate = gDelegate;
+        gPanel.hidesOnDeactivate = NO;
+
+        gCard = [[KBCardView alloc] initWithFrame:NSMakeRect(0, 0, kViewWidth, 320)];
+        gPanel.contentView = gCard;
+
+        gMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown
+                                                        handler:^NSEvent *(NSEvent *event) {
+            return HandleKey(event);
+        }];
+    }
+}
+
+void KBRun(void) {
+    [NSApp run];
+}
+
+void KBShowNow(void) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(), ^{
+        ShowPanel();
+    });
+}
+
+void KBQuit(void) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [NSApp terminate:nil];
+    });
+}
+
+void KBShowCard(const char *json) {
+    if (json == NULL) return;
+    NSString *payload = [[NSString alloc] initWithUTF8String:json];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @autoreleasepool {
+            NSDictionary *card = nil;
+            NSData *data = [payload dataUsingEncoding:NSUTF8StringEncoding];
+            if (data) {
+                id parsed = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+                if ([parsed isKindOfClass:[NSDictionary class]]) card = parsed;
+            }
+            if (card && gCard) {
+                [gCard setCardJSON:card];
+                CGFloat height = [gCard cardHeight];
+                NSRect frame = gPanel.frame;
+                CGFloat top = NSMaxY(frame);
+                frame.size = NSMakeSize(kViewWidth, height);
+                frame.origin.y = top - height;
+                [gPanel setFrame:frame display:NO];
+                [gCard setFrameSize:NSMakeSize(kViewWidth, height)];
+                [gCard setNeedsDisplay:YES];
+                [gCard displayIfNeeded];
+                PositionPanel();
+            }
+            [payload release];
+        }
+    });
+}
+
+void KBSetTitle(const char *title) {
+    if (title == NULL) return;
+    NSString *text = [[NSString alloc] initWithUTF8String:title];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @autoreleasepool {
+            gStatus.button.title = text;
+            gStatus.button.toolTip = text;
+            [text release];
+        }
+    });
+}
+
+void KBSetMenuState(int autoOn, int romajiOn) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @autoreleasepool {
+            if (gAutoItem) gAutoItem.state = autoOn ? NSControlStateValueOn : NSControlStateValueOff;
+            if (gRomajiItem) gRomajiItem.state = romajiOn ? NSControlStateValueOn : NSControlStateValueOff;
+        }
+    });
+}
+
+void KBSnapshot(const char *json, const char *path, int dark) {
+    @autoreleasepool {
+        [NSApplication sharedApplication];
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+
+        NSString *payload = [[NSString alloc] initWithUTF8String:json];
+        NSData *data = [payload dataUsingEncoding:NSUTF8StringEncoding];
+        [payload release];
+        NSDictionary *card = nil;
+        if (data) {
+            id parsed = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            if ([parsed isKindOfClass:[NSDictionary class]]) card = parsed;
+        }
+        if (!card) {
+            fprintf(stderr, "KBSnapshot: invalid card JSON\n");
+            return;
+        }
+
+        KBCardView *view = [[KBCardView alloc] initWithFrame:NSMakeRect(0, 0, kViewWidth, 400)];
+        if (dark) {
+            view.appearance = [NSAppearance appearanceNamed:NSAppearanceNameDarkAqua];
+        }
+        [view setCardJSON:card];
+        CGFloat height = [view cardHeight];
+        [view setFrameSize:NSMakeSize(kViewWidth, height)];
+
+        // Put the view in an offscreen window so it gets a retina backing store.
+        NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(-20000, -20000, kViewWidth, height)
+                                                       styleMask:NSWindowStyleMaskBorderless
+                                                         backing:NSBackingStoreBuffered
+                                                           defer:NO];
+        window.backgroundColor = [NSColor clearColor];
+        window.opaque = NO;
+        window.contentView = view;
+        [window orderFrontRegardless];
+        [view displayIfNeeded];
+
+        NSBitmapImageRep *rep = [view bitmapImageRepForCachingDisplayInRect:view.bounds];
+        [view cacheDisplayInRect:view.bounds toBitmapImageRep:rep];
+        NSData *png = [rep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
+        NSString *outPath = [NSString stringWithUTF8String:path];
+        BOOL ok = png != nil && [png writeToFile:outPath atomically:YES];
+        fprintf(stderr, "KBSnapshot: %s -> %s (%ldx%ld)\n",
+                ok ? "ok" : "FAILED", path,
+                (long)rep.pixelsWide, (long)rep.pixelsHigh);
+
+        [window orderOut:nil];
+        [window release];
+        [view release];
+    }
+}

@@ -1,0 +1,5780 @@
+[
+  {
+    "char": "政",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "セイ"
+    ],
+    "kun": [
+      "まつりごと"
+    ],
+    "meaning": "politics; government",
+    "compounds": [
+      {
+        "word": "政治",
+        "kana": "せいじ",
+        "meaning": "politics"
+      },
+      {
+        "word": "政府",
+        "kana": "せいふ",
+        "meaning": "government"
+      },
+      {
+        "word": "財政",
+        "kana": "ざいせい",
+        "meaning": "finance"
+      }
+    ]
+  },
+  {
+    "char": "議",
+    "level": 3,
+    "strokes": 20,
+    "on": [
+      "ギ"
+    ],
+    "kun": [],
+    "meaning": "deliberation; discussion",
+    "compounds": [
+      {
+        "word": "会議",
+        "kana": "かいぎ",
+        "meaning": "meeting"
+      },
+      {
+        "word": "議会",
+        "kana": "ぎかい",
+        "meaning": "parliament"
+      },
+      {
+        "word": "議論",
+        "kana": "ぎろん",
+        "meaning": "debate"
+      }
+    ]
+  },
+  {
+    "char": "民",
+    "level": 3,
+    "strokes": 5,
+    "on": [
+      "ミン"
+    ],
+    "kun": [
+      "たみ"
+    ],
+    "meaning": "people; citizens",
+    "compounds": [
+      {
+        "word": "国民",
+        "kana": "こくみん",
+        "meaning": "citizens"
+      },
+      {
+        "word": "住民",
+        "kana": "じゅうみん",
+        "meaning": "resident"
+      },
+      {
+        "word": "民族",
+        "kana": "みんぞく",
+        "meaning": "ethnic group"
+      }
+    ]
+  },
+  {
+    "char": "連",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "レン"
+    ],
+    "kun": [
+      "つら"
+    ],
+    "meaning": "connect; take along",
+    "compounds": [
+      {
+        "word": "連絡",
+        "kana": "れんらく",
+        "meaning": "contact"
+      },
+      {
+        "word": "連続",
+        "kana": "れんぞく",
+        "meaning": "continuation"
+      },
+      {
+        "word": "関連",
+        "kana": "かんれん",
+        "meaning": "relation"
+      }
+    ]
+  },
+  {
+    "char": "対",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "タイ",
+      "ツイ"
+    ],
+    "kun": [],
+    "meaning": "opposite; against",
+    "compounds": [
+      {
+        "word": "反対",
+        "kana": "はんたい",
+        "meaning": "opposition"
+      },
+      {
+        "word": "対象",
+        "kana": "たいしょう",
+        "meaning": "target"
+      },
+      {
+        "word": "対話",
+        "kana": "たいわ",
+        "meaning": "dialogue"
+      }
+    ]
+  },
+  {
+    "char": "部",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ブ"
+    ],
+    "kun": [
+      "へ"
+    ],
+    "meaning": "part; department",
+    "compounds": [
+      {
+        "word": "全部",
+        "kana": "ぜんぶ",
+        "meaning": "all"
+      },
+      {
+        "word": "部屋",
+        "kana": "へや",
+        "meaning": "room"
+      },
+      {
+        "word": "部分",
+        "kana": "ぶぶん",
+        "meaning": "part"
+      }
+    ]
+  },
+  {
+    "char": "内",
+    "level": 3,
+    "strokes": 4,
+    "on": [
+      "ナイ"
+    ],
+    "kun": [
+      "うち"
+    ],
+    "meaning": "inside; within",
+    "compounds": [
+      {
+        "word": "内部",
+        "kana": "ないぶ",
+        "meaning": "inside"
+      },
+      {
+        "word": "案内",
+        "kana": "あんない",
+        "meaning": "guidance"
+      },
+      {
+        "word": "内容",
+        "kana": "ないよう",
+        "meaning": "content"
+      }
+    ]
+  },
+  {
+    "char": "相",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ソウ",
+      "ショウ"
+    ],
+    "kun": [
+      "あい"
+    ],
+    "meaning": "mutual; aspect",
+    "compounds": [
+      {
+        "word": "相手",
+        "kana": "あいて",
+        "meaning": "partner"
+      },
+      {
+        "word": "相談",
+        "kana": "そうだん",
+        "meaning": "consultation"
+      },
+      {
+        "word": "相互",
+        "kana": "そうご",
+        "meaning": "mutual"
+      }
+    ]
+  },
+  {
+    "char": "定",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "テイ",
+      "ジョウ"
+    ],
+    "kun": [
+      "さだ"
+    ],
+    "meaning": "determine; fix",
+    "compounds": [
+      {
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "plan"
+      },
+      {
+        "word": "定期",
+        "kana": "ていき",
+        "meaning": "periodic ticket"
+      },
+      {
+        "word": "決定",
+        "kana": "けってい",
+        "meaning": "decision"
+      }
+    ]
+  },
+  {
+    "char": "回",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "カイ",
+      "エ"
+    ],
+    "kun": [
+      "まわ"
+    ],
+    "meaning": "turn; times",
+    "compounds": [
+      {
+        "word": "今回",
+        "kana": "こんかい",
+        "meaning": "this time"
+      },
+      {
+        "word": "回転",
+        "kana": "かいてん",
+        "meaning": "rotation"
+      },
+      {
+        "word": "一回",
+        "kana": "いっかい",
+        "meaning": "one time"
+      }
+    ]
+  },
+  {
+    "char": "選",
+    "level": 3,
+    "strokes": 15,
+    "on": [
+      "セン"
+    ],
+    "kun": [
+      "えら"
+    ],
+    "meaning": "choose; elect",
+    "compounds": [
+      {
+        "word": "選挙",
+        "kana": "せんきょ",
+        "meaning": "election"
+      },
+      {
+        "word": "選手",
+        "kana": "せんしゅ",
+        "meaning": "player"
+      },
+      {
+        "word": "選択",
+        "kana": "せんたく",
+        "meaning": "choice"
+      }
+    ]
+  },
+  {
+    "char": "米",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "ベイ",
+      "マイ"
+    ],
+    "kun": [
+      "こめ"
+    ],
+    "meaning": "rice; america",
+    "compounds": [
+      {
+        "word": "米",
+        "kana": "こめ",
+        "meaning": "rice"
+      },
+      {
+        "word": "米国",
+        "kana": "べいこく",
+        "meaning": "United States"
+      },
+      {
+        "word": "新米",
+        "kana": "しんまい",
+        "meaning": "new rice"
+      }
+    ]
+  },
+  {
+    "char": "実",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "ジツ"
+    ],
+    "kun": [
+      "み",
+      "みの"
+    ],
+    "meaning": "reality; fruit",
+    "compounds": [
+      {
+        "word": "事実",
+        "kana": "じじつ",
+        "meaning": "fact"
+      },
+      {
+        "word": "実力",
+        "kana": "じつりょく",
+        "meaning": "ability"
+      },
+      {
+        "word": "実験",
+        "kana": "じっけん",
+        "meaning": "experiment"
+      }
+    ]
+  },
+  {
+    "char": "関",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "カン"
+    ],
+    "kun": [
+      "せき"
+    ],
+    "meaning": "connection; barrier",
+    "compounds": [
+      {
+        "word": "関係",
+        "kana": "かんけい",
+        "meaning": "relationship"
+      },
+      {
+        "word": "関心",
+        "kana": "かんしん",
+        "meaning": "interest"
+      },
+      {
+        "word": "玄関",
+        "kana": "げんかん",
+        "meaning": "entrance hall"
+      }
+    ]
+  },
+  {
+    "char": "決",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "ケツ"
+    ],
+    "kun": [
+      "き"
+    ],
+    "meaning": "decide; settle",
+    "compounds": [
+      {
+        "word": "決める",
+        "kana": "きめる",
+        "meaning": "to decide"
+      },
+      {
+        "word": "決定",
+        "kana": "けってい",
+        "meaning": "decision"
+      },
+      {
+        "word": "解決",
+        "kana": "かいけつ",
+        "meaning": "resolution"
+      }
+    ]
+  },
+  {
+    "char": "全",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "ゼン"
+    ],
+    "kun": [
+      "まった"
+    ],
+    "meaning": "whole; all",
+    "compounds": [
+      {
+        "word": "全部",
+        "kana": "ぜんぶ",
+        "meaning": "all"
+      },
+      {
+        "word": "全国",
+        "kana": "ぜんこく",
+        "meaning": "whole country"
+      },
+      {
+        "word": "安全",
+        "kana": "あんぜん",
+        "meaning": "safety"
+      }
+    ]
+  },
+  {
+    "char": "表",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "ヒョウ"
+    ],
+    "kun": [
+      "おもて",
+      "あらわ"
+    ],
+    "meaning": "surface; table; express",
+    "compounds": [
+      {
+        "word": "表",
+        "kana": "ひょう",
+        "meaning": "table"
+      },
+      {
+        "word": "発表",
+        "kana": "はっぴょう",
+        "meaning": "announcement"
+      },
+      {
+        "word": "表情",
+        "kana": "ひょうじょう",
+        "meaning": "expression"
+      }
+    ]
+  },
+  {
+    "char": "戦",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "セン"
+    ],
+    "kun": [
+      "いくさ",
+      "たたか"
+    ],
+    "meaning": "war; battle",
+    "compounds": [
+      {
+        "word": "戦争",
+        "kana": "せんそう",
+        "meaning": "war"
+      },
+      {
+        "word": "戦後",
+        "kana": "せんご",
+        "meaning": "postwar"
+      },
+      {
+        "word": "作戦",
+        "kana": "さくせん",
+        "meaning": "strategy"
+      }
+    ]
+  },
+  {
+    "char": "経",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ケイ",
+      "キョウ"
+    ],
+    "kun": [
+      "へ"
+    ],
+    "meaning": "pass; manage",
+    "compounds": [
+      {
+        "word": "経済",
+        "kana": "けいざい",
+        "meaning": "economy"
+      },
+      {
+        "word": "経験",
+        "kana": "けいけん",
+        "meaning": "experience"
+      },
+      {
+        "word": "経営",
+        "kana": "けいえい",
+        "meaning": "management"
+      }
+    ]
+  },
+  {
+    "char": "最",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "サイ"
+    ],
+    "kun": [
+      "もっと"
+    ],
+    "meaning": "most; utmost",
+    "compounds": [
+      {
+        "word": "最近",
+        "kana": "さいきん",
+        "meaning": "recently"
+      },
+      {
+        "word": "最後",
+        "kana": "さいご",
+        "meaning": "last"
+      },
+      {
+        "word": "最初",
+        "kana": "さいしょ",
+        "meaning": "first"
+      }
+    ]
+  },
+  {
+    "char": "現",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ゲン"
+    ],
+    "kun": [
+      "あらわ"
+    ],
+    "meaning": "present; appear",
+    "compounds": [
+      {
+        "word": "現在",
+        "kana": "げんざい",
+        "meaning": "present"
+      },
+      {
+        "word": "現金",
+        "kana": "げんきん",
+        "meaning": "cash"
+      },
+      {
+        "word": "実現",
+        "kana": "じつげん",
+        "meaning": "realization"
+      }
+    ]
+  },
+  {
+    "char": "調",
+    "level": 3,
+    "strokes": 15,
+    "on": [
+      "チョウ"
+    ],
+    "kun": [
+      "しら"
+    ],
+    "meaning": "tune; investigate",
+    "compounds": [
+      {
+        "word": "調べる",
+        "kana": "しらべる",
+        "meaning": "to investigate"
+      },
+      {
+        "word": "調査",
+        "kana": "ちょうさ",
+        "meaning": "survey"
+      },
+      {
+        "word": "調整",
+        "kana": "ちょうせい",
+        "meaning": "adjustment"
+      }
+    ]
+  },
+  {
+    "char": "化",
+    "level": 3,
+    "strokes": 4,
+    "on": [
+      "カ",
+      "ケ"
+    ],
+    "kun": [
+      "ば"
+    ],
+    "meaning": "change; -ization",
+    "compounds": [
+      {
+        "word": "文化",
+        "kana": "ぶんか",
+        "meaning": "culture"
+      },
+      {
+        "word": "化学",
+        "kana": "かがく",
+        "meaning": "chemistry"
+      },
+      {
+        "word": "変化",
+        "kana": "へんか",
+        "meaning": "change"
+      }
+    ]
+  },
+  {
+    "char": "当",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "トウ"
+    ],
+    "kun": [
+      "あ"
+    ],
+    "meaning": "hit; appropriate",
+    "compounds": [
+      {
+        "word": "本当",
+        "kana": "ほんとう",
+        "meaning": "truth"
+      },
+      {
+        "word": "当然",
+        "kana": "とうぜん",
+        "meaning": "natural"
+      },
+      {
+        "word": "当時",
+        "kana": "とうじ",
+        "meaning": "at that time"
+      }
+    ]
+  },
+  {
+    "char": "約",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ヤク"
+    ],
+    "kun": [],
+    "meaning": "promise; approximate",
+    "compounds": [
+      {
+        "word": "約束",
+        "kana": "やくそく",
+        "meaning": "promise"
+      },
+      {
+        "word": "予約",
+        "kana": "よやく",
+        "meaning": "reservation"
+      },
+      {
+        "word": "条約",
+        "kana": "じょうやく",
+        "meaning": "treaty"
+      }
+    ]
+  },
+  {
+    "char": "法",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "ホウ"
+    ],
+    "kun": [],
+    "meaning": "law; method",
+    "compounds": [
+      {
+        "word": "方法",
+        "kana": "ほうほう",
+        "meaning": "method"
+      },
+      {
+        "word": "法律",
+        "kana": "ほうりつ",
+        "meaning": "law"
+      },
+      {
+        "word": "文法",
+        "kana": "ぶんぽう",
+        "meaning": "grammar"
+      }
+    ]
+  },
+  {
+    "char": "性",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "セイ",
+      "ショウ"
+    ],
+    "kun": [],
+    "meaning": "nature; sex",
+    "compounds": [
+      {
+        "word": "性格",
+        "kana": "せいかく",
+        "meaning": "personality"
+      },
+      {
+        "word": "男性",
+        "kana": "だんせい",
+        "meaning": "man"
+      },
+      {
+        "word": "可能性",
+        "kana": "かのうせい",
+        "meaning": "possibility"
+      }
+    ]
+  },
+  {
+    "char": "要",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ヨウ"
+    ],
+    "kun": [
+      "い",
+      "かなめ"
+    ],
+    "meaning": "need; important",
+    "compounds": [
+      {
+        "word": "必要",
+        "kana": "ひつよう",
+        "meaning": "necessary"
+      },
+      {
+        "word": "重要",
+        "kana": "じゅうよう",
+        "meaning": "important"
+      },
+      {
+        "word": "要る",
+        "kana": "いる",
+        "meaning": "to need"
+      }
+    ]
+  },
+  {
+    "char": "制",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "セイ"
+    ],
+    "kun": [],
+    "meaning": "system; control",
+    "compounds": [
+      {
+        "word": "制度",
+        "kana": "せいど",
+        "meaning": "system"
+      },
+      {
+        "word": "制限",
+        "kana": "せいげん",
+        "meaning": "restriction"
+      },
+      {
+        "word": "規制",
+        "kana": "きせい",
+        "meaning": "regulation"
+      }
+    ]
+  },
+  {
+    "char": "治",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "ジ",
+      "チ"
+    ],
+    "kun": [
+      "おさ",
+      "なお"
+    ],
+    "meaning": "govern; cure",
+    "compounds": [
+      {
+        "word": "政治",
+        "kana": "せいじ",
+        "meaning": "politics"
+      },
+      {
+        "word": "治療",
+        "kana": "ちりょう",
+        "meaning": "treatment"
+      },
+      {
+        "word": "治る",
+        "kana": "なおる",
+        "meaning": "to heal"
+      }
+    ]
+  },
+  {
+    "char": "務",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ム"
+    ],
+    "kun": [
+      "つと"
+    ],
+    "meaning": "duty; service",
+    "compounds": [
+      {
+        "word": "義務",
+        "kana": "ぎむ",
+        "meaning": "obligation"
+      },
+      {
+        "word": "任務",
+        "kana": "にんむ",
+        "meaning": "duty"
+      },
+      {
+        "word": "勤務",
+        "kana": "きんむ",
+        "meaning": "work"
+      }
+    ]
+  },
+  {
+    "char": "成",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "セイ",
+      "ジョウ"
+    ],
+    "kun": [
+      "な"
+    ],
+    "meaning": "become; achieve",
+    "compounds": [
+      {
+        "word": "成功",
+        "kana": "せいこう",
+        "meaning": "success"
+      },
+      {
+        "word": "成長",
+        "kana": "せいちょう",
+        "meaning": "growth"
+      },
+      {
+        "word": "成人",
+        "kana": "せいじん",
+        "meaning": "adult"
+      }
+    ]
+  },
+  {
+    "char": "期",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "キ",
+      "ゴ"
+    ],
+    "kun": [],
+    "meaning": "period; expect",
+    "compounds": [
+      {
+        "word": "期待",
+        "kana": "きたい",
+        "meaning": "expectation"
+      },
+      {
+        "word": "期間",
+        "kana": "きかん",
+        "meaning": "period"
+      },
+      {
+        "word": "学期",
+        "kana": "がっき",
+        "meaning": "school term"
+      }
+    ]
+  },
+  {
+    "char": "取",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "シュ"
+    ],
+    "kun": [
+      "と"
+    ],
+    "meaning": "take",
+    "compounds": [
+      {
+        "word": "取る",
+        "kana": "とる",
+        "meaning": "to take"
+      },
+      {
+        "word": "取り消し",
+        "kana": "とりけし",
+        "meaning": "cancellation"
+      },
+      {
+        "word": "取材",
+        "kana": "しゅざい",
+        "meaning": "news coverage"
+      }
+    ]
+  },
+  {
+    "char": "都",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ト",
+      "ツ"
+    ],
+    "kun": [
+      "みやこ"
+    ],
+    "meaning": "metropolis; capital",
+    "compounds": [
+      {
+        "word": "都市",
+        "kana": "とし",
+        "meaning": "city"
+      },
+      {
+        "word": "京都",
+        "kana": "きょうと",
+        "meaning": "Kyoto"
+      },
+      {
+        "word": "都合",
+        "kana": "つごう",
+        "meaning": "convenience"
+      }
+    ]
+  },
+  {
+    "char": "和",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "ワ",
+      "オ"
+    ],
+    "kun": [],
+    "meaning": "harmony; japanese style",
+    "compounds": [
+      {
+        "word": "和食",
+        "kana": "わしょく",
+        "meaning": "Japanese food"
+      },
+      {
+        "word": "平和",
+        "kana": "へいわ",
+        "meaning": "peace"
+      },
+      {
+        "word": "和服",
+        "kana": "わふく",
+        "meaning": "Japanese clothes"
+      }
+    ]
+  },
+  {
+    "char": "機",
+    "level": 3,
+    "strokes": 16,
+    "on": [
+      "キ"
+    ],
+    "kun": [
+      "はた"
+    ],
+    "meaning": "machine; opportunity",
+    "compounds": [
+      {
+        "word": "機械",
+        "kana": "きかい",
+        "meaning": "machine"
+      },
+      {
+        "word": "機会",
+        "kana": "きかい",
+        "meaning": "opportunity"
+      },
+      {
+        "word": "飛行機",
+        "kana": "ひこうき",
+        "meaning": "airplane"
+      }
+    ]
+  },
+  {
+    "char": "平",
+    "level": 3,
+    "strokes": 5,
+    "on": [
+      "ヘイ",
+      "ビョウ"
+    ],
+    "kun": [
+      "たいら",
+      "ひら"
+    ],
+    "meaning": "flat; peace",
+    "compounds": [
+      {
+        "word": "平和",
+        "kana": "へいわ",
+        "meaning": "peace"
+      },
+      {
+        "word": "平等",
+        "kana": "びょうどう",
+        "meaning": "equality"
+      },
+      {
+        "word": "平日",
+        "kana": "へいじつ",
+        "meaning": "weekday"
+      }
+    ]
+  },
+  {
+    "char": "加",
+    "level": 3,
+    "strokes": 5,
+    "on": [
+      "カ"
+    ],
+    "kun": [
+      "くわ"
+    ],
+    "meaning": "add",
+    "compounds": [
+      {
+        "word": "参加",
+        "kana": "さんか",
+        "meaning": "participation"
+      },
+      {
+        "word": "加える",
+        "kana": "くわえる",
+        "meaning": "to add"
+      },
+      {
+        "word": "追加",
+        "kana": "ついか",
+        "meaning": "addition"
+      }
+    ]
+  },
+  {
+    "char": "受",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "ジュ"
+    ],
+    "kun": [
+      "う"
+    ],
+    "meaning": "receive",
+    "compounds": [
+      {
+        "word": "受ける",
+        "kana": "うける",
+        "meaning": "to receive"
+      },
+      {
+        "word": "受験",
+        "kana": "じゅけん",
+        "meaning": "taking an exam"
+      },
+      {
+        "word": "受付",
+        "kana": "うけつけ",
+        "meaning": "reception"
+      }
+    ]
+  },
+  {
+    "char": "続",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "ゾク"
+    ],
+    "kun": [
+      "つづ"
+    ],
+    "meaning": "continue",
+    "compounds": [
+      {
+        "word": "続く",
+        "kana": "つづく",
+        "meaning": "to continue"
+      },
+      {
+        "word": "連続",
+        "kana": "れんぞく",
+        "meaning": "continuation"
+      },
+      {
+        "word": "継続",
+        "kana": "けいぞく",
+        "meaning": "continuation"
+      }
+    ]
+  },
+  {
+    "char": "数",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "スウ"
+    ],
+    "kun": [
+      "かず",
+      "かぞ"
+    ],
+    "meaning": "number",
+    "compounds": [
+      {
+        "word": "数",
+        "kana": "かず",
+        "meaning": "number"
+      },
+      {
+        "word": "数学",
+        "kana": "すうがく",
+        "meaning": "mathematics"
+      },
+      {
+        "word": "数字",
+        "kana": "すうじ",
+        "meaning": "digit"
+      }
+    ]
+  },
+  {
+    "char": "記",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "キ"
+    ],
+    "kun": [
+      "しる"
+    ],
+    "meaning": "record; write down",
+    "compounds": [
+      {
+        "word": "日記",
+        "kana": "にっき",
+        "meaning": "diary"
+      },
+      {
+        "word": "記録",
+        "kana": "きろく",
+        "meaning": "record"
+      },
+      {
+        "word": "記者",
+        "kana": "きしゃ",
+        "meaning": "reporter"
+      }
+    ]
+  },
+  {
+    "char": "際",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "サイ"
+    ],
+    "kun": [
+      "きわ"
+    ],
+    "meaning": "occasion; edge",
+    "compounds": [
+      {
+        "word": "国際",
+        "kana": "こくさい",
+        "meaning": "international"
+      },
+      {
+        "word": "実際",
+        "kana": "じっさい",
+        "meaning": "actually"
+      },
+      {
+        "word": "交際",
+        "kana": "こうさい",
+        "meaning": "socializing"
+      }
+    ]
+  },
+  {
+    "char": "確",
+    "level": 3,
+    "strokes": 15,
+    "on": [
+      "カク"
+    ],
+    "kun": [
+      "たし"
+    ],
+    "meaning": "certain; confirm",
+    "compounds": [
+      {
+        "word": "確認",
+        "kana": "かくにん",
+        "meaning": "confirmation"
+      },
+      {
+        "word": "確か",
+        "kana": "たしか",
+        "meaning": "certain"
+      },
+      {
+        "word": "確率",
+        "kana": "かくりつ",
+        "meaning": "probability"
+      }
+    ]
+  },
+  {
+    "char": "認",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "ニン"
+    ],
+    "kun": [
+      "みと"
+    ],
+    "meaning": "recognize; admit",
+    "compounds": [
+      {
+        "word": "確認",
+        "kana": "かくにん",
+        "meaning": "confirmation"
+      },
+      {
+        "word": "認める",
+        "kana": "みとめる",
+        "meaning": "to admit"
+      },
+      {
+        "word": "認識",
+        "kana": "にんしき",
+        "meaning": "recognition"
+      }
+    ]
+  },
+  {
+    "char": "識",
+    "level": 3,
+    "strokes": 19,
+    "on": [
+      "シキ"
+    ],
+    "kun": [],
+    "meaning": "knowledge; discriminate",
+    "compounds": [
+      {
+        "word": "知識",
+        "kana": "ちしき",
+        "meaning": "knowledge"
+      },
+      {
+        "word": "意識",
+        "kana": "いしき",
+        "meaning": "consciousness"
+      },
+      {
+        "word": "常識",
+        "kana": "じょうしき",
+        "meaning": "common sense"
+      }
+    ]
+  },
+  {
+    "char": "職",
+    "level": 3,
+    "strokes": 18,
+    "on": [
+      "ショク"
+    ],
+    "kun": [],
+    "meaning": "job; post",
+    "compounds": [
+      {
+        "word": "就職",
+        "kana": "しゅうしょく",
+        "meaning": "finding employment"
+      },
+      {
+        "word": "職業",
+        "kana": "しょくぎょう",
+        "meaning": "occupation"
+      },
+      {
+        "word": "職場",
+        "kana": "しょくば",
+        "meaning": "workplace"
+      }
+    ]
+  },
+  {
+    "char": "報",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "ホウ"
+    ],
+    "kun": [],
+    "meaning": "report; repay",
+    "compounds": [
+      {
+        "word": "報告",
+        "kana": "ほうこく",
+        "meaning": "report"
+      },
+      {
+        "word": "情報",
+        "kana": "じょうほう",
+        "meaning": "information"
+      },
+      {
+        "word": "予報",
+        "kana": "よほう",
+        "meaning": "forecast"
+      }
+    ]
+  },
+  {
+    "char": "情",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ジョウ"
+    ],
+    "kun": [
+      "なさ"
+    ],
+    "meaning": "feeling; circumstance",
+    "compounds": [
+      {
+        "word": "情報",
+        "kana": "じょうほう",
+        "meaning": "information"
+      },
+      {
+        "word": "感情",
+        "kana": "かんじょう",
+        "meaning": "emotion"
+      },
+      {
+        "word": "事情",
+        "kana": "じじょう",
+        "meaning": "circumstances"
+      }
+    ]
+  },
+  {
+    "char": "感",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "カン"
+    ],
+    "kun": [],
+    "meaning": "feeling; sense",
+    "compounds": [
+      {
+        "word": "感じる",
+        "kana": "かんじる",
+        "meaning": "to feel"
+      },
+      {
+        "word": "感謝",
+        "kana": "かんしゃ",
+        "meaning": "gratitude"
+      },
+      {
+        "word": "感動",
+        "kana": "かんどう",
+        "meaning": "being moved"
+      }
+    ]
+  },
+  {
+    "char": "想",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "ソウ"
+    ],
+    "kun": [
+      "おも"
+    ],
+    "meaning": "thought; idea",
+    "compounds": [
+      {
+        "word": "感想",
+        "kana": "かんそう",
+        "meaning": "impression"
+      },
+      {
+        "word": "理想",
+        "kana": "りそう",
+        "meaning": "ideal"
+      },
+      {
+        "word": "想像",
+        "kana": "そうぞう",
+        "meaning": "imagination"
+      }
+    ]
+  },
+  {
+    "char": "愛",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "アイ"
+    ],
+    "kun": [],
+    "meaning": "love",
+    "compounds": [
+      {
+        "word": "愛",
+        "kana": "あい",
+        "meaning": "love"
+      },
+      {
+        "word": "愛情",
+        "kana": "あいじょう",
+        "meaning": "affection"
+      },
+      {
+        "word": "恋愛",
+        "kana": "れんあい",
+        "meaning": "romance"
+      }
+    ]
+  },
+  {
+    "char": "夢",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "ム"
+    ],
+    "kun": [
+      "ゆめ"
+    ],
+    "meaning": "dream",
+    "compounds": [
+      {
+        "word": "夢",
+        "kana": "ゆめ",
+        "meaning": "dream"
+      },
+      {
+        "word": "夢中",
+        "kana": "むちゅう",
+        "meaning": "absorbed"
+      },
+      {
+        "word": "悪夢",
+        "kana": "あくむ",
+        "meaning": "nightmare"
+      }
+    ]
+  },
+  {
+    "char": "望",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ボウ",
+      "モウ"
+    ],
+    "kun": [
+      "のぞ"
+    ],
+    "meaning": "hope; look into the distance",
+    "compounds": [
+      {
+        "word": "希望",
+        "kana": "きぼう",
+        "meaning": "hope"
+      },
+      {
+        "word": "望む",
+        "kana": "のぞむ",
+        "meaning": "to wish"
+      },
+      {
+        "word": "失望",
+        "kana": "しつぼう",
+        "meaning": "disappointment"
+      }
+    ]
+  },
+  {
+    "char": "欲",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ヨク"
+    ],
+    "kun": [
+      "ほ"
+    ],
+    "meaning": "desire; want",
+    "compounds": [
+      {
+        "word": "欲しい",
+        "kana": "ほしい",
+        "meaning": "wanted"
+      },
+      {
+        "word": "食欲",
+        "kana": "しょくよく",
+        "meaning": "appetite"
+      },
+      {
+        "word": "欲望",
+        "kana": "よくぼう",
+        "meaning": "desire"
+      }
+    ]
+  },
+  {
+    "char": "努",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "ド"
+    ],
+    "kun": [
+      "つと"
+    ],
+    "meaning": "strive; effort",
+    "compounds": [
+      {
+        "word": "努力",
+        "kana": "どりょく",
+        "meaning": "effort"
+      },
+      {
+        "word": "努める",
+        "kana": "つとめる",
+        "meaning": "to endeavor"
+      },
+      {
+        "word": "努力家",
+        "kana": "どりょくか",
+        "meaning": "hard worker"
+      }
+    ]
+  },
+  {
+    "char": "労",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "ロウ"
+    ],
+    "kun": [],
+    "meaning": "labor; toil",
+    "compounds": [
+      {
+        "word": "労働",
+        "kana": "ろうどう",
+        "meaning": "labor"
+      },
+      {
+        "word": "苦労",
+        "kana": "くろう",
+        "meaning": "hardship"
+      },
+      {
+        "word": "疲労",
+        "kana": "ひろう",
+        "meaning": "fatigue"
+      }
+    ]
+  },
+  {
+    "char": "勤",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "キン",
+      "ゴン"
+    ],
+    "kun": [
+      "つと"
+    ],
+    "meaning": "work; diligence",
+    "compounds": [
+      {
+        "word": "勤務",
+        "kana": "きんむ",
+        "meaning": "work"
+      },
+      {
+        "word": "通勤",
+        "kana": "つうきん",
+        "meaning": "commuting"
+      },
+      {
+        "word": "勤める",
+        "kana": "つとめる",
+        "meaning": "to work for"
+      }
+    ]
+  },
+  {
+    "char": "働",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "ドウ"
+    ],
+    "kun": [
+      "はたら"
+    ],
+    "meaning": "work",
+    "compounds": [
+      {
+        "word": "働く",
+        "kana": "はたらく",
+        "meaning": "to work"
+      },
+      {
+        "word": "労働",
+        "kana": "ろうどう",
+        "meaning": "labor"
+      },
+      {
+        "word": "共働き",
+        "kana": "ともばたらき",
+        "meaning": "both spouses working"
+      }
+    ]
+  },
+  {
+    "char": "放",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "ホウ"
+    ],
+    "kun": [
+      "はな"
+    ],
+    "meaning": "release; set free",
+    "compounds": [
+      {
+        "word": "放送",
+        "kana": "ほうそう",
+        "meaning": "broadcast"
+      },
+      {
+        "word": "放す",
+        "kana": "はなす",
+        "meaning": "to release"
+      },
+      {
+        "word": "解放",
+        "kana": "かいほう",
+        "meaning": "liberation"
+      }
+    ]
+  },
+  {
+    "char": "変",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ヘン"
+    ],
+    "kun": [
+      "か"
+    ],
+    "meaning": "change; strange",
+    "compounds": [
+      {
+        "word": "変化",
+        "kana": "へんか",
+        "meaning": "change"
+      },
+      {
+        "word": "変わる",
+        "kana": "かわる",
+        "meaning": "to change"
+      },
+      {
+        "word": "大変",
+        "kana": "たいへん",
+        "meaning": "very"
+      }
+    ]
+  },
+  {
+    "char": "増",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "ゾウ"
+    ],
+    "kun": [
+      "ふ",
+      "ま"
+    ],
+    "meaning": "increase",
+    "compounds": [
+      {
+        "word": "増える",
+        "kana": "ふえる",
+        "meaning": "to increase"
+      },
+      {
+        "word": "増加",
+        "kana": "ぞうか",
+        "meaning": "increase"
+      },
+      {
+        "word": "急増",
+        "kana": "きゅうぞう",
+        "meaning": "rapid increase"
+      }
+    ]
+  },
+  {
+    "char": "残",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ザン"
+    ],
+    "kun": [
+      "のこ"
+    ],
+    "meaning": "remain",
+    "compounds": [
+      {
+        "word": "残る",
+        "kana": "のこる",
+        "meaning": "to remain"
+      },
+      {
+        "word": "残念",
+        "kana": "ざんねん",
+        "meaning": "regrettable"
+      },
+      {
+        "word": "残業",
+        "kana": "ざんぎょう",
+        "meaning": "overtime"
+      }
+    ]
+  },
+  {
+    "char": "産",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "サン"
+    ],
+    "kun": [
+      "う",
+      "うぶ"
+    ],
+    "meaning": "produce; give birth",
+    "compounds": [
+      {
+        "word": "産業",
+        "kana": "さんぎょう",
+        "meaning": "industry"
+      },
+      {
+        "word": "生産",
+        "kana": "せいさん",
+        "meaning": "production"
+      },
+      {
+        "word": "産む",
+        "kana": "うむ",
+        "meaning": "to give birth"
+      }
+    ]
+  },
+  {
+    "char": "投",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "トウ"
+    ],
+    "kun": [
+      "な"
+    ],
+    "meaning": "throw; invest",
+    "compounds": [
+      {
+        "word": "投資",
+        "kana": "とうし",
+        "meaning": "investment"
+      },
+      {
+        "word": "投げる",
+        "kana": "なげる",
+        "meaning": "to throw"
+      },
+      {
+        "word": "投票",
+        "kana": "とうひょう",
+        "meaning": "voting"
+      }
+    ]
+  },
+  {
+    "char": "資",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "シ"
+    ],
+    "kun": [],
+    "meaning": "resources; capital",
+    "compounds": [
+      {
+        "word": "資源",
+        "kana": "しげん",
+        "meaning": "resources"
+      },
+      {
+        "word": "資格",
+        "kana": "しかく",
+        "meaning": "qualification"
+      },
+      {
+        "word": "投資",
+        "kana": "とうし",
+        "meaning": "investment"
+      }
+    ]
+  },
+  {
+    "char": "財",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ザイ",
+      "サイ"
+    ],
+    "kun": [],
+    "meaning": "wealth; finance",
+    "compounds": [
+      {
+        "word": "財産",
+        "kana": "ざいさん",
+        "meaning": "property"
+      },
+      {
+        "word": "財政",
+        "kana": "ざいせい",
+        "meaning": "finance"
+      },
+      {
+        "word": "文化財",
+        "kana": "ぶんかざい",
+        "meaning": "cultural asset"
+      }
+    ]
+  },
+  {
+    "char": "費",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "ヒ"
+    ],
+    "kun": [
+      "つい"
+    ],
+    "meaning": "expense; spend",
+    "compounds": [
+      {
+        "word": "費用",
+        "kana": "ひよう",
+        "meaning": "cost"
+      },
+      {
+        "word": "消費",
+        "kana": "しょうひ",
+        "meaning": "consumption"
+      },
+      {
+        "word": "費やす",
+        "kana": "ついやす",
+        "meaning": "to spend"
+      }
+    ]
+  },
+  {
+    "char": "備",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "ビ"
+    ],
+    "kun": [
+      "そな"
+    ],
+    "meaning": "prepare; equip",
+    "compounds": [
+      {
+        "word": "準備",
+        "kana": "じゅんび",
+        "meaning": "preparation"
+      },
+      {
+        "word": "設備",
+        "kana": "せつび",
+        "meaning": "equipment"
+      },
+      {
+        "word": "備える",
+        "kana": "そなえる",
+        "meaning": "to prepare"
+      }
+    ]
+  },
+  {
+    "char": "利",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "リ"
+    ],
+    "kun": [
+      "き"
+    ],
+    "meaning": "profit; use",
+    "compounds": [
+      {
+        "word": "利用",
+        "kana": "りよう",
+        "meaning": "use"
+      },
+      {
+        "word": "便利",
+        "kana": "べんり",
+        "meaning": "convenient"
+      },
+      {
+        "word": "利益",
+        "kana": "りえき",
+        "meaning": "profit"
+      }
+    ]
+  },
+  {
+    "char": "便",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ベン",
+      "ビン"
+    ],
+    "kun": [
+      "たよ"
+    ],
+    "meaning": "convenience; mail",
+    "compounds": [
+      {
+        "word": "便利",
+        "kana": "べんり",
+        "meaning": "convenient"
+      },
+      {
+        "word": "郵便",
+        "kana": "ゆうびん",
+        "meaning": "mail"
+      },
+      {
+        "word": "便り",
+        "kana": "たより",
+        "meaning": "news"
+      }
+    ]
+  },
+  {
+    "char": "類",
+    "level": 3,
+    "strokes": 18,
+    "on": [
+      "ルイ"
+    ],
+    "kun": [
+      "たぐ"
+    ],
+    "meaning": "kind; sort",
+    "compounds": [
+      {
+        "word": "種類",
+        "kana": "しゅるい",
+        "meaning": "kind"
+      },
+      {
+        "word": "人類",
+        "kana": "じんるい",
+        "meaning": "mankind"
+      },
+      {
+        "word": "分類",
+        "kana": "ぶんるい",
+        "meaning": "classification"
+      }
+    ]
+  },
+  {
+    "char": "種",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "シュ"
+    ],
+    "kun": [
+      "たね"
+    ],
+    "meaning": "seed; kind",
+    "compounds": [
+      {
+        "word": "種類",
+        "kana": "しゅるい",
+        "meaning": "kind"
+      },
+      {
+        "word": "種",
+        "kana": "たね",
+        "meaning": "seed"
+      },
+      {
+        "word": "人種",
+        "kana": "じんしゅ",
+        "meaning": "race"
+      }
+    ]
+  },
+  {
+    "char": "具",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "グ"
+    ],
+    "kun": [],
+    "meaning": "tool; ingredient",
+    "compounds": [
+      {
+        "word": "道具",
+        "kana": "どうぐ",
+        "meaning": "tool"
+      },
+      {
+        "word": "家具",
+        "kana": "かぐ",
+        "meaning": "furniture"
+      },
+      {
+        "word": "具合",
+        "kana": "ぐあい",
+        "meaning": "condition"
+      }
+    ]
+  },
+  {
+    "char": "格",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "カク"
+    ],
+    "kun": [],
+    "meaning": "status; rule",
+    "compounds": [
+      {
+        "word": "性格",
+        "kana": "せいかく",
+        "meaning": "personality"
+      },
+      {
+        "word": "資格",
+        "kana": "しかく",
+        "meaning": "qualification"
+      },
+      {
+        "word": "格安",
+        "kana": "かくやす",
+        "meaning": "cheap"
+      }
+    ]
+  },
+  {
+    "char": "権",
+    "level": 3,
+    "strokes": 15,
+    "on": [
+      "ケン"
+    ],
+    "kun": [],
+    "meaning": "right; power",
+    "compounds": [
+      {
+        "word": "権利",
+        "kana": "けんり",
+        "meaning": "right"
+      },
+      {
+        "word": "人権",
+        "kana": "じんけん",
+        "meaning": "human rights"
+      },
+      {
+        "word": "権力",
+        "kana": "けんりょく",
+        "meaning": "power"
+      }
+    ]
+  },
+  {
+    "char": "責",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "セキ"
+    ],
+    "kun": [
+      "せ"
+    ],
+    "meaning": "blame; duty",
+    "compounds": [
+      {
+        "word": "責任",
+        "kana": "せきにん",
+        "meaning": "responsibility"
+      },
+      {
+        "word": "責める",
+        "kana": "せめる",
+        "meaning": "to blame"
+      },
+      {
+        "word": "責務",
+        "kana": "せきむ",
+        "meaning": "duty"
+      }
+    ]
+  },
+  {
+    "char": "任",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "ニン"
+    ],
+    "kun": [
+      "まか"
+    ],
+    "meaning": "entrust; duty",
+    "compounds": [
+      {
+        "word": "責任",
+        "kana": "せきにん",
+        "meaning": "responsibility"
+      },
+      {
+        "word": "任せる",
+        "kana": "まかせる",
+        "meaning": "to entrust"
+      },
+      {
+        "word": "任務",
+        "kana": "にんむ",
+        "meaning": "duty"
+      }
+    ]
+  },
+  {
+    "char": "判",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "ハン",
+      "バン"
+    ],
+    "kun": [],
+    "meaning": "judge; stamp",
+    "compounds": [
+      {
+        "word": "判断",
+        "kana": "はんだん",
+        "meaning": "judgment"
+      },
+      {
+        "word": "裁判",
+        "kana": "さいばん",
+        "meaning": "trial"
+      },
+      {
+        "word": "批判",
+        "kana": "ひはん",
+        "meaning": "criticism"
+      }
+    ]
+  },
+  {
+    "char": "断",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ダン"
+    ],
+    "kun": [
+      "た",
+      "ことわ"
+    ],
+    "meaning": "cut; refuse",
+    "compounds": [
+      {
+        "word": "判断",
+        "kana": "はんだん",
+        "meaning": "judgment"
+      },
+      {
+        "word": "断る",
+        "kana": "ことわる",
+        "meaning": "to refuse"
+      },
+      {
+        "word": "診断",
+        "kana": "しんだん",
+        "meaning": "diagnosis"
+      }
+    ]
+  },
+  {
+    "char": "規",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "キ"
+    ],
+    "kun": [],
+    "meaning": "rule; standard",
+    "compounds": [
+      {
+        "word": "規則",
+        "kana": "きそく",
+        "meaning": "rule"
+      },
+      {
+        "word": "規模",
+        "kana": "きぼ",
+        "meaning": "scale"
+      },
+      {
+        "word": "正規",
+        "kana": "せいき",
+        "meaning": "regular"
+      }
+    ]
+  },
+  {
+    "char": "因",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "イン"
+    ],
+    "kun": [
+      "よ"
+    ],
+    "meaning": "cause",
+    "compounds": [
+      {
+        "word": "原因",
+        "kana": "げんいん",
+        "meaning": "cause"
+      },
+      {
+        "word": "要因",
+        "kana": "よういん",
+        "meaning": "main factor"
+      },
+      {
+        "word": "因る",
+        "kana": "よる",
+        "meaning": "to be due to"
+      }
+    ]
+  },
+  {
+    "char": "果",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "カ"
+    ],
+    "kun": [
+      "は",
+      "くだ"
+    ],
+    "meaning": "fruit; result",
+    "compounds": [
+      {
+        "word": "結果",
+        "kana": "けっか",
+        "meaning": "result"
+      },
+      {
+        "word": "果物",
+        "kana": "くだもの",
+        "meaning": "fruit"
+      },
+      {
+        "word": "効果",
+        "kana": "こうか",
+        "meaning": "effect"
+      }
+    ]
+  },
+  {
+    "char": "差",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "サ"
+    ],
+    "kun": [
+      "さ"
+    ],
+    "meaning": "difference",
+    "compounds": [
+      {
+        "word": "差",
+        "kana": "さ",
+        "meaning": "difference"
+      },
+      {
+        "word": "差別",
+        "kana": "さべつ",
+        "meaning": "discrimination"
+      },
+      {
+        "word": "時差",
+        "kana": "じさ",
+        "meaning": "time difference"
+      }
+    ]
+  },
+  {
+    "char": "違",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "イ"
+    ],
+    "kun": [
+      "ちが"
+    ],
+    "meaning": "differ; wrong",
+    "compounds": [
+      {
+        "word": "違う",
+        "kana": "ちがう",
+        "meaning": "to differ"
+      },
+      {
+        "word": "違い",
+        "kana": "ちがい",
+        "meaning": "difference"
+      },
+      {
+        "word": "間違い",
+        "kana": "まちがい",
+        "meaning": "mistake"
+      }
+    ]
+  },
+  {
+    "char": "誤",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "ゴ"
+    ],
+    "kun": [
+      "あやま"
+    ],
+    "meaning": "mistake; err",
+    "compounds": [
+      {
+        "word": "誤り",
+        "kana": "あやまり",
+        "meaning": "error"
+      },
+      {
+        "word": "誤解",
+        "kana": "ごかい",
+        "meaning": "misunderstanding"
+      },
+      {
+        "word": "誤る",
+        "kana": "あやまる",
+        "meaning": "to err"
+      }
+    ]
+  },
+  {
+    "char": "信",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "シン"
+    ],
+    "kun": [],
+    "meaning": "trust; believe",
+    "compounds": [
+      {
+        "word": "信じる",
+        "kana": "しんじる",
+        "meaning": "to believe"
+      },
+      {
+        "word": "自信",
+        "kana": "じしん",
+        "meaning": "confidence"
+      },
+      {
+        "word": "信用",
+        "kana": "しんよう",
+        "meaning": "trust"
+      }
+    ]
+  },
+  {
+    "char": "疑",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "ギ"
+    ],
+    "kun": [
+      "うたが"
+    ],
+    "meaning": "doubt",
+    "compounds": [
+      {
+        "word": "疑う",
+        "kana": "うたがう",
+        "meaning": "to doubt"
+      },
+      {
+        "word": "疑問",
+        "kana": "ぎもん",
+        "meaning": "question"
+      },
+      {
+        "word": "容疑",
+        "kana": "ようぎ",
+        "meaning": "suspicion"
+      }
+    ]
+  },
+  {
+    "char": "迷",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "メイ"
+    ],
+    "kun": [
+      "まよ"
+    ],
+    "meaning": "get lost; perplexed",
+    "compounds": [
+      {
+        "word": "迷う",
+        "kana": "まよう",
+        "meaning": "to get lost"
+      },
+      {
+        "word": "迷惑",
+        "kana": "めいわく",
+        "meaning": "trouble"
+      },
+      {
+        "word": "迷路",
+        "kana": "めいろ",
+        "meaning": "maze"
+      }
+    ]
+  },
+  {
+    "char": "宅",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "タク"
+    ],
+    "kun": [],
+    "meaning": "home; residence",
+    "compounds": [
+      {
+        "word": "住宅",
+        "kana": "じゅうたく",
+        "meaning": "housing"
+      },
+      {
+        "word": "宅配",
+        "kana": "たくはい",
+        "meaning": "home delivery"
+      },
+      {
+        "word": "宅地",
+        "kana": "たくち",
+        "meaning": "residential land"
+      }
+    ]
+  },
+  {
+    "char": "宿",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "シュク"
+    ],
+    "kun": [
+      "やど"
+    ],
+    "meaning": "inn; lodging",
+    "compounds": [
+      {
+        "word": "宿題",
+        "kana": "しゅくだい",
+        "meaning": "homework"
+      },
+      {
+        "word": "宿泊",
+        "kana": "しゅくはく",
+        "meaning": "lodging"
+      },
+      {
+        "word": "民宿",
+        "kana": "みんしゅく",
+        "meaning": "guesthouse"
+      }
+    ]
+  },
+  {
+    "char": "婚",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "コン"
+    ],
+    "kun": [],
+    "meaning": "marriage",
+    "compounds": [
+      {
+        "word": "結婚",
+        "kana": "けっこん",
+        "meaning": "marriage"
+      },
+      {
+        "word": "婚約",
+        "kana": "こんやく",
+        "meaning": "engagement"
+      },
+      {
+        "word": "新婚",
+        "kana": "しんこん",
+        "meaning": "newly married"
+      }
+    ]
+  },
+  {
+    "char": "婦",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "フ"
+    ],
+    "kun": [],
+    "meaning": "woman; wife",
+    "compounds": [
+      {
+        "word": "夫婦",
+        "kana": "ふうふ",
+        "meaning": "married couple"
+      },
+      {
+        "word": "主婦",
+        "kana": "しゅふ",
+        "meaning": "housewife"
+      },
+      {
+        "word": "婦人",
+        "kana": "ふじん",
+        "meaning": "woman"
+      }
+    ]
+  },
+  {
+    "char": "夫",
+    "level": 3,
+    "strokes": 4,
+    "on": [
+      "フ",
+      "フウ"
+    ],
+    "kun": [
+      "おっと"
+    ],
+    "meaning": "husband",
+    "compounds": [
+      {
+        "word": "夫",
+        "kana": "おっと",
+        "meaning": "husband"
+      },
+      {
+        "word": "夫婦",
+        "kana": "ふうふ",
+        "meaning": "married couple"
+      },
+      {
+        "word": "夫妻",
+        "kana": "ふさい",
+        "meaning": "married couple"
+      }
+    ]
+  },
+  {
+    "char": "祖",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ソ"
+    ],
+    "kun": [],
+    "meaning": "ancestor",
+    "compounds": [
+      {
+        "word": "祖父",
+        "kana": "そふ",
+        "meaning": "grandfather"
+      },
+      {
+        "word": "祖母",
+        "kana": "そぼ",
+        "meaning": "grandmother"
+      },
+      {
+        "word": "祖先",
+        "kana": "そせん",
+        "meaning": "ancestors"
+      }
+    ]
+  },
+  {
+    "char": "息",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ソク"
+    ],
+    "kun": [
+      "いき"
+    ],
+    "meaning": "breath; son",
+    "compounds": [
+      {
+        "word": "息",
+        "kana": "いき",
+        "meaning": "breath"
+      },
+      {
+        "word": "息子",
+        "kana": "むすこ",
+        "meaning": "son"
+      },
+      {
+        "word": "休息",
+        "kana": "きゅうそく",
+        "meaning": "rest"
+      }
+    ]
+  },
+  {
+    "char": "育",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "イク"
+    ],
+    "kun": [
+      "そだ"
+    ],
+    "meaning": "raise; grow",
+    "compounds": [
+      {
+        "word": "教育",
+        "kana": "きょういく",
+        "meaning": "education"
+      },
+      {
+        "word": "育つ",
+        "kana": "そだつ",
+        "meaning": "to grow up"
+      },
+      {
+        "word": "体育",
+        "kana": "たいいく",
+        "meaning": "physical education"
+      }
+    ]
+  },
+  {
+    "char": "薬",
+    "level": 3,
+    "strokes": 16,
+    "on": [
+      "ヤク"
+    ],
+    "kun": [
+      "くすり"
+    ],
+    "meaning": "medicine",
+    "compounds": [
+      {
+        "word": "薬",
+        "kana": "くすり",
+        "meaning": "medicine"
+      },
+      {
+        "word": "薬局",
+        "kana": "やっきょく",
+        "meaning": "pharmacy"
+      },
+      {
+        "word": "薬品",
+        "kana": "やくひん",
+        "meaning": "chemicals"
+      }
+    ]
+  },
+  {
+    "char": "痛",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "ツウ"
+    ],
+    "kun": [
+      "いた"
+    ],
+    "meaning": "pain",
+    "compounds": [
+      {
+        "word": "痛い",
+        "kana": "いたい",
+        "meaning": "painful"
+      },
+      {
+        "word": "頭痛",
+        "kana": "ずつう",
+        "meaning": "headache"
+      },
+      {
+        "word": "痛み",
+        "kana": "いたみ",
+        "meaning": "pain"
+      }
+    ]
+  },
+  {
+    "char": "疲",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ヒ"
+    ],
+    "kun": [
+      "つか"
+    ],
+    "meaning": "tired",
+    "compounds": [
+      {
+        "word": "疲れる",
+        "kana": "つかれる",
+        "meaning": "to get tired"
+      },
+      {
+        "word": "疲労",
+        "kana": "ひろう",
+        "meaning": "fatigue"
+      },
+      {
+        "word": "疲れ",
+        "kana": "つかれ",
+        "meaning": "tiredness"
+      }
+    ]
+  },
+  {
+    "char": "眠",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ミン"
+    ],
+    "kun": [
+      "ねむ"
+    ],
+    "meaning": "sleep",
+    "compounds": [
+      {
+        "word": "眠い",
+        "kana": "ねむい",
+        "meaning": "sleepy"
+      },
+      {
+        "word": "睡眠",
+        "kana": "すいみん",
+        "meaning": "sleep"
+      },
+      {
+        "word": "眠る",
+        "kana": "ねむる",
+        "meaning": "to sleep"
+      }
+    ]
+  },
+  {
+    "char": "寝",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "シン"
+    ],
+    "kun": [
+      "ね"
+    ],
+    "meaning": "sleep; lie down",
+    "compounds": [
+      {
+        "word": "寝る",
+        "kana": "ねる",
+        "meaning": "to sleep"
+      },
+      {
+        "word": "寝室",
+        "kana": "しんしつ",
+        "meaning": "bedroom"
+      },
+      {
+        "word": "昼寝",
+        "kana": "ひるね",
+        "meaning": "nap"
+      }
+    ]
+  },
+  {
+    "char": "害",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ガイ"
+    ],
+    "kun": [],
+    "meaning": "harm",
+    "compounds": [
+      {
+        "word": "被害",
+        "kana": "ひがい",
+        "meaning": "damage"
+      },
+      {
+        "word": "害",
+        "kana": "がい",
+        "meaning": "harm"
+      },
+      {
+        "word": "害虫",
+        "kana": "がいちゅう",
+        "meaning": "pest"
+      }
+    ]
+  },
+  {
+    "char": "危",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "キ"
+    ],
+    "kun": [
+      "あぶ",
+      "あや"
+    ],
+    "meaning": "danger",
+    "compounds": [
+      {
+        "word": "危険",
+        "kana": "きけん",
+        "meaning": "danger"
+      },
+      {
+        "word": "危ない",
+        "kana": "あぶない",
+        "meaning": "dangerous"
+      },
+      {
+        "word": "危害",
+        "kana": "きがい",
+        "meaning": "harm"
+      }
+    ]
+  },
+  {
+    "char": "険",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ケン"
+    ],
+    "kun": [
+      "けわ"
+    ],
+    "meaning": "steep; danger",
+    "compounds": [
+      {
+        "word": "危険",
+        "kana": "きけん",
+        "meaning": "danger"
+      },
+      {
+        "word": "保険",
+        "kana": "ほけん",
+        "meaning": "insurance"
+      },
+      {
+        "word": "険しい",
+        "kana": "けわしい",
+        "meaning": "steep"
+      }
+    ]
+  },
+  {
+    "char": "守",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "シュ"
+    ],
+    "kun": [
+      "まも",
+      "もり"
+    ],
+    "meaning": "protect; guard",
+    "compounds": [
+      {
+        "word": "守る",
+        "kana": "まもる",
+        "meaning": "to protect"
+      },
+      {
+        "word": "留守",
+        "kana": "るす",
+        "meaning": "absence"
+      },
+      {
+        "word": "守衛",
+        "kana": "しゅえい",
+        "meaning": "guard"
+      }
+    ]
+  },
+  {
+    "char": "犯",
+    "level": 3,
+    "strokes": 5,
+    "on": [
+      "ハン"
+    ],
+    "kun": [
+      "おか"
+    ],
+    "meaning": "crime; offend",
+    "compounds": [
+      {
+        "word": "犯人",
+        "kana": "はんにん",
+        "meaning": "criminal"
+      },
+      {
+        "word": "犯罪",
+        "kana": "はんざい",
+        "meaning": "crime"
+      },
+      {
+        "word": "犯す",
+        "kana": "おかす",
+        "meaning": "to commit"
+      }
+    ]
+  },
+  {
+    "char": "罪",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "ザイ"
+    ],
+    "kun": [
+      "つみ"
+    ],
+    "meaning": "crime; sin",
+    "compounds": [
+      {
+        "word": "犯罪",
+        "kana": "はんざい",
+        "meaning": "crime"
+      },
+      {
+        "word": "罪",
+        "kana": "つみ",
+        "meaning": "sin"
+      },
+      {
+        "word": "無罪",
+        "kana": "むざい",
+        "meaning": "innocence"
+      }
+    ]
+  },
+  {
+    "char": "警",
+    "level": 3,
+    "strokes": 19,
+    "on": [
+      "ケイ"
+    ],
+    "kun": [],
+    "meaning": "warn; police",
+    "compounds": [
+      {
+        "word": "警察",
+        "kana": "けいさつ",
+        "meaning": "police"
+      },
+      {
+        "word": "警備",
+        "kana": "けいび",
+        "meaning": "security"
+      },
+      {
+        "word": "警告",
+        "kana": "けいこく",
+        "meaning": "warning"
+      }
+    ]
+  },
+  {
+    "char": "察",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "サツ"
+    ],
+    "kun": [],
+    "meaning": "observe; guess",
+    "compounds": [
+      {
+        "word": "警察",
+        "kana": "けいさつ",
+        "meaning": "police"
+      },
+      {
+        "word": "観察",
+        "kana": "かんさつ",
+        "meaning": "observation"
+      },
+      {
+        "word": "診察",
+        "kana": "しんさつ",
+        "meaning": "medical examination"
+      }
+    ]
+  },
+  {
+    "char": "盗",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "トウ"
+    ],
+    "kun": [
+      "ぬす"
+    ],
+    "meaning": "steal",
+    "compounds": [
+      {
+        "word": "盗む",
+        "kana": "ぬすむ",
+        "meaning": "to steal"
+      },
+      {
+        "word": "盗難",
+        "kana": "とうなん",
+        "meaning": "theft"
+      },
+      {
+        "word": "強盗",
+        "kana": "ごうとう",
+        "meaning": "robbery"
+      }
+    ]
+  },
+  {
+    "char": "殺",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "サツ"
+    ],
+    "kun": [
+      "ころ"
+    ],
+    "meaning": "kill",
+    "compounds": [
+      {
+        "word": "殺す",
+        "kana": "ころす",
+        "meaning": "to kill"
+      },
+      {
+        "word": "殺人",
+        "kana": "さつじん",
+        "meaning": "murder"
+      },
+      {
+        "word": "暗殺",
+        "kana": "あんさつ",
+        "meaning": "assassination"
+      }
+    ]
+  },
+  {
+    "char": "争",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "ソウ"
+    ],
+    "kun": [
+      "あらそ"
+    ],
+    "meaning": "contend; fight",
+    "compounds": [
+      {
+        "word": "争う",
+        "kana": "あらそう",
+        "meaning": "to compete"
+      },
+      {
+        "word": "戦争",
+        "kana": "せんそう",
+        "meaning": "war"
+      },
+      {
+        "word": "競争",
+        "kana": "きょうそう",
+        "meaning": "competition"
+      }
+    ]
+  },
+  {
+    "char": "勝",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "ショウ"
+    ],
+    "kun": [
+      "か",
+      "まさ"
+    ],
+    "meaning": "win",
+    "compounds": [
+      {
+        "word": "勝つ",
+        "kana": "かつ",
+        "meaning": "to win"
+      },
+      {
+        "word": "勝利",
+        "kana": "しょうり",
+        "meaning": "victory"
+      },
+      {
+        "word": "優勝",
+        "kana": "ゆうしょう",
+        "meaning": "championship"
+      }
+    ]
+  },
+  {
+    "char": "負",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "フ"
+    ],
+    "kun": [
+      "ま",
+      "お"
+    ],
+    "meaning": "lose; bear",
+    "compounds": [
+      {
+        "word": "負ける",
+        "kana": "まける",
+        "meaning": "to lose"
+      },
+      {
+        "word": "負担",
+        "kana": "ふたん",
+        "meaning": "burden"
+      },
+      {
+        "word": "勝負",
+        "kana": "しょうぶ",
+        "meaning": "match"
+      }
+    ]
+  },
+  {
+    "char": "敗",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ハイ"
+    ],
+    "kun": [
+      "やぶ"
+    ],
+    "meaning": "defeat; fail",
+    "compounds": [
+      {
+        "word": "失敗",
+        "kana": "しっぱい",
+        "meaning": "failure"
+      },
+      {
+        "word": "敗れる",
+        "kana": "やぶれる",
+        "meaning": "to be defeated"
+      },
+      {
+        "word": "勝敗",
+        "kana": "しょうはい",
+        "meaning": "win or loss"
+      }
+    ]
+  },
+  {
+    "char": "退",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "タイ"
+    ],
+    "kun": [
+      "しりぞ"
+    ],
+    "meaning": "retreat; leave",
+    "compounds": [
+      {
+        "word": "退院",
+        "kana": "たいいん",
+        "meaning": "leaving hospital"
+      },
+      {
+        "word": "退職",
+        "kana": "たいしょく",
+        "meaning": "retirement"
+      },
+      {
+        "word": "引退",
+        "kana": "いんたい",
+        "meaning": "retirement"
+      }
+    ]
+  },
+  {
+    "char": "進",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "シン"
+    ],
+    "kun": [
+      "すす"
+    ],
+    "meaning": "advance",
+    "compounds": [
+      {
+        "word": "進む",
+        "kana": "すすむ",
+        "meaning": "to advance"
+      },
+      {
+        "word": "進歩",
+        "kana": "しんぽ",
+        "meaning": "progress"
+      },
+      {
+        "word": "推進",
+        "kana": "すいしん",
+        "meaning": "promotion"
+      }
+    ]
+  },
+  {
+    "char": "達",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "タツ"
+    ],
+    "kun": [
+      "たち"
+    ],
+    "meaning": "reach; attain",
+    "compounds": [
+      {
+        "word": "友達",
+        "kana": "ともだち",
+        "meaning": "friend"
+      },
+      {
+        "word": "達成",
+        "kana": "たっせい",
+        "meaning": "achievement"
+      },
+      {
+        "word": "配達",
+        "kana": "はいたつ",
+        "meaning": "delivery"
+      }
+    ]
+  },
+  {
+    "char": "過",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "カ"
+    ],
+    "kun": [
+      "す",
+      "あやま"
+    ],
+    "meaning": "pass; excess",
+    "compounds": [
+      {
+        "word": "過ぎる",
+        "kana": "すぎる",
+        "meaning": "to pass"
+      },
+      {
+        "word": "過去",
+        "kana": "かこ",
+        "meaning": "past"
+      },
+      {
+        "word": "通過",
+        "kana": "つうか",
+        "meaning": "passing through"
+      }
+    ]
+  },
+  {
+    "char": "遅",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "チ"
+    ],
+    "kun": [
+      "おそ",
+      "おく"
+    ],
+    "meaning": "slow; late",
+    "compounds": [
+      {
+        "word": "遅い",
+        "kana": "おそい",
+        "meaning": "slow"
+      },
+      {
+        "word": "遅刻",
+        "kana": "ちこく",
+        "meaning": "tardiness"
+      },
+      {
+        "word": "遅れる",
+        "kana": "おくれる",
+        "meaning": "to be late"
+      }
+    ]
+  },
+  {
+    "char": "速",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ソク"
+    ],
+    "kun": [
+      "はや"
+    ],
+    "meaning": "fast",
+    "compounds": [
+      {
+        "word": "速い",
+        "kana": "はやい",
+        "meaning": "fast"
+      },
+      {
+        "word": "速度",
+        "kana": "そくど",
+        "meaning": "speed"
+      },
+      {
+        "word": "高速",
+        "kana": "こうそく",
+        "meaning": "high speed"
+      }
+    ]
+  },
+  {
+    "char": "遠",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "エン"
+    ],
+    "kun": [
+      "とお"
+    ],
+    "meaning": "far",
+    "compounds": [
+      {
+        "word": "遠い",
+        "kana": "とおい",
+        "meaning": "far"
+      },
+      {
+        "word": "遠足",
+        "kana": "えんそく",
+        "meaning": "excursion"
+      },
+      {
+        "word": "永遠",
+        "kana": "えいえん",
+        "meaning": "eternity"
+      }
+    ]
+  },
+  {
+    "char": "戻",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "レイ"
+    ],
+    "kun": [
+      "もど"
+    ],
+    "meaning": "return; go back",
+    "compounds": [
+      {
+        "word": "戻る",
+        "kana": "もどる",
+        "meaning": "to return"
+      },
+      {
+        "word": "戻す",
+        "kana": "もどす",
+        "meaning": "to put back"
+      },
+      {
+        "word": "払い戻し",
+        "kana": "はらいもどし",
+        "meaning": "refund"
+      }
+    ]
+  },
+  {
+    "char": "返",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "ヘン"
+    ],
+    "kun": [
+      "かえ"
+    ],
+    "meaning": "return",
+    "compounds": [
+      {
+        "word": "返す",
+        "kana": "かえす",
+        "meaning": "to return"
+      },
+      {
+        "word": "返事",
+        "kana": "へんじ",
+        "meaning": "reply"
+      },
+      {
+        "word": "返却",
+        "kana": "へんきゃく",
+        "meaning": "return"
+      }
+    ]
+  },
+  {
+    "char": "到",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "トウ"
+    ],
+    "kun": [],
+    "meaning": "arrive",
+    "compounds": [
+      {
+        "word": "到着",
+        "kana": "とうちゃく",
+        "meaning": "arrival"
+      },
+      {
+        "word": "到達",
+        "kana": "とうたつ",
+        "meaning": "reaching"
+      },
+      {
+        "word": "到来",
+        "kana": "とうらい",
+        "meaning": "advent"
+      }
+    ]
+  },
+  {
+    "char": "渡",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "ト"
+    ],
+    "kun": [
+      "わた"
+    ],
+    "meaning": "cross; hand over",
+    "compounds": [
+      {
+        "word": "渡る",
+        "kana": "わたる",
+        "meaning": "to cross"
+      },
+      {
+        "word": "渡す",
+        "kana": "わたす",
+        "meaning": "to hand over"
+      },
+      {
+        "word": "渡航",
+        "kana": "とこう",
+        "meaning": "overseas travel"
+      }
+    ]
+  },
+  {
+    "char": "路",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "ロ"
+    ],
+    "kun": [
+      "じ"
+    ],
+    "meaning": "road; path",
+    "compounds": [
+      {
+        "word": "道路",
+        "kana": "どうろ",
+        "meaning": "road"
+      },
+      {
+        "word": "路上",
+        "kana": "ろじょう",
+        "meaning": "on the road"
+      },
+      {
+        "word": "路線",
+        "kana": "ろせん",
+        "meaning": "route"
+      }
+    ]
+  },
+  {
+    "char": "乗",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ジョウ"
+    ],
+    "kun": [
+      "の"
+    ],
+    "meaning": "ride; board",
+    "compounds": [
+      {
+        "word": "乗る",
+        "kana": "のる",
+        "meaning": "to ride"
+      },
+      {
+        "word": "乗客",
+        "kana": "じょうきゃく",
+        "meaning": "passenger"
+      },
+      {
+        "word": "乗り換え",
+        "kana": "のりかえ",
+        "meaning": "transfer"
+      }
+    ]
+  },
+  {
+    "char": "降",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "コウ"
+    ],
+    "kun": [
+      "お",
+      "ふ"
+    ],
+    "meaning": "descend; get off",
+    "compounds": [
+      {
+        "word": "降りる",
+        "kana": "おりる",
+        "meaning": "to get off"
+      },
+      {
+        "word": "降る",
+        "kana": "ふる",
+        "meaning": "to fall"
+      },
+      {
+        "word": "降水",
+        "kana": "こうすい",
+        "meaning": "precipitation"
+      }
+    ]
+  },
+  {
+    "char": "飛",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ヒ"
+    ],
+    "kun": [
+      "と"
+    ],
+    "meaning": "fly",
+    "compounds": [
+      {
+        "word": "飛ぶ",
+        "kana": "とぶ",
+        "meaning": "to fly"
+      },
+      {
+        "word": "飛行機",
+        "kana": "ひこうき",
+        "meaning": "airplane"
+      },
+      {
+        "word": "飛び出す",
+        "kana": "とびだす",
+        "meaning": "to jump out"
+      }
+    ]
+  },
+  {
+    "char": "港",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "コウ"
+    ],
+    "kun": [
+      "みなと"
+    ],
+    "meaning": "harbor; port",
+    "compounds": [
+      {
+        "word": "港",
+        "kana": "みなと",
+        "meaning": "harbor"
+      },
+      {
+        "word": "空港",
+        "kana": "くうこう",
+        "meaning": "airport"
+      },
+      {
+        "word": "香港",
+        "kana": "ほんこん",
+        "meaning": "Hong Kong"
+      }
+    ]
+  },
+  {
+    "char": "船",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "セン"
+    ],
+    "kun": [
+      "ふね",
+      "ふな"
+    ],
+    "meaning": "ship; boat",
+    "compounds": [
+      {
+        "word": "船",
+        "kana": "ふね",
+        "meaning": "ship"
+      },
+      {
+        "word": "船員",
+        "kana": "せんいん",
+        "meaning": "crew member"
+      },
+      {
+        "word": "漁船",
+        "kana": "ぎょせん",
+        "meaning": "fishing boat"
+      }
+    ]
+  },
+  {
+    "char": "馬",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "バ"
+    ],
+    "kun": [
+      "うま"
+    ],
+    "meaning": "horse",
+    "compounds": [
+      {
+        "word": "馬",
+        "kana": "うま",
+        "meaning": "horse"
+      },
+      {
+        "word": "競馬",
+        "kana": "けいば",
+        "meaning": "horse racing"
+      },
+      {
+        "word": "馬車",
+        "kana": "ばしゃ",
+        "meaning": "carriage"
+      }
+    ]
+  },
+  {
+    "char": "猫",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ビョウ"
+    ],
+    "kun": [
+      "ねこ"
+    ],
+    "meaning": "cat",
+    "compounds": [
+      {
+        "word": "猫",
+        "kana": "ねこ",
+        "meaning": "cat"
+      },
+      {
+        "word": "子猫",
+        "kana": "こねこ",
+        "meaning": "kitten"
+      },
+      {
+        "word": "野良猫",
+        "kana": "のらねこ",
+        "meaning": "stray cat"
+      }
+    ]
+  },
+  {
+    "char": "歯",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "シ"
+    ],
+    "kun": [
+      "は"
+    ],
+    "meaning": "tooth",
+    "compounds": [
+      {
+        "word": "歯",
+        "kana": "は",
+        "meaning": "tooth"
+      },
+      {
+        "word": "歯医者",
+        "kana": "はいしゃ",
+        "meaning": "dentist"
+      },
+      {
+        "word": "歯磨き",
+        "kana": "はみがき",
+        "meaning": "toothbrushing"
+      }
+    ]
+  },
+  {
+    "char": "酒",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "シュ"
+    ],
+    "kun": [
+      "さけ",
+      "さか"
+    ],
+    "meaning": "sake; alcohol",
+    "compounds": [
+      {
+        "word": "酒",
+        "kana": "さけ",
+        "meaning": "alcohol"
+      },
+      {
+        "word": "日本酒",
+        "kana": "にほんしゅ",
+        "meaning": "sake"
+      },
+      {
+        "word": "飲酒",
+        "kana": "いんしゅ",
+        "meaning": "drinking alcohol"
+      }
+    ]
+  },
+  {
+    "char": "窓",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ソウ"
+    ],
+    "kun": [
+      "まど"
+    ],
+    "meaning": "window",
+    "compounds": [
+      {
+        "word": "窓",
+        "kana": "まど",
+        "meaning": "window"
+      },
+      {
+        "word": "窓口",
+        "kana": "まどぐち",
+        "meaning": "counter"
+      },
+      {
+        "word": "車窓",
+        "kana": "しゃそう",
+        "meaning": "train window"
+      }
+    ]
+  },
+  {
+    "char": "閉",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ヘイ"
+    ],
+    "kun": [
+      "し",
+      "と"
+    ],
+    "meaning": "close; shut",
+    "compounds": [
+      {
+        "word": "閉める",
+        "kana": "しめる",
+        "meaning": "to close"
+      },
+      {
+        "word": "閉じる",
+        "kana": "とじる",
+        "meaning": "to shut"
+      },
+      {
+        "word": "閉店",
+        "kana": "へいてん",
+        "meaning": "closing of a shop"
+      }
+    ]
+  },
+  {
+    "char": "箱",
+    "level": 3,
+    "strokes": 15,
+    "on": [
+      "ソウ"
+    ],
+    "kun": [
+      "はこ"
+    ],
+    "meaning": "box",
+    "compounds": [
+      {
+        "word": "箱",
+        "kana": "はこ",
+        "meaning": "box"
+      },
+      {
+        "word": "空き箱",
+        "kana": "あきばこ",
+        "meaning": "empty box"
+      },
+      {
+        "word": "箱詰め",
+        "kana": "はこづめ",
+        "meaning": "packed in a box"
+      }
+    ]
+  },
+  {
+    "char": "払",
+    "level": 3,
+    "strokes": 5,
+    "on": [
+      "フツ"
+    ],
+    "kun": [
+      "はら"
+    ],
+    "meaning": "pay",
+    "compounds": [
+      {
+        "word": "払う",
+        "kana": "はらう",
+        "meaning": "to pay"
+      },
+      {
+        "word": "支払い",
+        "kana": "しはらい",
+        "meaning": "payment"
+      },
+      {
+        "word": "払い戻し",
+        "kana": "はらいもどし",
+        "meaning": "refund"
+      }
+    ]
+  },
+  {
+    "char": "支",
+    "level": 3,
+    "strokes": 4,
+    "on": [
+      "シ"
+    ],
+    "kun": [
+      "ささ"
+    ],
+    "meaning": "support; branch",
+    "compounds": [
+      {
+        "word": "支払い",
+        "kana": "しはらい",
+        "meaning": "payment"
+      },
+      {
+        "word": "支持",
+        "kana": "しじ",
+        "meaning": "support"
+      },
+      {
+        "word": "支柱",
+        "kana": "しちゅう",
+        "meaning": "prop"
+      }
+    ]
+  },
+  {
+    "char": "収",
+    "level": 3,
+    "strokes": 4,
+    "on": [
+      "シュウ"
+    ],
+    "kun": [
+      "おさ"
+    ],
+    "meaning": "income; obtain",
+    "compounds": [
+      {
+        "word": "収入",
+        "kana": "しゅうにゅう",
+        "meaning": "income"
+      },
+      {
+        "word": "回収",
+        "kana": "かいしゅう",
+        "meaning": "collection"
+      },
+      {
+        "word": "収める",
+        "kana": "おさめる",
+        "meaning": "to store"
+      }
+    ]
+  },
+  {
+    "char": "給",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "キュウ"
+    ],
+    "kun": [],
+    "meaning": "salary; supply",
+    "compounds": [
+      {
+        "word": "給料",
+        "kana": "きゅうりょう",
+        "meaning": "salary"
+      },
+      {
+        "word": "給食",
+        "kana": "きゅうしょく",
+        "meaning": "school lunch"
+      },
+      {
+        "word": "支給",
+        "kana": "しきゅう",
+        "meaning": "payment"
+      }
+    ]
+  },
+  {
+    "char": "商",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ショウ"
+    ],
+    "kun": [
+      "あきな"
+    ],
+    "meaning": "commerce",
+    "compounds": [
+      {
+        "word": "商品",
+        "kana": "しょうひん",
+        "meaning": "goods"
+      },
+      {
+        "word": "商店",
+        "kana": "しょうてん",
+        "meaning": "shop"
+      },
+      {
+        "word": "商売",
+        "kana": "しょうばい",
+        "meaning": "business"
+      }
+    ]
+  },
+  {
+    "char": "係",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ケイ"
+    ],
+    "kun": [
+      "かかり",
+      "かか"
+    ],
+    "meaning": "person in charge; connection",
+    "compounds": [
+      {
+        "word": "関係",
+        "kana": "かんけい",
+        "meaning": "relationship"
+      },
+      {
+        "word": "係員",
+        "kana": "かかりいん",
+        "meaning": "staff member"
+      },
+      {
+        "word": "係長",
+        "kana": "かかりちょう",
+        "meaning": "section chief"
+      }
+    ]
+  },
+  {
+    "char": "役",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "ヤク",
+      "エキ"
+    ],
+    "kun": [],
+    "meaning": "role; duty",
+    "compounds": [
+      {
+        "word": "役",
+        "kana": "やく",
+        "meaning": "role"
+      },
+      {
+        "word": "役割",
+        "kana": "やくわり",
+        "meaning": "role"
+      },
+      {
+        "word": "主役",
+        "kana": "しゅやく",
+        "meaning": "leading role"
+      }
+    ]
+  },
+  {
+    "char": "割",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "カツ"
+    ],
+    "kun": [
+      "わ",
+      "さ"
+    ],
+    "meaning": "divide; proportion",
+    "compounds": [
+      {
+        "word": "割る",
+        "kana": "わる",
+        "meaning": "to divide"
+      },
+      {
+        "word": "割合",
+        "kana": "わりあい",
+        "meaning": "ratio"
+      },
+      {
+        "word": "役割",
+        "kana": "やくわり",
+        "meaning": "role"
+      }
+    ]
+  },
+  {
+    "char": "合",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "ゴウ",
+      "ガッ"
+    ],
+    "kun": [
+      "あ",
+      "あい"
+    ],
+    "meaning": "fit; combine",
+    "compounds": [
+      {
+        "word": "合う",
+        "kana": "あう",
+        "meaning": "to fit"
+      },
+      {
+        "word": "試合",
+        "kana": "しあい",
+        "meaning": "match"
+      },
+      {
+        "word": "合計",
+        "kana": "ごうけい",
+        "meaning": "total"
+      }
+    ]
+  },
+  {
+    "char": "式",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "シキ"
+    ],
+    "kun": [],
+    "meaning": "ceremony; style",
+    "compounds": [
+      {
+        "word": "式",
+        "kana": "しき",
+        "meaning": "ceremony"
+      },
+      {
+        "word": "入学式",
+        "kana": "にゅうがくしき",
+        "meaning": "entrance ceremony"
+      },
+      {
+        "word": "方式",
+        "kana": "ほうしき",
+        "meaning": "method"
+      }
+    ]
+  },
+  {
+    "char": "礼",
+    "level": 3,
+    "strokes": 5,
+    "on": [
+      "レイ"
+    ],
+    "kun": [],
+    "meaning": "courtesy; bow",
+    "compounds": [
+      {
+        "word": "礼",
+        "kana": "れい",
+        "meaning": "courtesy"
+      },
+      {
+        "word": "礼儀",
+        "kana": "れいぎ",
+        "meaning": "etiquette"
+      },
+      {
+        "word": "敬礼",
+        "kana": "けいれい",
+        "meaning": "salute"
+      }
+    ]
+  },
+  {
+    "char": "失",
+    "level": 3,
+    "strokes": 5,
+    "on": [
+      "シツ"
+    ],
+    "kun": [
+      "うしな"
+    ],
+    "meaning": "lose",
+    "compounds": [
+      {
+        "word": "失う",
+        "kana": "うしなう",
+        "meaning": "to lose"
+      },
+      {
+        "word": "失敗",
+        "kana": "しっぱい",
+        "meaning": "failure"
+      },
+      {
+        "word": "失礼",
+        "kana": "しつれい",
+        "meaning": "rudeness"
+      }
+    ]
+  },
+  {
+    "char": "忘",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "ボウ"
+    ],
+    "kun": [
+      "わす"
+    ],
+    "meaning": "forget",
+    "compounds": [
+      {
+        "word": "忘れる",
+        "kana": "わすれる",
+        "meaning": "to forget"
+      },
+      {
+        "word": "忘年会",
+        "kana": "ぼうねんかい",
+        "meaning": "year-end party"
+      },
+      {
+        "word": "忘れ物",
+        "kana": "わすれもの",
+        "meaning": "forgotten item"
+      }
+    ]
+  },
+  {
+    "char": "覚",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "カク"
+    ],
+    "kun": [
+      "おぼ",
+      "さ"
+    ],
+    "meaning": "remember; awake",
+    "compounds": [
+      {
+        "word": "覚える",
+        "kana": "おぼえる",
+        "meaning": "to memorize"
+      },
+      {
+        "word": "目覚まし",
+        "kana": "めざまし",
+        "meaning": "alarm clock"
+      },
+      {
+        "word": "自覚",
+        "kana": "じかく",
+        "meaning": "self-awareness"
+      }
+    ]
+  },
+  {
+    "char": "説",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "セツ",
+      "ゼイ"
+    ],
+    "kun": [
+      "と"
+    ],
+    "meaning": "explain; theory",
+    "compounds": [
+      {
+        "word": "説明",
+        "kana": "せつめい",
+        "meaning": "explanation"
+      },
+      {
+        "word": "小説",
+        "kana": "しょうせつ",
+        "meaning": "novel"
+      },
+      {
+        "word": "演説",
+        "kana": "えんぜつ",
+        "meaning": "speech"
+      }
+    ]
+  },
+  {
+    "char": "辞",
+    "level": 3,
+    "strokes": 13,
+    "on": [
+      "ジ"
+    ],
+    "kun": [
+      "や"
+    ],
+    "meaning": "resign; word",
+    "compounds": [
+      {
+        "word": "辞める",
+        "kana": "やめる",
+        "meaning": "to quit"
+      },
+      {
+        "word": "辞書",
+        "kana": "じしょ",
+        "meaning": "dictionary"
+      },
+      {
+        "word": "辞職",
+        "kana": "じしょく",
+        "meaning": "resignation"
+      }
+    ]
+  },
+  {
+    "char": "談",
+    "level": 3,
+    "strokes": 15,
+    "on": [
+      "ダン"
+    ],
+    "kun": [],
+    "meaning": "talk; discuss",
+    "compounds": [
+      {
+        "word": "相談",
+        "kana": "そうだん",
+        "meaning": "consultation"
+      },
+      {
+        "word": "談話",
+        "kana": "だんわ",
+        "meaning": "conversation"
+      },
+      {
+        "word": "冗談",
+        "kana": "じょうだん",
+        "meaning": "joke"
+      }
+    ]
+  },
+  {
+    "char": "論",
+    "level": 3,
+    "strokes": 15,
+    "on": [
+      "ロン"
+    ],
+    "kun": [],
+    "meaning": "argue; theory",
+    "compounds": [
+      {
+        "word": "議論",
+        "kana": "ぎろん",
+        "meaning": "debate"
+      },
+      {
+        "word": "結論",
+        "kana": "けつろん",
+        "meaning": "conclusion"
+      },
+      {
+        "word": "論文",
+        "kana": "ろんぶん",
+        "meaning": "thesis"
+      }
+    ]
+  },
+  {
+    "char": "訪",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ホウ"
+    ],
+    "kun": [
+      "おとず",
+      "たず"
+    ],
+    "meaning": "visit",
+    "compounds": [
+      {
+        "word": "訪れる",
+        "kana": "おとずれる",
+        "meaning": "to visit"
+      },
+      {
+        "word": "訪問",
+        "kana": "ほうもん",
+        "meaning": "visit"
+      },
+      {
+        "word": "来訪",
+        "kana": "らいほう",
+        "meaning": "visit"
+      }
+    ]
+  },
+  {
+    "char": "呼",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "コ"
+    ],
+    "kun": [
+      "よ"
+    ],
+    "meaning": "call",
+    "compounds": [
+      {
+        "word": "呼ぶ",
+        "kana": "よぶ",
+        "meaning": "to call"
+      },
+      {
+        "word": "呼び出し",
+        "kana": "よびだし",
+        "meaning": "summons"
+      },
+      {
+        "word": "呼吸",
+        "kana": "こきゅう",
+        "meaning": "breathing"
+      }
+    ]
+  },
+  {
+    "char": "吸",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "キュウ"
+    ],
+    "kun": [
+      "す"
+    ],
+    "meaning": "inhale; absorb",
+    "compounds": [
+      {
+        "word": "吸う",
+        "kana": "すう",
+        "meaning": "to inhale"
+      },
+      {
+        "word": "呼吸",
+        "kana": "こきゅう",
+        "meaning": "breathing"
+      },
+      {
+        "word": "吸収",
+        "kana": "きゅうしゅう",
+        "meaning": "absorption"
+      }
+    ]
+  },
+  {
+    "char": "吹",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "スイ"
+    ],
+    "kun": [
+      "ふ"
+    ],
+    "meaning": "blow",
+    "compounds": [
+      {
+        "word": "吹く",
+        "kana": "ふく",
+        "meaning": "to blow"
+      },
+      {
+        "word": "吹雪",
+        "kana": "ふぶき",
+        "meaning": "snowstorm"
+      },
+      {
+        "word": "吹奏楽",
+        "kana": "すいそうがく",
+        "meaning": "wind music"
+      }
+    ]
+  },
+  {
+    "char": "告",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "コク"
+    ],
+    "kun": [
+      "つ"
+    ],
+    "meaning": "tell; announce",
+    "compounds": [
+      {
+        "word": "告げる",
+        "kana": "つげる",
+        "meaning": "to tell"
+      },
+      {
+        "word": "報告",
+        "kana": "ほうこく",
+        "meaning": "report"
+      },
+      {
+        "word": "広告",
+        "kana": "こうこく",
+        "meaning": "advertisement"
+      }
+    ]
+  },
+  {
+    "char": "伝",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "デン"
+    ],
+    "kun": [
+      "つた",
+      "つて"
+    ],
+    "meaning": "transmit; convey",
+    "compounds": [
+      {
+        "word": "伝える",
+        "kana": "つたえる",
+        "meaning": "to convey"
+      },
+      {
+        "word": "伝統",
+        "kana": "でんとう",
+        "meaning": "tradition"
+      },
+      {
+        "word": "手伝う",
+        "kana": "てつだう",
+        "meaning": "to help"
+      }
+    ]
+  },
+  {
+    "char": "演",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "エン"
+    ],
+    "kun": [],
+    "meaning": "perform",
+    "compounds": [
+      {
+        "word": "演説",
+        "kana": "えんぜつ",
+        "meaning": "speech"
+      },
+      {
+        "word": "演技",
+        "kana": "えんぎ",
+        "meaning": "acting"
+      },
+      {
+        "word": "上演",
+        "kana": "じょうえん",
+        "meaning": "performance"
+      }
+    ]
+  },
+  {
+    "char": "舞",
+    "level": 3,
+    "strokes": 15,
+    "on": [
+      "ブ"
+    ],
+    "kun": [
+      "ま",
+      "まい"
+    ],
+    "meaning": "dance",
+    "compounds": [
+      {
+        "word": "舞う",
+        "kana": "まう",
+        "meaning": "to dance"
+      },
+      {
+        "word": "舞台",
+        "kana": "ぶたい",
+        "meaning": "stage"
+      },
+      {
+        "word": "歌舞伎",
+        "kana": "かぶき",
+        "meaning": "Kabuki"
+      }
+    ]
+  },
+  {
+    "char": "絵",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "カイ",
+      "エ"
+    ],
+    "kun": [],
+    "meaning": "picture",
+    "compounds": [
+      {
+        "word": "絵",
+        "kana": "え",
+        "meaning": "picture"
+      },
+      {
+        "word": "絵本",
+        "kana": "えほん",
+        "meaning": "picture book"
+      },
+      {
+        "word": "絵画",
+        "kana": "かいが",
+        "meaning": "painting"
+      }
+    ]
+  },
+  {
+    "char": "願",
+    "level": 3,
+    "strokes": 19,
+    "on": [
+      "ガン"
+    ],
+    "kun": [
+      "ねが"
+    ],
+    "meaning": "wish; request",
+    "compounds": [
+      {
+        "word": "願う",
+        "kana": "ねがう",
+        "meaning": "to wish"
+      },
+      {
+        "word": "願い",
+        "kana": "ねがい",
+        "meaning": "wish"
+      },
+      {
+        "word": "願書",
+        "kana": "がんしょ",
+        "meaning": "application form"
+      }
+    ]
+  },
+  {
+    "char": "喜",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "キ"
+    ],
+    "kun": [
+      "よろこ"
+    ],
+    "meaning": "rejoice",
+    "compounds": [
+      {
+        "word": "喜ぶ",
+        "kana": "よろこぶ",
+        "meaning": "to be glad"
+      },
+      {
+        "word": "喜び",
+        "kana": "よろこび",
+        "meaning": "joy"
+      },
+      {
+        "word": "大喜び",
+        "kana": "おおよろこび",
+        "meaning": "great joy"
+      }
+    ]
+  },
+  {
+    "char": "好",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "コウ"
+    ],
+    "kun": [
+      "す",
+      "この"
+    ],
+    "meaning": "like; good",
+    "compounds": [
+      {
+        "word": "好き",
+        "kana": "すき",
+        "meaning": "liked"
+      },
+      {
+        "word": "好意",
+        "kana": "こうい",
+        "meaning": "goodwill"
+      },
+      {
+        "word": "好物",
+        "kana": "こうぶつ",
+        "meaning": "favorite food"
+      }
+    ]
+  },
+  {
+    "char": "笑",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ショウ"
+    ],
+    "kun": [
+      "わら",
+      "え"
+    ],
+    "meaning": "laugh; smile",
+    "compounds": [
+      {
+        "word": "笑う",
+        "kana": "わらう",
+        "meaning": "to laugh"
+      },
+      {
+        "word": "笑顔",
+        "kana": "えがお",
+        "meaning": "smile"
+      },
+      {
+        "word": "大笑い",
+        "kana": "おおわらい",
+        "meaning": "loud laughter"
+      }
+    ]
+  },
+  {
+    "char": "怒",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "ド"
+    ],
+    "kun": [
+      "おこ",
+      "いか"
+    ],
+    "meaning": "anger",
+    "compounds": [
+      {
+        "word": "怒る",
+        "kana": "おこる",
+        "meaning": "to get angry"
+      },
+      {
+        "word": "怒り",
+        "kana": "いかり",
+        "meaning": "anger"
+      },
+      {
+        "word": "激怒",
+        "kana": "げきど",
+        "meaning": "rage"
+      }
+    ]
+  },
+  {
+    "char": "怖",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "フ"
+    ],
+    "kun": [
+      "こわ"
+    ],
+    "meaning": "fear; scary",
+    "compounds": [
+      {
+        "word": "怖い",
+        "kana": "こわい",
+        "meaning": "scary"
+      },
+      {
+        "word": "怖がる",
+        "kana": "こわがる",
+        "meaning": "to be afraid"
+      },
+      {
+        "word": "恐怖",
+        "kana": "きょうふ",
+        "meaning": "fear"
+      }
+    ]
+  },
+  {
+    "char": "恐",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "キョウ"
+    ],
+    "kun": [
+      "おそ"
+    ],
+    "meaning": "fear; dread",
+    "compounds": [
+      {
+        "word": "恐ろしい",
+        "kana": "おそろしい",
+        "meaning": "terrible"
+      },
+      {
+        "word": "恐れ",
+        "kana": "おそれ",
+        "meaning": "fear"
+      },
+      {
+        "word": "恐縮",
+        "kana": "きょうしゅく",
+        "meaning": "being obliged"
+      }
+    ]
+  },
+  {
+    "char": "恥",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "チ"
+    ],
+    "kun": [
+      "はじ",
+      "はず"
+    ],
+    "meaning": "shame",
+    "compounds": [
+      {
+        "word": "恥ずかしい",
+        "kana": "はずかしい",
+        "meaning": "embarrassing"
+      },
+      {
+        "word": "恥",
+        "kana": "はじ",
+        "meaning": "shame"
+      },
+      {
+        "word": "恥知らず",
+        "kana": "はじしらず",
+        "meaning": "shameless"
+      }
+    ]
+  },
+  {
+    "char": "悲",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "ヒ"
+    ],
+    "kun": [
+      "かな"
+    ],
+    "meaning": "sad",
+    "compounds": [
+      {
+        "word": "悲しい",
+        "kana": "かなしい",
+        "meaning": "sad"
+      },
+      {
+        "word": "悲しみ",
+        "kana": "かなしみ",
+        "meaning": "sorrow"
+      },
+      {
+        "word": "悲劇",
+        "kana": "ひげき",
+        "meaning": "tragedy"
+      }
+    ]
+  },
+  {
+    "char": "苦",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "ク"
+    ],
+    "kun": [
+      "くる",
+      "にが"
+    ],
+    "meaning": "bitter; suffer",
+    "compounds": [
+      {
+        "word": "苦い",
+        "kana": "にがい",
+        "meaning": "bitter"
+      },
+      {
+        "word": "苦しい",
+        "kana": "くるしい",
+        "meaning": "painful"
+      },
+      {
+        "word": "苦手",
+        "kana": "にがて",
+        "meaning": "poor at"
+      }
+    ]
+  },
+  {
+    "char": "静",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "セイ",
+      "ジョウ"
+    ],
+    "kun": [
+      "しず"
+    ],
+    "meaning": "quiet",
+    "compounds": [
+      {
+        "word": "静か",
+        "kana": "しずか",
+        "meaning": "quiet"
+      },
+      {
+        "word": "静粛",
+        "kana": "せいしゅく",
+        "meaning": "silence"
+      },
+      {
+        "word": "静止",
+        "kana": "せいし",
+        "meaning": "standing still"
+      }
+    ]
+  },
+  {
+    "char": "雑",
+    "level": 3,
+    "strokes": 14,
+    "on": [
+      "ザツ",
+      "ゾウ"
+    ],
+    "kun": [],
+    "meaning": "miscellaneous; rough",
+    "compounds": [
+      {
+        "word": "雑誌",
+        "kana": "ざっし",
+        "meaning": "magazine"
+      },
+      {
+        "word": "複雑",
+        "kana": "ふくざつ",
+        "meaning": "complicated"
+      },
+      {
+        "word": "雑用",
+        "kana": "ざつよう",
+        "meaning": "odd jobs"
+      }
+    ]
+  },
+  {
+    "char": "単",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "タン"
+    ],
+    "kun": [],
+    "meaning": "simple; single",
+    "compounds": [
+      {
+        "word": "単語",
+        "kana": "たんご",
+        "meaning": "word"
+      },
+      {
+        "word": "簡単",
+        "kana": "かんたん",
+        "meaning": "easy"
+      },
+      {
+        "word": "単純",
+        "kana": "たんじゅん",
+        "meaning": "simple"
+      }
+    ]
+  },
+  {
+    "char": "常",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "ジョウ"
+    ],
+    "kun": [
+      "つね"
+    ],
+    "meaning": "usual; always",
+    "compounds": [
+      {
+        "word": "日常",
+        "kana": "にちじょう",
+        "meaning": "daily"
+      },
+      {
+        "word": "常識",
+        "kana": "じょうしき",
+        "meaning": "common sense"
+      },
+      {
+        "word": "非常",
+        "kana": "ひじょう",
+        "meaning": "emergency"
+      }
+    ]
+  },
+  {
+    "char": "非",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "ヒ"
+    ],
+    "kun": [],
+    "meaning": "non; wrong",
+    "compounds": [
+      {
+        "word": "非常",
+        "kana": "ひじょう",
+        "meaning": "emergency"
+      },
+      {
+        "word": "非難",
+        "kana": "ひなん",
+        "meaning": "criticism"
+      },
+      {
+        "word": "是非",
+        "kana": "ぜひ",
+        "meaning": "by all means"
+      }
+    ]
+  },
+  {
+    "char": "難",
+    "level": 3,
+    "strokes": 18,
+    "on": [
+      "ナン"
+    ],
+    "kun": [
+      "むずか",
+      "かた"
+    ],
+    "meaning": "difficult",
+    "compounds": [
+      {
+        "word": "難しい",
+        "kana": "むずかしい",
+        "meaning": "difficult"
+      },
+      {
+        "word": "困難",
+        "kana": "こんなん",
+        "meaning": "difficulty"
+      },
+      {
+        "word": "難関",
+        "kana": "なんかん",
+        "meaning": "barrier"
+      }
+    ]
+  },
+  {
+    "char": "困",
+    "level": 3,
+    "strokes": 7,
+    "on": [
+      "コン"
+    ],
+    "kun": [
+      "こま"
+    ],
+    "meaning": "be troubled",
+    "compounds": [
+      {
+        "word": "困る",
+        "kana": "こまる",
+        "meaning": "to be troubled"
+      },
+      {
+        "word": "困難",
+        "kana": "こんなん",
+        "meaning": "difficulty"
+      },
+      {
+        "word": "困惑",
+        "kana": "こんわく",
+        "meaning": "confusion"
+      }
+    ]
+  },
+  {
+    "char": "易",
+    "level": 3,
+    "strokes": 8,
+    "on": [
+      "エキ",
+      "イ"
+    ],
+    "kun": [
+      "やさ",
+      "やす"
+    ],
+    "meaning": "easy; trade",
+    "compounds": [
+      {
+        "word": "易しい",
+        "kana": "やさしい",
+        "meaning": "easy"
+      },
+      {
+        "word": "貿易",
+        "kana": "ぼうえき",
+        "meaning": "trade"
+      },
+      {
+        "word": "容易",
+        "kana": "ようい",
+        "meaning": "easy"
+      }
+    ]
+  },
+  {
+    "char": "済",
+    "level": 3,
+    "strokes": 11,
+    "on": [
+      "サイ",
+      "セイ"
+    ],
+    "kun": [
+      "す"
+    ],
+    "meaning": "finish; settle",
+    "compounds": [
+      {
+        "word": "済む",
+        "kana": "すむ",
+        "meaning": "to finish"
+      },
+      {
+        "word": "経済",
+        "kana": "けいざい",
+        "meaning": "economy"
+      },
+      {
+        "word": "返済",
+        "kana": "へんさい",
+        "meaning": "repayment"
+      }
+    ]
+  },
+  {
+    "char": "与",
+    "level": 3,
+    "strokes": 3,
+    "on": [
+      "ヨ"
+    ],
+    "kun": [
+      "あた"
+    ],
+    "meaning": "give; bestow",
+    "compounds": [
+      {
+        "word": "与える",
+        "kana": "あたえる",
+        "meaning": "to give"
+      },
+      {
+        "word": "給与",
+        "kana": "きゅうよ",
+        "meaning": "salary"
+      },
+      {
+        "word": "授与",
+        "kana": "じゅよ",
+        "meaning": "awarding"
+      }
+    ]
+  },
+  {
+    "char": "交",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "コウ"
+    ],
+    "kun": [
+      "まじ"
+    ],
+    "meaning": "mix; associate",
+    "compounds": [
+      {
+        "word": "交通",
+        "kana": "こうつう",
+        "meaning": "traffic"
+      },
+      {
+        "word": "交流",
+        "kana": "こうりゅう",
+        "meaning": "exchange"
+      },
+      {
+        "word": "交差点",
+        "kana": "こうさてん",
+        "meaning": "intersection"
+      }
+    ]
+  },
+  {
+    "char": "件",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "ケン"
+    ],
+    "kun": [],
+    "meaning": "matter; case",
+    "compounds": [
+      {
+        "word": "事件",
+        "kana": "じけん",
+        "meaning": "incident"
+      },
+      {
+        "word": "条件",
+        "kana": "じょうけん",
+        "meaning": "condition"
+      },
+      {
+        "word": "用件",
+        "kana": "ようけん",
+        "meaning": "business matter"
+      }
+    ]
+  },
+  {
+    "char": "配",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ハイ"
+    ],
+    "kun": [
+      "くば"
+    ],
+    "meaning": "distribute",
+    "compounds": [
+      {
+        "word": "心配",
+        "kana": "しんぱい",
+        "meaning": "worry"
+      },
+      {
+        "word": "配る",
+        "kana": "くばる",
+        "meaning": "to distribute"
+      },
+      {
+        "word": "配達",
+        "kana": "はいたつ",
+        "meaning": "delivery"
+      }
+    ]
+  },
+  {
+    "char": "席",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "セキ"
+    ],
+    "kun": [],
+    "meaning": "seat",
+    "compounds": [
+      {
+        "word": "席",
+        "kana": "せき",
+        "meaning": "seat"
+      },
+      {
+        "word": "出席",
+        "kana": "しゅっせき",
+        "meaning": "attendance"
+      },
+      {
+        "word": "座席",
+        "kana": "ざせき",
+        "meaning": "seat"
+      }
+    ]
+  },
+  {
+    "char": "座",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ザ"
+    ],
+    "kun": [
+      "すわ"
+    ],
+    "meaning": "sit; seat",
+    "compounds": [
+      {
+        "word": "座る",
+        "kana": "すわる",
+        "meaning": "to sit"
+      },
+      {
+        "word": "座席",
+        "kana": "ざせき",
+        "meaning": "seat"
+      },
+      {
+        "word": "座談会",
+        "kana": "ざだんかい",
+        "meaning": "roundtable talk"
+      }
+    ]
+  },
+  {
+    "char": "共",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "キョウ"
+    ],
+    "kun": [
+      "とも"
+    ],
+    "meaning": "together",
+    "compounds": [
+      {
+        "word": "共同",
+        "kana": "きょうどう",
+        "meaning": "joint"
+      },
+      {
+        "word": "共通",
+        "kana": "きょうつう",
+        "meaning": "common"
+      },
+      {
+        "word": "共に",
+        "kana": "ともに",
+        "meaning": "together"
+      }
+    ]
+  },
+  {
+    "char": "向",
+    "level": 3,
+    "strokes": 6,
+    "on": [
+      "コウ"
+    ],
+    "kun": [
+      "む",
+      "むか"
+    ],
+    "meaning": "face; direction",
+    "compounds": [
+      {
+        "word": "向こう",
+        "kana": "むこう",
+        "meaning": "beyond"
+      },
+      {
+        "word": "方向",
+        "kana": "ほうこう",
+        "meaning": "direction"
+      },
+      {
+        "word": "向かう",
+        "kana": "むかう",
+        "meaning": "to head toward"
+      }
+    ]
+  },
+  {
+    "char": "神",
+    "level": 3,
+    "strokes": 9,
+    "on": [
+      "シン",
+      "ジン"
+    ],
+    "kun": [
+      "かみ"
+    ],
+    "meaning": "god; deity",
+    "compounds": [
+      {
+        "word": "神社",
+        "kana": "じんじゃ",
+        "meaning": "shrine"
+      },
+      {
+        "word": "神様",
+        "kana": "かみさま",
+        "meaning": "god"
+      },
+      {
+        "word": "神話",
+        "kana": "しんわ",
+        "meaning": "myth"
+      }
+    ]
+  },
+  {
+    "char": "消",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "ショウ"
+    ],
+    "kun": [
+      "け",
+      "き"
+    ],
+    "meaning": "extinguish; erase",
+    "compounds": [
+      {
+        "word": "消す",
+        "kana": "けす",
+        "meaning": "to erase"
+      },
+      {
+        "word": "消える",
+        "kana": "きえる",
+        "meaning": "to disappear"
+      },
+      {
+        "word": "消費",
+        "kana": "しょうひ",
+        "meaning": "consumption"
+      }
+    ]
+  },
+  {
+    "char": "番",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "バン"
+    ],
+    "kun": [],
+    "meaning": "turn; number",
+    "compounds": [
+      {
+        "word": "番号",
+        "kana": "ばんごう",
+        "meaning": "number"
+      },
+      {
+        "word": "一番",
+        "kana": "いちばん",
+        "meaning": "number one"
+      },
+      {
+        "word": "番組",
+        "kana": "ばんぐみ",
+        "meaning": "television program"
+      }
+    ]
+  },
+  {
+    "char": "程",
+    "level": 3,
+    "strokes": 12,
+    "on": [
+      "テイ"
+    ],
+    "kun": [
+      "ほど"
+    ],
+    "meaning": "extent; degree",
+    "compounds": [
+      {
+        "word": "程度",
+        "kana": "ていど",
+        "meaning": "degree"
+      },
+      {
+        "word": "過程",
+        "kana": "かてい",
+        "meaning": "process"
+      },
+      {
+        "word": "程",
+        "kana": "ほど",
+        "meaning": "extent"
+      }
+    ]
+  },
+  {
+    "char": "流",
+    "level": 3,
+    "strokes": 10,
+    "on": [
+      "リュウ"
+    ],
+    "kun": [
+      "なが"
+    ],
+    "meaning": "flow",
+    "compounds": [
+      {
+        "word": "流れる",
+        "kana": "ながれる",
+        "meaning": "to flow"
+      },
+      {
+        "word": "流行",
+        "kana": "りゅうこう",
+        "meaning": "trend"
+      },
+      {
+        "word": "交流",
+        "kana": "こうりゅう",
+        "meaning": "exchange"
+      }
+    ]
+  }
+]
