@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -22,15 +23,25 @@ const (
 // interrupted.
 const autoSwitchInterval = 5 * time.Second
 
+// defaultLevel is the JLPT level shown on a fresh install.
+const defaultLevel = 3
+
+// deckPos identifies a card position inside one level + mode deck.
+type deckPos struct {
+	level int
+	mode  Mode
+}
+
 // App owns all study state. The Objective-C layer is a dumb renderer: it calls
 // back into these methods and receives a fresh Card to display.
 type App struct {
 	deck *Deck
 
-	mu         sync.Mutex
-	mode       Mode
-	kanjiIdx   int
-	kotobaIdx  int
+	mu      sync.Mutex
+	mode    Mode
+	level   int
+	indices map[deckPos]int
+
 	auto         bool
 	autoInterval time.Duration
 	showRomaji   bool
@@ -43,19 +54,33 @@ type App struct {
 }
 
 type savedState struct {
-	Mode        Mode  `json:"mode"`
-	KanjiIndex  int   `json:"kanjiIndex"`
-	KotobaIndex int   `json:"kotobaIndex"`
-	AutoSwitch   *bool `json:"autoSwitch,omitempty"`
-	ShowRomaji   *bool `json:"showRomaji,omitempty"`
+	Mode Mode `json:"mode"`
+	// Level plus Indices are the current format (keys are "<level>:<mode>").
+	Level   int            `json:"level,omitempty"`
+	Indices map[string]int `json:"indices,omitempty"`
+	// Legacy fields from the single-level (N3-only) version.
+	KanjiIndex  int   `json:"kanjiIndex,omitempty"`
+	KotobaIndex int   `json:"kotobaIndex,omitempty"`
+	AutoSwitch  *bool `json:"autoSwitch,omitempty"`
+	ShowRomaji  *bool `json:"showRomaji,omitempty"`
 	ShowFurigana *bool `json:"showFurigana,omitempty"`
+}
+
+func posKey(p deckPos) string {
+	return fmt.Sprintf("%d:%d", p.level, p.mode)
 }
 
 // NewApp wires a deck into fresh state (romaji in the menu bar is on by default).
 func NewApp(deck *Deck, statePath string) *App {
+	level := defaultLevel
+	if !deck.HasLevel(level) && len(deck.Levels) > 0 {
+		level = deck.Levels[0]
+	}
 	return &App{
 		deck:         deck,
 		statePath:    statePath,
+		level:        level,
+		indices:      make(map[deckPos]int),
 		showRomaji:   true,
 		showFurigana: true,
 		auto:         true,
@@ -81,9 +106,28 @@ func (a *App) LoadState() {
 	if s.Mode == ModeKanji || s.Mode == ModeKotoba {
 		a.mode = s.Mode
 	}
-	a.kanjiIdx = clamp(s.KanjiIndex, 0, len(a.deck.Kanji))
-	a.kotobaIdx = clamp(s.KotobaIndex, 0, len(a.deck.Kotoba))
-	// Older state files used "auto" for the 15-minute card advance; a missing
+	if a.deck.HasLevel(s.Level) {
+		a.level = s.Level
+	}
+	for key, idx := range s.Indices {
+		var level int
+		var mode Mode
+		if _, err := fmt.Sscanf(key, "%d:%d", &level, &mode); err != nil {
+			continue
+		}
+		if (mode != ModeKanji && mode != ModeKotoba) || !a.deck.HasLevel(level) {
+			continue
+		}
+		a.indices[deckPos{level, mode}] = clamp(idx, 0, a.deckLenLocked(level, mode))
+	}
+	// Migrate the old single-deck state file (N3 only).
+	if len(s.Indices) == 0 && a.deck.HasLevel(3) {
+		if s.KanjiIndex != 0 || s.KotobaIndex != 0 {
+			a.indices[deckPos{3, ModeKanji}] = clamp(s.KanjiIndex, 0, a.deckLenLocked(3, ModeKanji))
+			a.indices[deckPos{3, ModeKotoba}] = clamp(s.KotobaIndex, 0, a.deckLenLocked(3, ModeKotoba))
+		}
+	}
+	// Older state files used "auto" for a card advance timer; a missing
 	// "autoSwitch" means "keep the new default" (on).
 	if s.AutoSwitch != nil {
 		a.auto = *s.AutoSwitch
@@ -109,16 +153,20 @@ func clamp(v, lo, hi int) int {
 	return v
 }
 
-// SaveState persists mode, per-deck positions and preferences.
+// SaveState persists mode, level, per-deck positions and preferences.
 func (a *App) SaveState() {
 	a.mu.Lock()
 	showRomaji := a.showRomaji
 	showFurigana := a.showFurigana
 	autoSwitch := a.auto
+	indices := make(map[string]int, len(a.indices))
+	for pos, idx := range a.indices {
+		indices[posKey(pos)] = idx
+	}
 	s := savedState{
 		Mode:         a.mode,
-		KanjiIndex:   a.kanjiIdx,
-		KotobaIndex:  a.kotobaIdx,
+		Level:        a.level,
+		Indices:      indices,
 		AutoSwitch:   &autoSwitch,
 		ShowRomaji:   &showRomaji,
 		ShowFurigana: &showFurigana,
@@ -141,13 +189,29 @@ func (a *App) SaveState() {
 	}
 }
 
+// deckLenLocked returns the length of one deck. Callers must hold a.mu (or be
+// in a context where the app is not shared yet).
+func (a *App) deckLenLocked(level int, mode Mode) int {
+	if mode == ModeKotoba {
+		return len(a.deck.Kotoba[level])
+	}
+	return len(a.deck.Kanji[level])
+}
+
+// currentIndexLocked returns the clamped index for the current position.
+func (a *App) currentIndexLocked() int {
+	pos := deckPos{a.level, a.mode}
+	return clamp(a.indices[pos], 0, a.deckLenLocked(a.level, a.mode))
+}
+
 // currentCardLocked returns the card for the current position. Callers must
 // hold a.mu.
 func (a *App) currentCardLocked() Card {
+	idx := a.currentIndexLocked()
 	if a.mode == ModeKotoba {
-		return KotobaCard(a.deck.Kotoba[a.kotobaIdx])
+		return KotobaCard(a.deck.Kotoba[a.level][idx])
 	}
-	return KanjiCard(a.deck.Kanji[a.kanjiIdx])
+	return KanjiCard(a.deck.Kanji[a.level][idx])
 }
 
 // CurrentCard returns the card for the current position.
@@ -157,14 +221,24 @@ func (a *App) CurrentCard() Card {
 	return a.currentCardLocked()
 }
 
+// Level returns the current JLPT level.
+func (a *App) Level() int {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+	return a.level
+}
+
+// Levels returns the levels that have decks, easiest first.
+func (a *App) Levels() []int {
+	return a.deck.Levels
+}
+
 // Next advances the current deck, wrapping around at the end.
 func (a *App) Next() {
 	a.mu.Lock()
-	if a.mode == ModeKotoba {
-		a.kotobaIdx = (a.kotobaIdx + 1) % len(a.deck.Kotoba)
-	} else {
-		a.kanjiIdx = (a.kanjiIdx + 1) % len(a.deck.Kanji)
-	}
+	pos := deckPos{a.level, a.mode}
+	n := a.deckLenLocked(a.level, a.mode)
+	a.indices[pos] = (a.currentIndexLocked() + 1) % n
 	a.mu.Unlock()
 	a.refresh()
 }
@@ -172,11 +246,9 @@ func (a *App) Next() {
 // Prev steps back one card.
 func (a *App) Prev() {
 	a.mu.Lock()
-	if a.mode == ModeKotoba {
-		a.kotobaIdx = (a.kotobaIdx - 1 + len(a.deck.Kotoba)) % len(a.deck.Kotoba)
-	} else {
-		a.kanjiIdx = (a.kanjiIdx - 1 + len(a.deck.Kanji)) % len(a.deck.Kanji)
-	}
+	pos := deckPos{a.level, a.mode}
+	n := a.deckLenLocked(a.level, a.mode)
+	a.indices[pos] = (a.currentIndexLocked() - 1 + n) % n
 	a.mu.Unlock()
 	a.refresh()
 }
@@ -193,7 +265,45 @@ func (a *App) ToggleMode() {
 	a.refresh()
 }
 
-// ToggleAuto flips the 15-second deck auto-switch.
+// CycleLevel moves to the next JLPT level (N5 -> N4 -> N3 -> N5 ...).
+func (a *App) CycleLevel() {
+	a.mu.Lock()
+	levels := a.deck.Levels
+	for i, l := range levels {
+		if l == a.level {
+			a.level = levels[(i+1)%len(levels)]
+			break
+		}
+	}
+	a.mu.Unlock()
+	a.refresh()
+}
+
+// SetLevel selects a level explicitly (menu item); returns false if the deck
+// for that level is not available.
+func (a *App) SetLevel(level int) bool {
+	if !a.deck.HasLevel(level) {
+		return false
+	}
+	a.mu.Lock()
+	a.level = level
+	a.mu.Unlock()
+	a.refresh()
+	return true
+}
+
+// setLevelSilent is used by the snapshot renderer (no UI push, no state write).
+func (a *App) setLevelSilent(level int) bool {
+	if !a.deck.HasLevel(level) {
+		return false
+	}
+	a.mu.Lock()
+	a.level = level
+	a.mu.Unlock()
+	return true
+}
+
+// ToggleAuto flips the 5-second deck auto-switch.
 func (a *App) ToggleAuto() {
 	a.mu.Lock()
 	a.auto = !a.auto
@@ -237,11 +347,8 @@ func (a *App) SetMode(m Mode) {
 
 func (a *App) SetIndex(i int) {
 	a.mu.Lock()
-	if a.mode == ModeKotoba {
-		a.kotobaIdx = clamp(i, 0, len(a.deck.Kotoba))
-	} else {
-		a.kanjiIdx = clamp(i, 0, len(a.deck.Kanji))
-	}
+	pos := deckPos{a.level, a.mode}
+	a.indices[pos] = clamp(i, 0, a.deckLenLocked(a.level, a.mode))
 	a.mu.Unlock()
 }
 
@@ -252,12 +359,13 @@ func (a *App) refresh() {
 	showRomaji := a.showRomaji
 	showFurigana := a.showFurigana
 	auto := a.auto
+	level := a.level
 	a.mu.Unlock()
 
 	if a.uiEnabled {
 		uiShowCard(card)
 		uiSetTitle(card.MenuTitle(showFurigana, showRomaji))
-		uiSetMenuState(auto, showRomaji, showFurigana)
+		uiSetMenuState(auto, showRomaji, showFurigana, level)
 	}
 	a.SaveState()
 }
@@ -285,14 +393,21 @@ func (a *App) StartAuto() {
 
 // tickAutoSwitch advances the deck it is about to show, then flips to it, so
 // the widget rotates through new material instead of alternating the same pair.
-// It is exported for tests via refresh being UI-gated.
 func (a *App) tickAutoSwitch() {
 	a.mu.Lock()
 	if a.mode == ModeKanji {
-		a.kotobaIdx = (a.kotobaIdx + 1) % len(a.deck.Kotoba)
+		pos := deckPos{a.level, ModeKotoba}
+		n := a.deckLenLocked(a.level, ModeKotoba)
+		if n > 0 {
+			a.indices[pos] = (clamp(a.indices[pos], 0, n) + 1) % n
+		}
 		a.mode = ModeKotoba
 	} else {
-		a.kanjiIdx = (a.kanjiIdx + 1) % len(a.deck.Kanji)
+		pos := deckPos{a.level, ModeKanji}
+		n := a.deckLenLocked(a.level, ModeKanji)
+		if n > 0 {
+			a.indices[pos] = (clamp(a.indices[pos], 0, n) + 1) % n
+		}
 		a.mode = ModeKanji
 	}
 	a.mu.Unlock()

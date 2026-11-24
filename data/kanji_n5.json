@@ -1,0 +1,2954 @@
+[
+  {
+    "char": "一",
+    "level": 5,
+    "strokes": 1,
+    "on": [
+      "イチ",
+      "イツ"
+    ],
+    "kun": [
+      "ひと"
+    ],
+    "meaning": "one",
+    "compounds": [
+      {
+        "word": "一つ",
+        "kana": "ひとつ",
+        "meaning": "one (thing)"
+      },
+      {
+        "word": "一日",
+        "kana": "いちにち",
+        "meaning": "one day"
+      },
+      {
+        "word": "一月",
+        "kana": "いちがつ",
+        "meaning": "January"
+      }
+    ]
+  },
+  {
+    "char": "二",
+    "level": 5,
+    "strokes": 2,
+    "on": [
+      "ニ"
+    ],
+    "kun": [
+      "ふた"
+    ],
+    "meaning": "two",
+    "compounds": [
+      {
+        "word": "二つ",
+        "kana": "ふたつ",
+        "meaning": "two (things)"
+      },
+      {
+        "word": "二人",
+        "kana": "ふたり",
+        "meaning": "two people"
+      },
+      {
+        "word": "二月",
+        "kana": "にがつ",
+        "meaning": "February"
+      }
+    ]
+  },
+  {
+    "char": "三",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "サン"
+    ],
+    "kun": [
+      "み"
+    ],
+    "meaning": "three",
+    "compounds": [
+      {
+        "word": "三つ",
+        "kana": "みっつ",
+        "meaning": "three (things)"
+      },
+      {
+        "word": "三人",
+        "kana": "さんにん",
+        "meaning": "three people"
+      },
+      {
+        "word": "三月",
+        "kana": "さんがつ",
+        "meaning": "March"
+      }
+    ]
+  },
+  {
+    "char": "四",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "シ"
+    ],
+    "kun": [
+      "よ",
+      "よん"
+    ],
+    "meaning": "four",
+    "compounds": [
+      {
+        "word": "四つ",
+        "kana": "よっつ",
+        "meaning": "four (things)"
+      },
+      {
+        "word": "四人",
+        "kana": "よにん",
+        "meaning": "four people"
+      },
+      {
+        "word": "四月",
+        "kana": "しがつ",
+        "meaning": "April"
+      }
+    ]
+  },
+  {
+    "char": "五",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "ゴ"
+    ],
+    "kun": [
+      "いつ"
+    ],
+    "meaning": "five",
+    "compounds": [
+      {
+        "word": "五つ",
+        "kana": "いつつ",
+        "meaning": "five (things)"
+      },
+      {
+        "word": "五人",
+        "kana": "ごにん",
+        "meaning": "five people"
+      },
+      {
+        "word": "五月",
+        "kana": "ごがつ",
+        "meaning": "May"
+      }
+    ]
+  },
+  {
+    "char": "六",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "ロク"
+    ],
+    "kun": [
+      "む"
+    ],
+    "meaning": "six",
+    "compounds": [
+      {
+        "word": "六つ",
+        "kana": "むっつ",
+        "meaning": "six (things)"
+      },
+      {
+        "word": "六人",
+        "kana": "ろくにん",
+        "meaning": "six people"
+      },
+      {
+        "word": "六月",
+        "kana": "ろくがつ",
+        "meaning": "June"
+      }
+    ]
+  },
+  {
+    "char": "七",
+    "level": 5,
+    "strokes": 2,
+    "on": [
+      "シチ"
+    ],
+    "kun": [
+      "なな"
+    ],
+    "meaning": "seven",
+    "compounds": [
+      {
+        "word": "七つ",
+        "kana": "ななつ",
+        "meaning": "seven (things)"
+      },
+      {
+        "word": "七人",
+        "kana": "しちにん",
+        "meaning": "seven people"
+      },
+      {
+        "word": "七月",
+        "kana": "しちがつ",
+        "meaning": "July"
+      }
+    ]
+  },
+  {
+    "char": "八",
+    "level": 5,
+    "strokes": 2,
+    "on": [
+      "ハチ"
+    ],
+    "kun": [
+      "や"
+    ],
+    "meaning": "eight",
+    "compounds": [
+      {
+        "word": "八つ",
+        "kana": "やっつ",
+        "meaning": "eight (things)"
+      },
+      {
+        "word": "八人",
+        "kana": "はちにん",
+        "meaning": "eight people"
+      },
+      {
+        "word": "八月",
+        "kana": "はちがつ",
+        "meaning": "August"
+      }
+    ]
+  },
+  {
+    "char": "九",
+    "level": 5,
+    "strokes": 2,
+    "on": [
+      "キュウ",
+      "ク"
+    ],
+    "kun": [
+      "ここの"
+    ],
+    "meaning": "nine",
+    "compounds": [
+      {
+        "word": "九つ",
+        "kana": "ここのつ",
+        "meaning": "nine (things)"
+      },
+      {
+        "word": "九人",
+        "kana": "きゅうにん",
+        "meaning": "nine people"
+      },
+      {
+        "word": "九月",
+        "kana": "くがつ",
+        "meaning": "September"
+      }
+    ]
+  },
+  {
+    "char": "十",
+    "level": 5,
+    "strokes": 2,
+    "on": [
+      "ジュウ"
+    ],
+    "kun": [
+      "とお"
+    ],
+    "meaning": "ten",
+    "compounds": [
+      {
+        "word": "十人",
+        "kana": "じゅうにん",
+        "meaning": "ten people"
+      },
+      {
+        "word": "十日",
+        "kana": "とおか",
+        "meaning": "the tenth day"
+      },
+      {
+        "word": "十月",
+        "kana": "じゅうがつ",
+        "meaning": "October"
+      }
+    ]
+  },
+  {
+    "char": "百",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "ヒャク"
+    ],
+    "kun": [],
+    "meaning": "hundred",
+    "compounds": [
+      {
+        "word": "三百",
+        "kana": "さんびゃく",
+        "meaning": "three hundred"
+      },
+      {
+        "word": "八百",
+        "kana": "はっぴゃく",
+        "meaning": "eight hundred"
+      },
+      {
+        "word": "百円",
+        "kana": "ひゃくえん",
+        "meaning": "one hundred yen"
+      }
+    ]
+  },
+  {
+    "char": "千",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "セン"
+    ],
+    "kun": [
+      "ち"
+    ],
+    "meaning": "thousand",
+    "compounds": [
+      {
+        "word": "三千",
+        "kana": "さんぜん",
+        "meaning": "three thousand"
+      },
+      {
+        "word": "千円",
+        "kana": "せんえん",
+        "meaning": "one thousand yen"
+      },
+      {
+        "word": "千人",
+        "kana": "せんにん",
+        "meaning": "one thousand people"
+      }
+    ]
+  },
+  {
+    "char": "万",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "マン",
+      "バン"
+    ],
+    "kun": [],
+    "meaning": "ten thousand",
+    "compounds": [
+      {
+        "word": "一万",
+        "kana": "いちまん",
+        "meaning": "ten thousand"
+      },
+      {
+        "word": "十万",
+        "kana": "じゅうまん",
+        "meaning": "one hundred thousand"
+      },
+      {
+        "word": "万年筆",
+        "kana": "まんねんひつ",
+        "meaning": "fountain pen"
+      }
+    ]
+  },
+  {
+    "char": "円",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "エン"
+    ],
+    "kun": [
+      "まる"
+    ],
+    "meaning": "yen; circle",
+    "compounds": [
+      {
+        "word": "百円",
+        "kana": "ひゃくえん",
+        "meaning": "one hundred yen"
+      },
+      {
+        "word": "千円",
+        "kana": "せんえん",
+        "meaning": "one thousand yen"
+      },
+      {
+        "word": "一万円",
+        "kana": "いちまんえん",
+        "meaning": "ten thousand yen"
+      }
+    ]
+  },
+  {
+    "char": "日",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "ニチ",
+      "ジツ"
+    ],
+    "kun": [
+      "ひ",
+      "か"
+    ],
+    "meaning": "day; sun",
+    "compounds": [
+      {
+        "word": "日本",
+        "kana": "にほん",
+        "meaning": "Japan"
+      },
+      {
+        "word": "日曜日",
+        "kana": "にちようび",
+        "meaning": "Sunday"
+      },
+      {
+        "word": "毎日",
+        "kana": "まいにち",
+        "meaning": "every day"
+      }
+    ]
+  },
+  {
+    "char": "月",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "ゲツ",
+      "ガツ"
+    ],
+    "kun": [
+      "つき"
+    ],
+    "meaning": "moon; month",
+    "compounds": [
+      {
+        "word": "月曜日",
+        "kana": "げつようび",
+        "meaning": "Monday"
+      },
+      {
+        "word": "一月",
+        "kana": "いちがつ",
+        "meaning": "January"
+      },
+      {
+        "word": "毎月",
+        "kana": "まいつき",
+        "meaning": "every month"
+      }
+    ]
+  },
+  {
+    "char": "火",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "カ"
+    ],
+    "kun": [
+      "ひ"
+    ],
+    "meaning": "fire",
+    "compounds": [
+      {
+        "word": "火曜日",
+        "kana": "かようび",
+        "meaning": "Tuesday"
+      },
+      {
+        "word": "火山",
+        "kana": "かざん",
+        "meaning": "volcano"
+      },
+      {
+        "word": "花火",
+        "kana": "はなび",
+        "meaning": "fireworks"
+      }
+    ]
+  },
+  {
+    "char": "水",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "スイ"
+    ],
+    "kun": [
+      "みず"
+    ],
+    "meaning": "water",
+    "compounds": [
+      {
+        "word": "水曜日",
+        "kana": "すいようび",
+        "meaning": "Wednesday"
+      },
+      {
+        "word": "水泳",
+        "kana": "すいえい",
+        "meaning": "swimming"
+      },
+      {
+        "word": "水道",
+        "kana": "すいどう",
+        "meaning": "water supply"
+      }
+    ]
+  },
+  {
+    "char": "木",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "モク",
+      "ボク"
+    ],
+    "kun": [
+      "き"
+    ],
+    "meaning": "tree; wood",
+    "compounds": [
+      {
+        "word": "木曜日",
+        "kana": "もくようび",
+        "meaning": "Thursday"
+      },
+      {
+        "word": "大木",
+        "kana": "たいぼく",
+        "meaning": "large tree"
+      },
+      {
+        "word": "木材",
+        "kana": "もくざい",
+        "meaning": "lumber"
+      }
+    ]
+  },
+  {
+    "char": "金",
+    "level": 5,
+    "strokes": 8,
+    "on": [
+      "キン",
+      "コン"
+    ],
+    "kun": [
+      "かね"
+    ],
+    "meaning": "gold; money",
+    "compounds": [
+      {
+        "word": "金曜日",
+        "kana": "きんようび",
+        "meaning": "Friday"
+      },
+      {
+        "word": "お金",
+        "kana": "おかね",
+        "meaning": "money"
+      },
+      {
+        "word": "料金",
+        "kana": "りょうきん",
+        "meaning": "fee"
+      }
+    ]
+  },
+  {
+    "char": "土",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "ド",
+      "ト"
+    ],
+    "kun": [
+      "つち"
+    ],
+    "meaning": "soil; earth",
+    "compounds": [
+      {
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "Saturday"
+      },
+      {
+        "word": "土地",
+        "kana": "とち",
+        "meaning": "land"
+      },
+      {
+        "word": "土",
+        "kana": "つち",
+        "meaning": "soil"
+      }
+    ]
+  },
+  {
+    "char": "年",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "ネン"
+    ],
+    "kun": [
+      "とし"
+    ],
+    "meaning": "year",
+    "compounds": [
+      {
+        "word": "今年",
+        "kana": "ことし",
+        "meaning": "this year"
+      },
+      {
+        "word": "来年",
+        "kana": "らいねん",
+        "meaning": "next year"
+      },
+      {
+        "word": "去年",
+        "kana": "きょねん",
+        "meaning": "last year"
+      }
+    ]
+  },
+  {
+    "char": "時",
+    "level": 5,
+    "strokes": 10,
+    "on": [
+      "ジ"
+    ],
+    "kun": [
+      "とき"
+    ],
+    "meaning": "time; hour",
+    "compounds": [
+      {
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "time"
+      },
+      {
+        "word": "時計",
+        "kana": "とけい",
+        "meaning": "clock"
+      },
+      {
+        "word": "何時",
+        "kana": "なんじ",
+        "meaning": "what time"
+      }
+    ]
+  },
+  {
+    "char": "分",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "ブン",
+      "フン",
+      "ブ"
+    ],
+    "kun": [
+      "わ"
+    ],
+    "meaning": "minute; part; understand",
+    "compounds": [
+      {
+        "word": "半分",
+        "kana": "はんぶん",
+        "meaning": "half"
+      },
+      {
+        "word": "五分",
+        "kana": "ごふん",
+        "meaning": "five minutes"
+      },
+      {
+        "word": "分かる",
+        "kana": "わかる",
+        "meaning": "to understand"
+      }
+    ]
+  },
+  {
+    "char": "半",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "ハン"
+    ],
+    "kun": [
+      "なかば"
+    ],
+    "meaning": "half",
+    "compounds": [
+      {
+        "word": "半分",
+        "kana": "はんぶん",
+        "meaning": "half"
+      },
+      {
+        "word": "三時半",
+        "kana": "さんじはん",
+        "meaning": "half past three"
+      },
+      {
+        "word": "半年",
+        "kana": "はんねん",
+        "meaning": "half a year"
+      }
+    ]
+  },
+  {
+    "char": "週",
+    "level": 5,
+    "strokes": 11,
+    "on": [
+      "シュウ"
+    ],
+    "kun": [],
+    "meaning": "week",
+    "compounds": [
+      {
+        "word": "今週",
+        "kana": "こんしゅう",
+        "meaning": "this week"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "next week"
+      },
+      {
+        "word": "毎週",
+        "kana": "まいしゅう",
+        "meaning": "every week"
+      }
+    ]
+  },
+  {
+    "char": "毎",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "マイ"
+    ],
+    "kun": [
+      "ごと"
+    ],
+    "meaning": "every",
+    "compounds": [
+      {
+        "word": "毎日",
+        "kana": "まいにち",
+        "meaning": "every day"
+      },
+      {
+        "word": "毎週",
+        "kana": "まいしゅう",
+        "meaning": "every week"
+      },
+      {
+        "word": "毎年",
+        "kana": "まいとし",
+        "meaning": "every year"
+      }
+    ]
+  },
+  {
+    "char": "午",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "ゴ"
+    ],
+    "kun": [],
+    "meaning": "noon",
+    "compounds": [
+      {
+        "word": "午前",
+        "kana": "ごぜん",
+        "meaning": "morning; a.m."
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "afternoon; p.m."
+      },
+      {
+        "word": "正午",
+        "kana": "しょうご",
+        "meaning": "noon"
+      }
+    ]
+  },
+  {
+    "char": "間",
+    "level": 5,
+    "strokes": 12,
+    "on": [
+      "カン",
+      "ケン"
+    ],
+    "kun": [
+      "あいだ",
+      "ま"
+    ],
+    "meaning": "interval; between",
+    "compounds": [
+      {
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "time"
+      },
+      {
+        "word": "間",
+        "kana": "あいだ",
+        "meaning": "between"
+      },
+      {
+        "word": "人間",
+        "kana": "にんげん",
+        "meaning": "human being"
+      }
+    ]
+  },
+  {
+    "char": "今",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "コン",
+      "キン"
+    ],
+    "kun": [
+      "いま"
+    ],
+    "meaning": "now",
+    "compounds": [
+      {
+        "word": "今",
+        "kana": "いま",
+        "meaning": "now"
+      },
+      {
+        "word": "今日",
+        "kana": "きょう",
+        "meaning": "today"
+      },
+      {
+        "word": "今年",
+        "kana": "ことし",
+        "meaning": "this year"
+      }
+    ]
+  },
+  {
+    "char": "上",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "ジョウ",
+      "ショウ"
+    ],
+    "kun": [
+      "うえ",
+      "あ",
+      "のぼ"
+    ],
+    "meaning": "up; above",
+    "compounds": [
+      {
+        "word": "上手",
+        "kana": "じょうず",
+        "meaning": "skilled"
+      },
+      {
+        "word": "上",
+        "kana": "うえ",
+        "meaning": "above"
+      },
+      {
+        "word": "上着",
+        "kana": "うわぎ",
+        "meaning": "jacket"
+      }
+    ]
+  },
+  {
+    "char": "下",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "カ",
+      "ゲ"
+    ],
+    "kun": [
+      "した",
+      "さ",
+      "くだ"
+    ],
+    "meaning": "down; below",
+    "compounds": [
+      {
+        "word": "下",
+        "kana": "した",
+        "meaning": "below"
+      },
+      {
+        "word": "下手",
+        "kana": "へた",
+        "meaning": "unskilled"
+      },
+      {
+        "word": "地下",
+        "kana": "ちか",
+        "meaning": "underground"
+      }
+    ]
+  },
+  {
+    "char": "中",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "チュウ",
+      "ジュウ"
+    ],
+    "kun": [
+      "なか"
+    ],
+    "meaning": "inside; middle",
+    "compounds": [
+      {
+        "word": "中国",
+        "kana": "ちゅうごく",
+        "meaning": "China"
+      },
+      {
+        "word": "中学校",
+        "kana": "ちゅうがっこう",
+        "meaning": "junior high school"
+      },
+      {
+        "word": "一日中",
+        "kana": "いちにちじゅう",
+        "meaning": "all day"
+      }
+    ]
+  },
+  {
+    "char": "前",
+    "level": 5,
+    "strokes": 9,
+    "on": [
+      "ゼン"
+    ],
+    "kun": [
+      "まえ"
+    ],
+    "meaning": "front; before",
+    "compounds": [
+      {
+        "word": "前",
+        "kana": "まえ",
+        "meaning": "front"
+      },
+      {
+        "word": "名前",
+        "kana": "なまえ",
+        "meaning": "name"
+      },
+      {
+        "word": "午前",
+        "kana": "ごぜん",
+        "meaning": "morning; a.m."
+      }
+    ]
+  },
+  {
+    "char": "後",
+    "level": 5,
+    "strokes": 9,
+    "on": [
+      "ゴ",
+      "コウ"
+    ],
+    "kun": [
+      "あと",
+      "うし",
+      "のち"
+    ],
+    "meaning": "after; behind",
+    "compounds": [
+      {
+        "word": "後",
+        "kana": "あと",
+        "meaning": "after"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "afternoon; p.m."
+      },
+      {
+        "word": "後ろ",
+        "kana": "うしろ",
+        "meaning": "behind"
+      }
+    ]
+  },
+  {
+    "char": "左",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "サ"
+    ],
+    "kun": [
+      "ひだり"
+    ],
+    "meaning": "left",
+    "compounds": [
+      {
+        "word": "左",
+        "kana": "ひだり",
+        "meaning": "left"
+      },
+      {
+        "word": "左手",
+        "kana": "ひだりて",
+        "meaning": "left hand"
+      },
+      {
+        "word": "左側",
+        "kana": "ひだりがわ",
+        "meaning": "left side"
+      }
+    ]
+  },
+  {
+    "char": "右",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "ウ",
+      "ユウ"
+    ],
+    "kun": [
+      "みぎ"
+    ],
+    "meaning": "right",
+    "compounds": [
+      {
+        "word": "右",
+        "kana": "みぎ",
+        "meaning": "right"
+      },
+      {
+        "word": "右手",
+        "kana": "みぎて",
+        "meaning": "right hand"
+      },
+      {
+        "word": "右側",
+        "kana": "みぎがわ",
+        "meaning": "right side"
+      }
+    ]
+  },
+  {
+    "char": "北",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "ホク"
+    ],
+    "kun": [
+      "きた"
+    ],
+    "meaning": "north",
+    "compounds": [
+      {
+        "word": "北",
+        "kana": "きた",
+        "meaning": "north"
+      },
+      {
+        "word": "北口",
+        "kana": "きたぐち",
+        "meaning": "north exit"
+      },
+      {
+        "word": "北海道",
+        "kana": "ほっかいどう",
+        "meaning": "Hokkaido"
+      }
+    ]
+  },
+  {
+    "char": "南",
+    "level": 5,
+    "strokes": 9,
+    "on": [
+      "ナン"
+    ],
+    "kun": [
+      "みなみ"
+    ],
+    "meaning": "south",
+    "compounds": [
+      {
+        "word": "南",
+        "kana": "みなみ",
+        "meaning": "south"
+      },
+      {
+        "word": "南口",
+        "kana": "みなみぐち",
+        "meaning": "south exit"
+      },
+      {
+        "word": "南極",
+        "kana": "なんきょく",
+        "meaning": "South Pole"
+      }
+    ]
+  },
+  {
+    "char": "東",
+    "level": 5,
+    "strokes": 8,
+    "on": [
+      "トウ"
+    ],
+    "kun": [
+      "ひがし"
+    ],
+    "meaning": "east",
+    "compounds": [
+      {
+        "word": "東",
+        "kana": "ひがし",
+        "meaning": "east"
+      },
+      {
+        "word": "東口",
+        "kana": "ひがしぐち",
+        "meaning": "east exit"
+      },
+      {
+        "word": "東京",
+        "kana": "とうきょう",
+        "meaning": "Tokyo"
+      }
+    ]
+  },
+  {
+    "char": "西",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "セイ",
+      "サイ"
+    ],
+    "kun": [
+      "にし"
+    ],
+    "meaning": "west",
+    "compounds": [
+      {
+        "word": "西",
+        "kana": "にし",
+        "meaning": "west"
+      },
+      {
+        "word": "西口",
+        "kana": "にしぐち",
+        "meaning": "west exit"
+      },
+      {
+        "word": "関西",
+        "kana": "かんさい",
+        "meaning": "Kansai"
+      }
+    ]
+  },
+  {
+    "char": "外",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "ガイ",
+      "ゲ"
+    ],
+    "kun": [
+      "そと",
+      "ほか"
+    ],
+    "meaning": "outside",
+    "compounds": [
+      {
+        "word": "外",
+        "kana": "そと",
+        "meaning": "outside"
+      },
+      {
+        "word": "外国",
+        "kana": "がいこく",
+        "meaning": "foreign country"
+      },
+      {
+        "word": "外国人",
+        "kana": "がいこくじん",
+        "meaning": "foreigner"
+      }
+    ]
+  },
+  {
+    "char": "人",
+    "level": 5,
+    "strokes": 2,
+    "on": [
+      "ジン",
+      "ニン"
+    ],
+    "kun": [
+      "ひと"
+    ],
+    "meaning": "person",
+    "compounds": [
+      {
+        "word": "人",
+        "kana": "ひと",
+        "meaning": "person"
+      },
+      {
+        "word": "一人",
+        "kana": "ひとり",
+        "meaning": "one person"
+      },
+      {
+        "word": "日本人",
+        "kana": "にほんじん",
+        "meaning": "Japanese person"
+      }
+    ]
+  },
+  {
+    "char": "男",
+    "level": 5,
+    "strokes": 7,
+    "on": [
+      "ダン",
+      "ナン"
+    ],
+    "kun": [
+      "おとこ"
+    ],
+    "meaning": "man; male",
+    "compounds": [
+      {
+        "word": "男",
+        "kana": "おとこ",
+        "meaning": "man"
+      },
+      {
+        "word": "男の子",
+        "kana": "おとこのこ",
+        "meaning": "boy"
+      },
+      {
+        "word": "男性",
+        "kana": "だんせい",
+        "meaning": "male"
+      }
+    ]
+  },
+  {
+    "char": "女",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "ジョ",
+      "ニョ"
+    ],
+    "kun": [
+      "おんな"
+    ],
+    "meaning": "woman; female",
+    "compounds": [
+      {
+        "word": "女",
+        "kana": "おんな",
+        "meaning": "woman"
+      },
+      {
+        "word": "女の子",
+        "kana": "おんなのこ",
+        "meaning": "girl"
+      },
+      {
+        "word": "彼女",
+        "kana": "かのじょ",
+        "meaning": "she; girlfriend"
+      }
+    ]
+  },
+  {
+    "char": "子",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "シ",
+      "ス"
+    ],
+    "kun": [
+      "こ"
+    ],
+    "meaning": "child",
+    "compounds": [
+      {
+        "word": "子",
+        "kana": "こ",
+        "meaning": "child"
+      },
+      {
+        "word": "子供",
+        "kana": "こども",
+        "meaning": "child"
+      },
+      {
+        "word": "女の子",
+        "kana": "おんなのこ",
+        "meaning": "girl"
+      }
+    ]
+  },
+  {
+    "char": "父",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "フ"
+    ],
+    "kun": [
+      "ちち"
+    ],
+    "meaning": "father",
+    "compounds": [
+      {
+        "word": "父",
+        "kana": "ちち",
+        "meaning": "father"
+      },
+      {
+        "word": "お父さん",
+        "kana": "おとうさん",
+        "meaning": "father"
+      },
+      {
+        "word": "父親",
+        "kana": "ちちおや",
+        "meaning": "father"
+      }
+    ]
+  },
+  {
+    "char": "母",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "ボ"
+    ],
+    "kun": [
+      "はは"
+    ],
+    "meaning": "mother",
+    "compounds": [
+      {
+        "word": "母",
+        "kana": "はは",
+        "meaning": "mother"
+      },
+      {
+        "word": "お母さん",
+        "kana": "おかあさん",
+        "meaning": "mother"
+      },
+      {
+        "word": "母の日",
+        "kana": "ははのひ",
+        "meaning": "Mother's Day"
+      }
+    ]
+  },
+  {
+    "char": "友",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "ユウ"
+    ],
+    "kun": [
+      "とも"
+    ],
+    "meaning": "friend",
+    "compounds": [
+      {
+        "word": "友達",
+        "kana": "ともだち",
+        "meaning": "friend"
+      },
+      {
+        "word": "親友",
+        "kana": "しんゆう",
+        "meaning": "best friend"
+      },
+      {
+        "word": "友",
+        "kana": "とも",
+        "meaning": "friend"
+      }
+    ]
+  },
+  {
+    "char": "名",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "メイ",
+      "ミョウ"
+    ],
+    "kun": [
+      "な"
+    ],
+    "meaning": "name",
+    "compounds": [
+      {
+        "word": "名前",
+        "kana": "なまえ",
+        "meaning": "name"
+      },
+      {
+        "word": "有名",
+        "kana": "ゆうめい",
+        "meaning": "famous"
+      },
+      {
+        "word": "名人",
+        "kana": "めいじん",
+        "meaning": "expert"
+      }
+    ]
+  },
+  {
+    "char": "何",
+    "level": 5,
+    "strokes": 7,
+    "on": [
+      "カ"
+    ],
+    "kun": [
+      "なに",
+      "なん"
+    ],
+    "meaning": "what",
+    "compounds": [
+      {
+        "word": "何",
+        "kana": "なに",
+        "meaning": "what"
+      },
+      {
+        "word": "何時",
+        "kana": "なんじ",
+        "meaning": "what time"
+      },
+      {
+        "word": "何曜日",
+        "kana": "なんようび",
+        "meaning": "what day of the week"
+      }
+    ]
+  },
+  {
+    "char": "会",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "カイ",
+      "エ"
+    ],
+    "kun": [
+      "あ"
+    ],
+    "meaning": "meet; association",
+    "compounds": [
+      {
+        "word": "会う",
+        "kana": "あう",
+        "meaning": "to meet"
+      },
+      {
+        "word": "会社",
+        "kana": "かいしゃ",
+        "meaning": "company"
+      },
+      {
+        "word": "会話",
+        "kana": "かいわ",
+        "meaning": "conversation"
+      }
+    ]
+  },
+  {
+    "char": "休",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "キュウ"
+    ],
+    "kun": [
+      "やす"
+    ],
+    "meaning": "rest; holiday",
+    "compounds": [
+      {
+        "word": "休み",
+        "kana": "やすみ",
+        "meaning": "holiday; rest"
+      },
+      {
+        "word": "休む",
+        "kana": "やすむ",
+        "meaning": "to rest"
+      },
+      {
+        "word": "休日",
+        "kana": "きゅうじつ",
+        "meaning": "day off"
+      }
+    ]
+  },
+  {
+    "char": "学",
+    "level": 5,
+    "strokes": 8,
+    "on": [
+      "ガク"
+    ],
+    "kun": [
+      "まな"
+    ],
+    "meaning": "study; learning",
+    "compounds": [
+      {
+        "word": "学校",
+        "kana": "がっこう",
+        "meaning": "school"
+      },
+      {
+        "word": "大学",
+        "kana": "だいがく",
+        "meaning": "university"
+      },
+      {
+        "word": "学生",
+        "kana": "がくせい",
+        "meaning": "student"
+      }
+    ]
+  },
+  {
+    "char": "校",
+    "level": 5,
+    "strokes": 10,
+    "on": [
+      "コウ"
+    ],
+    "kun": [],
+    "meaning": "school",
+    "compounds": [
+      {
+        "word": "学校",
+        "kana": "がっこう",
+        "meaning": "school"
+      },
+      {
+        "word": "高校",
+        "kana": "こうこう",
+        "meaning": "high school"
+      },
+      {
+        "word": "校長",
+        "kana": "こうちょう",
+        "meaning": "principal"
+      }
+    ]
+  },
+  {
+    "char": "生",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "セイ",
+      "ショウ"
+    ],
+    "kun": [
+      "い",
+      "なま",
+      "う"
+    ],
+    "meaning": "life; birth; raw",
+    "compounds": [
+      {
+        "word": "学生",
+        "kana": "がくせい",
+        "meaning": "student"
+      },
+      {
+        "word": "先生",
+        "kana": "せんせい",
+        "meaning": "teacher"
+      },
+      {
+        "word": "生まれる",
+        "kana": "うまれる",
+        "meaning": "to be born"
+      }
+    ]
+  },
+  {
+    "char": "先",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "セン"
+    ],
+    "kun": [
+      "さき"
+    ],
+    "meaning": "ahead; previous",
+    "compounds": [
+      {
+        "word": "先生",
+        "kana": "せんせい",
+        "meaning": "teacher"
+      },
+      {
+        "word": "先週",
+        "kana": "せんしゅう",
+        "meaning": "last week"
+      },
+      {
+        "word": "先",
+        "kana": "さき",
+        "meaning": "ahead"
+      }
+    ]
+  },
+  {
+    "char": "来",
+    "level": 5,
+    "strokes": 7,
+    "on": [
+      "ライ"
+    ],
+    "kun": [
+      "く",
+      "き",
+      "こ"
+    ],
+    "meaning": "come; next",
+    "compounds": [
+      {
+        "word": "来る",
+        "kana": "くる",
+        "meaning": "to come"
+      },
+      {
+        "word": "来年",
+        "kana": "らいねん",
+        "meaning": "next year"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "next week"
+      }
+    ]
+  },
+  {
+    "char": "行",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "コウ",
+      "ギョウ"
+    ],
+    "kun": [
+      "い",
+      "おこな"
+    ],
+    "meaning": "go",
+    "compounds": [
+      {
+        "word": "行く",
+        "kana": "いく",
+        "meaning": "to go"
+      },
+      {
+        "word": "銀行",
+        "kana": "ぎんこう",
+        "meaning": "bank"
+      },
+      {
+        "word": "旅行",
+        "kana": "りょこう",
+        "meaning": "travel"
+      }
+    ]
+  },
+  {
+    "char": "見",
+    "level": 5,
+    "strokes": 7,
+    "on": [
+      "ケン"
+    ],
+    "kun": [
+      "み"
+    ],
+    "meaning": "see",
+    "compounds": [
+      {
+        "word": "見る",
+        "kana": "みる",
+        "meaning": "to see"
+      },
+      {
+        "word": "見せる",
+        "kana": "みせる",
+        "meaning": "to show"
+      },
+      {
+        "word": "花見",
+        "kana": "はなみ",
+        "meaning": "cherry blossom viewing"
+      }
+    ]
+  },
+  {
+    "char": "聞",
+    "level": 5,
+    "strokes": 14,
+    "on": [
+      "ブン",
+      "モン"
+    ],
+    "kun": [
+      "き"
+    ],
+    "meaning": "hear; ask",
+    "compounds": [
+      {
+        "word": "聞く",
+        "kana": "きく",
+        "meaning": "to hear; to ask"
+      },
+      {
+        "word": "新聞",
+        "kana": "しんぶん",
+        "meaning": "newspaper"
+      },
+      {
+        "word": "聞こえる",
+        "kana": "きこえる",
+        "meaning": "to be audible"
+      }
+    ]
+  },
+  {
+    "char": "書",
+    "level": 5,
+    "strokes": 10,
+    "on": [
+      "ショ"
+    ],
+    "kun": [
+      "か"
+    ],
+    "meaning": "write",
+    "compounds": [
+      {
+        "word": "書く",
+        "kana": "かく",
+        "meaning": "to write"
+      },
+      {
+        "word": "辞書",
+        "kana": "じしょ",
+        "meaning": "dictionary"
+      },
+      {
+        "word": "図書館",
+        "kana": "としょかん",
+        "meaning": "library"
+      }
+    ]
+  },
+  {
+    "char": "読",
+    "level": 5,
+    "strokes": 14,
+    "on": [
+      "ドク",
+      "トク"
+    ],
+    "kun": [
+      "よ"
+    ],
+    "meaning": "read",
+    "compounds": [
+      {
+        "word": "読む",
+        "kana": "よむ",
+        "meaning": "to read"
+      },
+      {
+        "word": "読書",
+        "kana": "どくしょ",
+        "meaning": "reading"
+      },
+      {
+        "word": "音読",
+        "kana": "おんどく",
+        "meaning": "reading aloud"
+      }
+    ]
+  },
+  {
+    "char": "話",
+    "level": 5,
+    "strokes": 13,
+    "on": [
+      "ワ"
+    ],
+    "kun": [
+      "はな",
+      "はなし"
+    ],
+    "meaning": "talk; story",
+    "compounds": [
+      {
+        "word": "話す",
+        "kana": "はなす",
+        "meaning": "to speak"
+      },
+      {
+        "word": "話",
+        "kana": "はなし",
+        "meaning": "talk; story"
+      },
+      {
+        "word": "電話",
+        "kana": "でんわ",
+        "meaning": "telephone"
+      }
+    ]
+  },
+  {
+    "char": "食",
+    "level": 5,
+    "strokes": 9,
+    "on": [
+      "ショク",
+      "ジキ"
+    ],
+    "kun": [
+      "た",
+      "く"
+    ],
+    "meaning": "eat; food",
+    "compounds": [
+      {
+        "word": "食べる",
+        "kana": "たべる",
+        "meaning": "to eat"
+      },
+      {
+        "word": "食事",
+        "kana": "しょくじ",
+        "meaning": "meal"
+      },
+      {
+        "word": "食べ物",
+        "kana": "たべもの",
+        "meaning": "food"
+      }
+    ]
+  },
+  {
+    "char": "飲",
+    "level": 5,
+    "strokes": 12,
+    "on": [
+      "イン"
+    ],
+    "kun": [
+      "の"
+    ],
+    "meaning": "drink",
+    "compounds": [
+      {
+        "word": "飲む",
+        "kana": "のむ",
+        "meaning": "to drink"
+      },
+      {
+        "word": "飲み物",
+        "kana": "のみもの",
+        "meaning": "drink"
+      },
+      {
+        "word": "飲食",
+        "kana": "いんしょく",
+        "meaning": "eating and drinking"
+      }
+    ]
+  },
+  {
+    "char": "買",
+    "level": 5,
+    "strokes": 12,
+    "on": [
+      "バイ"
+    ],
+    "kun": [
+      "か"
+    ],
+    "meaning": "buy",
+    "compounds": [
+      {
+        "word": "買う",
+        "kana": "かう",
+        "meaning": "to buy"
+      },
+      {
+        "word": "買い物",
+        "kana": "かいもの",
+        "meaning": "shopping"
+      },
+      {
+        "word": "売買",
+        "kana": "ばいばい",
+        "meaning": "trade"
+      }
+    ]
+  },
+  {
+    "char": "立",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "リツ",
+      "リュウ"
+    ],
+    "kun": [
+      "た"
+    ],
+    "meaning": "stand",
+    "compounds": [
+      {
+        "word": "立つ",
+        "kana": "たつ",
+        "meaning": "to stand"
+      },
+      {
+        "word": "国立",
+        "kana": "こくりつ",
+        "meaning": "national"
+      },
+      {
+        "word": "立場",
+        "kana": "たちば",
+        "meaning": "standpoint"
+      }
+    ]
+  },
+  {
+    "char": "言",
+    "level": 5,
+    "strokes": 7,
+    "on": [
+      "ゲン",
+      "ゴン"
+    ],
+    "kun": [
+      "い",
+      "こと"
+    ],
+    "meaning": "say; word",
+    "compounds": [
+      {
+        "word": "言う",
+        "kana": "いう",
+        "meaning": "to say"
+      },
+      {
+        "word": "言葉",
+        "kana": "ことば",
+        "meaning": "word; language"
+      },
+      {
+        "word": "方言",
+        "kana": "ほうげん",
+        "meaning": "dialect"
+      }
+    ]
+  },
+  {
+    "char": "語",
+    "level": 5,
+    "strokes": 14,
+    "on": [
+      "ゴ"
+    ],
+    "kun": [
+      "かた"
+    ],
+    "meaning": "language; word",
+    "compounds": [
+      {
+        "word": "日本語",
+        "kana": "にほんご",
+        "meaning": "Japanese language"
+      },
+      {
+        "word": "英語",
+        "kana": "えいご",
+        "meaning": "English language"
+      },
+      {
+        "word": "物語",
+        "kana": "ものがたり",
+        "meaning": "story"
+      }
+    ]
+  },
+  {
+    "char": "大",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "ダイ",
+      "タイ"
+    ],
+    "kun": [
+      "おお"
+    ],
+    "meaning": "big; large",
+    "compounds": [
+      {
+        "word": "大きい",
+        "kana": "おおきい",
+        "meaning": "big"
+      },
+      {
+        "word": "大学",
+        "kana": "だいがく",
+        "meaning": "university"
+      },
+      {
+        "word": "大人",
+        "kana": "おとな",
+        "meaning": "adult"
+      }
+    ]
+  },
+  {
+    "char": "小",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "ショウ"
+    ],
+    "kun": [
+      "ちい",
+      "こ",
+      "お"
+    ],
+    "meaning": "small; little",
+    "compounds": [
+      {
+        "word": "小さい",
+        "kana": "ちいさい",
+        "meaning": "small"
+      },
+      {
+        "word": "小学校",
+        "kana": "しょうがっこう",
+        "meaning": "elementary school"
+      },
+      {
+        "word": "小鳥",
+        "kana": "ことり",
+        "meaning": "small bird"
+      }
+    ]
+  },
+  {
+    "char": "高",
+    "level": 5,
+    "strokes": 10,
+    "on": [
+      "コウ"
+    ],
+    "kun": [
+      "たか"
+    ],
+    "meaning": "high; expensive",
+    "compounds": [
+      {
+        "word": "高い",
+        "kana": "たかい",
+        "meaning": "high; expensive"
+      },
+      {
+        "word": "高校",
+        "kana": "こうこう",
+        "meaning": "high school"
+      },
+      {
+        "word": "最高",
+        "kana": "さいこう",
+        "meaning": "best; highest"
+      }
+    ]
+  },
+  {
+    "char": "安",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "アン"
+    ],
+    "kun": [
+      "やす"
+    ],
+    "meaning": "cheap; safe",
+    "compounds": [
+      {
+        "word": "安い",
+        "kana": "やすい",
+        "meaning": "cheap"
+      },
+      {
+        "word": "安心",
+        "kana": "あんしん",
+        "meaning": "relief"
+      },
+      {
+        "word": "安全",
+        "kana": "あんぜん",
+        "meaning": "safety"
+      }
+    ]
+  },
+  {
+    "char": "新",
+    "level": 5,
+    "strokes": 13,
+    "on": [
+      "シン"
+    ],
+    "kun": [
+      "あたら",
+      "あら"
+    ],
+    "meaning": "new",
+    "compounds": [
+      {
+        "word": "新しい",
+        "kana": "あたらしい",
+        "meaning": "new"
+      },
+      {
+        "word": "新聞",
+        "kana": "しんぶん",
+        "meaning": "newspaper"
+      },
+      {
+        "word": "新幹線",
+        "kana": "しんかんせん",
+        "meaning": "bullet train"
+      }
+    ]
+  },
+  {
+    "char": "古",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "コ"
+    ],
+    "kun": [
+      "ふる"
+    ],
+    "meaning": "old",
+    "compounds": [
+      {
+        "word": "古い",
+        "kana": "ふるい",
+        "meaning": "old"
+      },
+      {
+        "word": "中古",
+        "kana": "ちゅうこ",
+        "meaning": "secondhand"
+      },
+      {
+        "word": "古本",
+        "kana": "ふるほん",
+        "meaning": "secondhand book"
+      }
+    ]
+  },
+  {
+    "char": "多",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "タ"
+    ],
+    "kun": [
+      "おお"
+    ],
+    "meaning": "many",
+    "compounds": [
+      {
+        "word": "多い",
+        "kana": "おおい",
+        "meaning": "many"
+      },
+      {
+        "word": "多分",
+        "kana": "たぶん",
+        "meaning": "maybe"
+      },
+      {
+        "word": "多数",
+        "kana": "たすう",
+        "meaning": "many; majority"
+      }
+    ]
+  },
+  {
+    "char": "少",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "ショウ"
+    ],
+    "kun": [
+      "すこ",
+      "すく"
+    ],
+    "meaning": "few; little",
+    "compounds": [
+      {
+        "word": "少し",
+        "kana": "すこし",
+        "meaning": "a little"
+      },
+      {
+        "word": "少ない",
+        "kana": "すくない",
+        "meaning": "few"
+      },
+      {
+        "word": "少年",
+        "kana": "しょうねん",
+        "meaning": "boy"
+      }
+    ]
+  },
+  {
+    "char": "長",
+    "level": 5,
+    "strokes": 8,
+    "on": [
+      "チョウ"
+    ],
+    "kun": [
+      "なが"
+    ],
+    "meaning": "long; leader",
+    "compounds": [
+      {
+        "word": "長い",
+        "kana": "ながい",
+        "meaning": "long"
+      },
+      {
+        "word": "長さ",
+        "kana": "ながさ",
+        "meaning": "length"
+      },
+      {
+        "word": "校長",
+        "kana": "こうちょう",
+        "meaning": "principal"
+      }
+    ]
+  },
+  {
+    "char": "白",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "ハク",
+      "ビャク"
+    ],
+    "kun": [
+      "しろ",
+      "しら"
+    ],
+    "meaning": "white",
+    "compounds": [
+      {
+        "word": "白い",
+        "kana": "しろい",
+        "meaning": "white"
+      },
+      {
+        "word": "白黒",
+        "kana": "しろくろ",
+        "meaning": "black and white"
+      },
+      {
+        "word": "面白い",
+        "kana": "おもしろい",
+        "meaning": "interesting"
+      }
+    ]
+  },
+  {
+    "char": "目",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "モク",
+      "ボク"
+    ],
+    "kun": [
+      "め"
+    ],
+    "meaning": "eye",
+    "compounds": [
+      {
+        "word": "目",
+        "kana": "め",
+        "meaning": "eye"
+      },
+      {
+        "word": "目標",
+        "kana": "もくひょう",
+        "meaning": "goal"
+      },
+      {
+        "word": "目薬",
+        "kana": "めぐすり",
+        "meaning": "eye drops"
+      }
+    ]
+  },
+  {
+    "char": "手",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "シュ"
+    ],
+    "kun": [
+      "て"
+    ],
+    "meaning": "hand",
+    "compounds": [
+      {
+        "word": "手",
+        "kana": "て",
+        "meaning": "hand"
+      },
+      {
+        "word": "手紙",
+        "kana": "てがみ",
+        "meaning": "letter"
+      },
+      {
+        "word": "上手",
+        "kana": "じょうず",
+        "meaning": "skilled"
+      }
+    ]
+  },
+  {
+    "char": "口",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "コウ"
+    ],
+    "kun": [
+      "くち"
+    ],
+    "meaning": "mouth",
+    "compounds": [
+      {
+        "word": "口",
+        "kana": "くち",
+        "meaning": "mouth"
+      },
+      {
+        "word": "入口",
+        "kana": "いりぐち",
+        "meaning": "entrance"
+      },
+      {
+        "word": "出口",
+        "kana": "でぐち",
+        "meaning": "exit"
+      }
+    ]
+  },
+  {
+    "char": "出",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "シュツ"
+    ],
+    "kun": [
+      "で",
+      "だ"
+    ],
+    "meaning": "go out; exit",
+    "compounds": [
+      {
+        "word": "出る",
+        "kana": "でる",
+        "meaning": "to go out"
+      },
+      {
+        "word": "出口",
+        "kana": "でぐち",
+        "meaning": "exit"
+      },
+      {
+        "word": "出発",
+        "kana": "しゅっぱつ",
+        "meaning": "departure"
+      }
+    ]
+  },
+  {
+    "char": "入",
+    "level": 5,
+    "strokes": 2,
+    "on": [
+      "ニュウ"
+    ],
+    "kun": [
+      "い",
+      "はい"
+    ],
+    "meaning": "enter",
+    "compounds": [
+      {
+        "word": "入る",
+        "kana": "はいる",
+        "meaning": "to enter"
+      },
+      {
+        "word": "入口",
+        "kana": "いりぐち",
+        "meaning": "entrance"
+      },
+      {
+        "word": "入学",
+        "kana": "にゅうがく",
+        "meaning": "school entrance"
+      }
+    ]
+  },
+  {
+    "char": "山",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "サン"
+    ],
+    "kun": [
+      "やま"
+    ],
+    "meaning": "mountain",
+    "compounds": [
+      {
+        "word": "山",
+        "kana": "やま",
+        "meaning": "mountain"
+      },
+      {
+        "word": "富士山",
+        "kana": "ふじさん",
+        "meaning": "Mount Fuji"
+      },
+      {
+        "word": "山道",
+        "kana": "やまみち",
+        "meaning": "mountain path"
+      }
+    ]
+  },
+  {
+    "char": "川",
+    "level": 5,
+    "strokes": 3,
+    "on": [
+      "セン"
+    ],
+    "kun": [
+      "かわ"
+    ],
+    "meaning": "river",
+    "compounds": [
+      {
+        "word": "川",
+        "kana": "かわ",
+        "meaning": "river"
+      },
+      {
+        "word": "小川",
+        "kana": "おがわ",
+        "meaning": "stream"
+      },
+      {
+        "word": "川岸",
+        "kana": "かわぎし",
+        "meaning": "riverbank"
+      }
+    ]
+  },
+  {
+    "char": "天",
+    "level": 5,
+    "strokes": 4,
+    "on": [
+      "テン"
+    ],
+    "kun": [
+      "あま",
+      "あめ"
+    ],
+    "meaning": "heaven; sky",
+    "compounds": [
+      {
+        "word": "天気",
+        "kana": "てんき",
+        "meaning": "weather"
+      },
+      {
+        "word": "天",
+        "kana": "てん",
+        "meaning": "heaven"
+      },
+      {
+        "word": "天国",
+        "kana": "てんごく",
+        "meaning": "heaven"
+      }
+    ]
+  },
+  {
+    "char": "気",
+    "level": 5,
+    "strokes": 6,
+    "on": [
+      "キ",
+      "ケ"
+    ],
+    "kun": [
+      "いき"
+    ],
+    "meaning": "spirit; mood; air",
+    "compounds": [
+      {
+        "word": "天気",
+        "kana": "てんき",
+        "meaning": "weather"
+      },
+      {
+        "word": "元気",
+        "kana": "げんき",
+        "meaning": "healthy; energetic"
+      },
+      {
+        "word": "気持ち",
+        "kana": "きもち",
+        "meaning": "feeling"
+      }
+    ]
+  },
+  {
+    "char": "雨",
+    "level": 5,
+    "strokes": 8,
+    "on": [
+      "ウ"
+    ],
+    "kun": [
+      "あめ",
+      "あま"
+    ],
+    "meaning": "rain",
+    "compounds": [
+      {
+        "word": "雨",
+        "kana": "あめ",
+        "meaning": "rain"
+      },
+      {
+        "word": "大雨",
+        "kana": "おおあめ",
+        "meaning": "heavy rain"
+      },
+      {
+        "word": "雨天",
+        "kana": "うてん",
+        "meaning": "rainy weather"
+      }
+    ]
+  },
+  {
+    "char": "空",
+    "level": 5,
+    "strokes": 8,
+    "on": [
+      "クウ"
+    ],
+    "kun": [
+      "そら",
+      "あ",
+      "から"
+    ],
+    "meaning": "sky; empty",
+    "compounds": [
+      {
+        "word": "空",
+        "kana": "そら",
+        "meaning": "sky"
+      },
+      {
+        "word": "空気",
+        "kana": "くうき",
+        "meaning": "air"
+      },
+      {
+        "word": "空港",
+        "kana": "くうこう",
+        "meaning": "airport"
+      }
+    ]
+  },
+  {
+    "char": "花",
+    "level": 5,
+    "strokes": 7,
+    "on": [
+      "カ"
+    ],
+    "kun": [
+      "はな"
+    ],
+    "meaning": "flower",
+    "compounds": [
+      {
+        "word": "花",
+        "kana": "はな",
+        "meaning": "flower"
+      },
+      {
+        "word": "花見",
+        "kana": "はなみ",
+        "meaning": "cherry blossom viewing"
+      },
+      {
+        "word": "花火",
+        "kana": "はなび",
+        "meaning": "fireworks"
+      }
+    ]
+  },
+  {
+    "char": "道",
+    "level": 5,
+    "strokes": 12,
+    "on": [
+      "ドウ"
+    ],
+    "kun": [
+      "みち"
+    ],
+    "meaning": "road; way",
+    "compounds": [
+      {
+        "word": "道",
+        "kana": "みち",
+        "meaning": "road"
+      },
+      {
+        "word": "道路",
+        "kana": "どうろ",
+        "meaning": "road"
+      },
+      {
+        "word": "北海道",
+        "kana": "ほっかいどう",
+        "meaning": "Hokkaido"
+      }
+    ]
+  },
+  {
+    "char": "店",
+    "level": 5,
+    "strokes": 8,
+    "on": [
+      "テン"
+    ],
+    "kun": [
+      "みせ"
+    ],
+    "meaning": "shop; store",
+    "compounds": [
+      {
+        "word": "店",
+        "kana": "みせ",
+        "meaning": "shop"
+      },
+      {
+        "word": "喫茶店",
+        "kana": "きっさてん",
+        "meaning": "coffee shop"
+      },
+      {
+        "word": "店員",
+        "kana": "てんいん",
+        "meaning": "shop clerk"
+      }
+    ]
+  },
+  {
+    "char": "社",
+    "level": 5,
+    "strokes": 7,
+    "on": [
+      "シャ"
+    ],
+    "kun": [
+      "やしろ"
+    ],
+    "meaning": "company; shrine",
+    "compounds": [
+      {
+        "word": "会社",
+        "kana": "かいしゃ",
+        "meaning": "company"
+      },
+      {
+        "word": "社長",
+        "kana": "しゃちょう",
+        "meaning": "company president"
+      },
+      {
+        "word": "神社",
+        "kana": "じんじゃ",
+        "meaning": "shrine"
+      }
+    ]
+  },
+  {
+    "char": "駅",
+    "level": 5,
+    "strokes": 14,
+    "on": [
+      "エキ"
+    ],
+    "kun": [],
+    "meaning": "station",
+    "compounds": [
+      {
+        "word": "駅",
+        "kana": "えき",
+        "meaning": "station"
+      },
+      {
+        "word": "駅前",
+        "kana": "えきまえ",
+        "meaning": "in front of the station"
+      },
+      {
+        "word": "駅員",
+        "kana": "えきいん",
+        "meaning": "station attendant"
+      }
+    ]
+  },
+  {
+    "char": "電",
+    "level": 5,
+    "strokes": 13,
+    "on": [
+      "デン"
+    ],
+    "kun": [],
+    "meaning": "electricity",
+    "compounds": [
+      {
+        "word": "電車",
+        "kana": "でんしゃ",
+        "meaning": "train"
+      },
+      {
+        "word": "電話",
+        "kana": "でんわ",
+        "meaning": "telephone"
+      },
+      {
+        "word": "電気",
+        "kana": "でんき",
+        "meaning": "electricity"
+      }
+    ]
+  },
+  {
+    "char": "車",
+    "level": 5,
+    "strokes": 7,
+    "on": [
+      "シャ"
+    ],
+    "kun": [
+      "くるま"
+    ],
+    "meaning": "car; vehicle",
+    "compounds": [
+      {
+        "word": "車",
+        "kana": "くるま",
+        "meaning": "car"
+      },
+      {
+        "word": "電車",
+        "kana": "でんしゃ",
+        "meaning": "train"
+      },
+      {
+        "word": "自転車",
+        "kana": "じてんしゃ",
+        "meaning": "bicycle"
+      }
+    ]
+  },
+  {
+    "char": "本",
+    "level": 5,
+    "strokes": 5,
+    "on": [
+      "ホン"
+    ],
+    "kun": [
+      "もと"
+    ],
+    "meaning": "book; origin",
+    "compounds": [
+      {
+        "word": "本",
+        "kana": "ほん",
+        "meaning": "book"
+      },
+      {
+        "word": "日本",
+        "kana": "にほん",
+        "meaning": "Japan"
+      },
+      {
+        "word": "本屋",
+        "kana": "ほんや",
+        "meaning": "bookstore"
+      }
+    ]
+  },
+  {
+    "char": "国",
+    "level": 5,
+    "strokes": 8,
+    "on": [
+      "コク"
+    ],
+    "kun": [
+      "くに"
+    ],
+    "meaning": "country",
+    "compounds": [
+      {
+        "word": "国",
+        "kana": "くに",
+        "meaning": "country"
+      },
+      {
+        "word": "外国",
+        "kana": "がいこく",
+        "meaning": "foreign country"
+      },
+      {
+        "word": "中国",
+        "kana": "ちゅうごく",
+        "meaning": "China"
+      }
+    ]
+  }
+]

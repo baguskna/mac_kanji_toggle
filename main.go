@@ -24,6 +24,7 @@ func main() {
 	dark := flag.Bool("dark", false, "use the dark appearance with --snapshot")
 	modeFlag := flag.String("mode", "", "deck for --snapshot: kanji or kotoba")
 	indexFlag := flag.Int("index", 0, "deck index for --snapshot")
+	levelFlag := flag.Int("level", 0, "JLPT level to start on / snapshot: 5, 4 or 3")
 	version := flag.Bool("version", false, "print the version and exit")
 	showNow := flag.Bool("show", false, "dev: open the card right after launch")
 	logFile := flag.String("logfile", "", "dev: also write logs to this file")
@@ -66,6 +67,9 @@ func main() {
 	}
 
 	if *snapshot != "" {
+		if *levelFlag != 0 && !app.setLevelSilent(*levelFlag) {
+			log.Fatalf("%s: no deck for --level %d", appName, *levelFlag)
+		}
 		app.SetIndex(*indexFlag)
 		uiSnapshot(app.CurrentCard(), *snapshot, *dark)
 		return
@@ -78,8 +82,13 @@ func main() {
 	if *autoSwitch > 0 {
 		app.SetAutoInterval(time.Duration(*autoSwitch) * time.Second)
 	}
+	if *levelFlag != 0 {
+		if !app.SetLevel(*levelFlag) {
+			log.Fatalf("%s: no deck for --level %d", appName, *levelFlag)
+		}
+	}
 
-	log.Printf("%s: %d kanji / %d kotoba loaded", appName, len(deck.Kanji), len(deck.Kotoba))
+	log.Printf("%s: %s loaded", appName, deck.LevelCounts())
 
 	uiStart()
 	app.uiEnabled = true
@@ -122,18 +131,23 @@ func main() {
 func measureFixedCardHeight(deck *Deck) float64 {
 	start := time.Now()
 	maxHeight := 0.0
-	for i := range deck.Kanji {
-		if h := uiMeasureCardHeight(KanjiCard(deck.Kanji[i])); h > maxHeight {
-			maxHeight = h
+	cards := 0
+	for _, level := range deck.Levels {
+		for i := range deck.Kanji[level] {
+			cards++
+			if h := uiMeasureCardHeight(KanjiCard(deck.Kanji[level][i])); h > maxHeight {
+				maxHeight = h
+			}
 		}
-	}
-	for i := range deck.Kotoba {
-		if h := uiMeasureCardHeight(KotobaCard(deck.Kotoba[i])); h > maxHeight {
-			maxHeight = h
+		for i := range deck.Kotoba[level] {
+			cards++
+			if h := uiMeasureCardHeight(KotobaCard(deck.Kotoba[level][i])); h > maxHeight {
+				maxHeight = h
+			}
 		}
 	}
 	log.Printf("%s: card height %.0f (measured %d cards in %v)",
-		appName, maxHeight, len(deck.Kanji)+len(deck.Kotoba), time.Since(start).Round(time.Millisecond))
+		appName, maxHeight, cards, time.Since(start).Round(time.Millisecond))
 	return maxHeight
 }
 

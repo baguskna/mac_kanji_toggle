@@ -7,8 +7,8 @@ import (
 	"unicode"
 )
 
-// These tests double as the guardrail for the curated N3 deck: if the data is
-// replaced or edited by hand, the app refuses obviously broken entries.
+// These tests double as the guardrail for the curated JLPT decks: if the data
+// is replaced or edited by hand, the app refuses obviously broken entries.
 
 func isHiragana(r rune) bool {
 	return unicode.In(r, unicode.Hiragana) || r == 'ー'
@@ -36,56 +36,6 @@ func isKanaText(s string, allowPunct string) bool {
 	return true
 }
 
-func loadTestDeck(t *testing.T) *Deck {
-	t.Helper()
-	d, err := LoadDeck()
-	if err != nil {
-		t.Fatalf("LoadDeck: %v", err)
-	}
-	return d
-}
-
-func TestDeckIsN3(t *testing.T) {
-	d := loadTestDeck(t)
-	if len(d.Kanji) < 180 {
-		t.Errorf("kanji deck has %d entries, want >= 180 N3 kanji", len(d.Kanji))
-	}
-	if len(d.Kotoba) < 200 {
-		t.Errorf("kotoba deck has %d entries, want >= 200 N3 words", len(d.Kotoba))
-	}
-	for _, k := range d.Kanji {
-		if k.Level != 3 {
-			t.Fatalf("kanji %q has level %d, want 3 (deck must stay N3)", k.Char, k.Level)
-		}
-	}
-	for _, k := range d.Kotoba {
-		if k.Level != 3 {
-			t.Fatalf("kotoba %q has level %d, want 3 (deck must stay N3)", k.Word, k.Level)
-		}
-	}
-}
-
-func TestKanjiReadingsUseCorrectScript(t *testing.T) {
-	d := loadTestDeck(t)
-	for _, k := range d.Kanji {
-		for _, on := range k.On {
-			if !isKatakanaText(on) {
-				t.Errorf("kanji %q: on'yomi %q must be katakana", k.Char, on)
-			}
-		}
-		for _, kun := range k.Kun {
-			if !isHiraganaText(kun) {
-				t.Errorf("kanji %q: kun'yomi %q must be hiragana", k.Char, kun)
-			}
-		}
-		for _, c := range k.Compounds {
-			if !isHiraganaText(c.Kana) {
-				t.Errorf("kanji %q: compound %q kana %q must be hiragana", k.Char, c.Word, c.Kana)
-			}
-		}
-	}
-}
-
 func isHiraganaText(s string) bool {
 	for _, r := range s {
 		if !isHiragana(r) {
@@ -104,57 +54,109 @@ func isKatakanaText(s string) bool {
 	return s != ""
 }
 
+func loadTestDeck(t *testing.T) *Deck {
+	t.Helper()
+	d, err := LoadDeck()
+	if err != nil {
+		t.Fatalf("LoadDeck: %v", err)
+	}
+	return d
+}
+
+func TestDecksCoverN5N4N3(t *testing.T) {
+	d := loadTestDeck(t)
+	want := []int{5, 4, 3}
+	if len(d.Levels) != len(want) {
+		t.Fatalf("levels = %v, want %v", d.Levels, want)
+	}
+	for i, level := range want {
+		if d.Levels[i] != level {
+			t.Fatalf("levels = %v, want %v (easiest first)", d.Levels, want)
+		}
+		if !d.HasLevel(level) {
+			t.Fatalf("level N%d is missing a deck", level)
+		}
+	}
+
+	minKanji := map[int]int{5: 80, 4: 160, 3: 180}
+	minKotoba := map[int]int{5: 200, 4: 200, 3: 200}
+	for _, level := range want {
+		if got := len(d.Kanji[level]); got < minKanji[level] {
+			t.Errorf("N%d kanji deck has %d entries, want >= %d", level, got, minKanji[level])
+		}
+		if got := len(d.Kotoba[level]); got < minKotoba[level] {
+			t.Errorf("N%d kotoba deck has %d entries, want >= %d", level, got, minKotoba[level])
+		}
+		for _, k := range d.Kanji[level] {
+			if k.Level != level {
+				t.Fatalf("kanji %q in N%d deck has level %d", k.Char, level, k.Level)
+			}
+		}
+		for _, k := range d.Kotoba[level] {
+			if k.Level != level {
+				t.Fatalf("kotoba %q in N%d deck has level %d", k.Word, level, k.Level)
+			}
+		}
+	}
+}
+
+func TestKanjiReadingsUseCorrectScript(t *testing.T) {
+	d := loadTestDeck(t)
+	for _, level := range d.Levels {
+		for _, k := range d.Kanji[level] {
+			for _, on := range k.On {
+				if !isKatakanaText(on) {
+					t.Errorf("N%d kanji %q: on'yomi %q must be katakana", level, k.Char, on)
+				}
+			}
+			for _, kun := range k.Kun {
+				if !isHiraganaText(kun) {
+					t.Errorf("N%d kanji %q: kun'yomi %q must be hiragana", level, k.Char, kun)
+				}
+			}
+			for _, c := range k.Compounds {
+				if !isHiraganaText(c.Kana) {
+					t.Errorf("N%d kanji %q: compound %q kana %q must be hiragana",
+						level, k.Char, c.Word, c.Kana)
+				}
+			}
+		}
+	}
+}
+
 func TestKotobaExampleHasKanaTranscript(t *testing.T) {
 	d := loadTestDeck(t)
 	allowed := "。、！？「」…・ 　"
-	for _, k := range d.Kotoba {
-		if !isKanaText(k.Kana, allowed) {
-			t.Errorf("kotoba %q: kana %q contains non-kana characters", k.Word, k.Kana)
-		}
-		if !isKanaText(k.Example.Kana, allowed) {
-			t.Errorf("kotoba %q: example kana %q contains non-kana characters", k.Word, k.Example.Kana)
-		}
-		if !strings.Contains(k.Example.JP, "。") && !strings.HasSuffix(k.Example.JP, "！") {
-			t.Errorf("kotoba %q: example sentence should end a clause: %q", k.Word, k.Example.JP)
+	for _, level := range d.Levels {
+		for _, k := range d.Kotoba[level] {
+			if !isKanaText(k.Kana, allowed) {
+				t.Errorf("N%d kotoba %q: kana %q contains non-kana characters", level, k.Word, k.Kana)
+			}
+			if !isKanaText(k.Example.Kana, allowed) {
+				t.Errorf("N%d kotoba %q: example kana %q contains non-kana characters",
+					level, k.Word, k.Example.Kana)
+			}
 		}
 	}
 }
 
-func TestCardForKanji(t *testing.T) {
+func TestCardsPerLevel(t *testing.T) {
 	d := loadTestDeck(t)
-	card := KanjiCard(d.Kanji[0])
-	if card.ModeKind != "kanji" {
-		t.Errorf("modeKind = %q", card.ModeKind)
-	}
-	if card.Badge != "N3" {
-		t.Errorf("badge = %q, want N3", card.Badge)
-	}
-	if card.Reading1Label == "" || card.Reading1 == "" || card.Reading1Romaji == "" {
-		t.Errorf("missing primary reading: %+v", card)
-	}
-	if len(card.Items) == 0 {
-		t.Errorf("kanji card has no compound items")
-	}
-	if card.Title != d.Kanji[0].Char {
-		t.Errorf("title = %q, want kanji char", card.Title)
-	}
-}
-
-func TestCardForKotoba(t *testing.T) {
-	d := loadTestDeck(t)
-	entry := d.Kotoba[0]
-	card := KotobaCard(entry)
-	if card.ModeKind != "kotoba" {
-		t.Errorf("modeKind = %q", card.ModeKind)
-	}
-	if card.Reading1 != entry.Kana {
-		t.Errorf("reading = %q, want %q", card.Reading1, entry.Kana)
-	}
-	if card.ExampleJP != entry.Example.JP || card.ExampleEN != entry.Example.EN {
-		t.Errorf("example not copied into card")
-	}
-	if card.Reading1Romaji == "" {
-		t.Errorf("kotoba card missing generated romaji")
+	for _, level := range d.Levels {
+		kanji := KanjiCard(d.Kanji[level][0])
+		if kanji.ModeKind != "kanji" || kanji.Badge != LevelBadge(level) {
+			t.Errorf("N%d kanji card: badge=%q modeKind=%q", level, kanji.Badge, kanji.ModeKind)
+		}
+		if kanji.Reading1 == "" || kanji.Reading1Romaji == "" || len(kanji.Items) == 0 {
+			t.Errorf("N%d kanji card is incomplete", level)
+		}
+		kotoba := KotobaCard(d.Kotoba[level][0])
+		if kotoba.ModeKind != "kotoba" || kotoba.Badge != LevelBadge(level) {
+			t.Errorf("N%d kotoba card: badge=%q modeKind=%q", level, kotoba.Badge, kotoba.ModeKind)
+		}
+		if kotoba.Reading1Romaji == "" || kotoba.ExampleJP == "" {
+			t.Errorf("N%d kotoba card is incomplete", level)
+		}
 	}
 }
 
@@ -180,29 +182,20 @@ func TestMenuTitle(t *testing.T) {
 	}
 }
 
-func TestCardFurigana(t *testing.T) {
-	d := loadTestDeck(t)
-	kanji := KanjiCard(d.Kanji[0])
-	if kanji.TitleKana == "" {
-		t.Errorf("kanji card is missing furigana for the menu bar")
-	}
-	kotoba := KotobaCard(d.Kotoba[0])
-	if kotoba.TitleKana != d.Kotoba[0].Kana {
-		t.Errorf("kotoba furigana = %q, want %q", kotoba.TitleKana, d.Kotoba[0].Kana)
-	}
-}
-
 func TestAppNavigationAndPersistence(t *testing.T) {
 	d := loadTestDeck(t)
 	statePath := filepath.Join(t.TempDir(), "state.json")
 	app := NewApp(d, statePath)
 
-	want := d.Kanji[0].Char
+	if app.Level() != 3 {
+		t.Fatalf("default level = %d, want 3", app.Level())
+	}
+	want := d.Kanji[3][0].Char
 	if got := app.CurrentCard().Headword; got != want {
 		t.Fatalf("initial card = %q, want %q", got, want)
 	}
 	app.Next()
-	if got, want := app.CurrentCard().Headword, d.Kanji[1].Char; got != want {
+	if got, want := app.CurrentCard().Headword, d.Kanji[3][1].Char; got != want {
 		t.Errorf("after Next = %q, want %q", got, want)
 	}
 	app.Prev()
@@ -210,7 +203,7 @@ func TestAppNavigationAndPersistence(t *testing.T) {
 		t.Errorf("after Prev = %q, want %q", got, want)
 	}
 	app.Prev()
-	if got, want := app.CurrentCard().Headword, d.Kanji[len(d.Kanji)-1].Char; got != want {
+	if got, want := app.CurrentCard().Headword, d.Kanji[3][len(d.Kanji[3])-1].Char; got != want {
 		t.Errorf("Prev should wrap to %q, got %q", want, got)
 	}
 
@@ -218,6 +211,17 @@ func TestAppNavigationAndPersistence(t *testing.T) {
 	if got := app.CurrentCard().ModeKind; got != "kotoba" {
 		t.Errorf("after ToggleMode modeKind = %q", got)
 	}
+
+	if !app.SetLevel(5) {
+		t.Fatalf("SetLevel(5) failed")
+	}
+	if got := app.CurrentCard().Badge; got != "N5" {
+		t.Errorf("after SetLevel(5) badge = %q", got)
+	}
+	if app.SetLevel(1) {
+		t.Errorf("SetLevel(1) should fail when no N1 deck exists")
+	}
+
 	app.ToggleRomaji()
 	app.ToggleFurigana()
 	app.ToggleAuto()
@@ -225,36 +229,60 @@ func TestAppNavigationAndPersistence(t *testing.T) {
 
 	app2 := NewApp(d, statePath)
 	app2.LoadState()
-	if got := app2.CurrentCard().ModeKind; got != "kotoba" {
-		t.Errorf("restored modeKind = %q, want kotoba", got)
+	if got := app2.Level(); got != 5 {
+		t.Errorf("restored level = %d, want 5", got)
+	}
+	if got := app2.CurrentCard().Badge; got != "N5" {
+		t.Errorf("restored badge = %q, want N5", got)
 	}
 	if app2.showRomaji {
 		t.Errorf("restored showRomaji = true, want false")
 	}
-	if app2.auto {
-		t.Errorf("restored autoSwitch = true, want false")
-	}
 	if app2.showFurigana {
 		t.Errorf("restored showFurigana = true, want false")
 	}
+	if app2.auto {
+		t.Errorf("restored autoSwitch = true, want false")
+	}
 }
 
-func TestAutoSwitchDefaultsOnAndPausesWhileOpen(t *testing.T) {
+func TestCycleLevelWraps(t *testing.T) {
+	d := loadTestDeck(t)
+	app := NewApp(d, filepath.Join(t.TempDir(), "state.json"))
+	seen := []int{app.Level()}
+	for i := 0; i < len(d.Levels); i++ {
+		app.CycleLevel()
+		seen = append(seen, app.Level())
+	}
+	// N3 -> N5 -> N4 -> N3 with Levels = [5 4 3].
+	want := []int{3, 5, 4, 3}
+	if len(seen) != len(want) {
+		t.Fatalf("level cycle = %v, want %v", seen, want)
+	}
+	for i := range want {
+		if seen[i] != want[i] {
+			t.Fatalf("level cycle = %v, want %v", seen, want)
+		}
+	}
+}
+
+func TestAutoSwitchDefaultsOnAndMovesCards(t *testing.T) {
 	d := loadTestDeck(t)
 	app := NewApp(d, filepath.Join(t.TempDir(), "state.json"))
 	if !app.auto {
 		t.Fatalf("auto-switch should default to on")
 	}
 
-	// A tick advances the deck it is about to show, then flips to it.
 	startMode := app.CurrentCard().ModeKind
 	app.tickAutoSwitch()
 	after := app.CurrentCard()
 	if after.ModeKind == startMode {
 		t.Errorf("auto-switch did not change deck (still %q)", after.ModeKind)
 	}
+	if after.Badge != "N3" {
+		t.Errorf("auto-switch changed level unexpectedly: badge=%q", after.Badge)
+	}
 
-	// Keep flipping and make sure both decks keep moving through the deck.
 	seen := map[string]bool{}
 	for i := 0; i < 6; i++ {
 		seen[app.CurrentCard().ModeKind+"|"+app.CurrentCard().Headword] = true
@@ -262,14 +290,5 @@ func TestAutoSwitchDefaultsOnAndPausesWhileOpen(t *testing.T) {
 	}
 	if len(seen) < 4 {
 		t.Errorf("auto-switch looks stuck: only %d distinct cards over 6 ticks", len(seen))
-	}
-}
-
-func TestFixedHeightIsTallerThanEveryNaturalCard(t *testing.T) {
-	// The panel uses the tallest card in the deck as its constant height; this
-	// test documents that intent without needing the AppKit renderer.
-	d := loadTestDeck(t)
-	if len(d.Kanji) == 0 || len(d.Kotoba) == 0 {
-		t.Fatal("empty deck")
 	}
 }

@@ -12,7 +12,7 @@ void KBStart(void);          /* create status item, panel, menu, key monitor   *
 void KBRun(void);            /* run the AppKit event loop                      */
 void KBShowCard(const char *cardJSON);
 void KBSetTitle(const char *title);
-void KBSetMenuState(int autoOn, int romajiOn, int furiganaOn);
+void KBSetMenuState(int autoOn, int romajiOn, int furiganaOn, int level);
 double KBCardNaturalHeight(const char *cardJSON);
 void KBSetFixedCardHeight(double height);
 int KBIsPanelVisible(void);
@@ -29,6 +29,8 @@ void GoToggleMode(void);
 void GoToggleAuto(void);
 void GoToggleRomaji(void);
 void GoToggleFurigana(void);
+void GoCycleLevel(void);
+void GoSetLevel(int level);
 
 #ifdef __cplusplus
 }

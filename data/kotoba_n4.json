@@ -1,0 +1,2762 @@
+[
+  {
+    "word": "運転",
+    "kana": "うんてん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "driving",
+    "example": {
+      "jp": "父は毎日車を運転する。",
+      "kana": "ちちはまいにちくるまをうんてんする。",
+      "en": "My father drives a car every day."
+    }
+  },
+  {
+    "word": "場所",
+    "kana": "ばしょ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "place",
+    "example": {
+      "jp": "待ち合わせの場所を教えてください。",
+      "kana": "まちあわせのばしょをおしえてください。",
+      "en": "Please tell me the meeting place."
+    }
+  },
+  {
+    "word": "地図",
+    "kana": "ちず",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "map",
+    "example": {
+      "jp": "地図で駅の場所を確認した。",
+      "kana": "ちずでえきのばしょをかくにんした。",
+      "en": "I checked the station's location on the map."
+    }
+  },
+  {
+    "word": "予習",
+    "kana": "よしゅう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "preparation for class",
+    "example": {
+      "jp": "明日の授業の予習をした。",
+      "kana": "あしたのじゅぎょうのよしゅうをした。",
+      "en": "I prepared for tomorrow's class."
+    }
+  },
+  {
+    "word": "会議",
+    "kana": "かいぎ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "meeting",
+    "example": {
+      "jp": "会議は午後三時に始まる。",
+      "kana": "かいぎはごごさんじにはじまる。",
+      "en": "The meeting starts at three in the afternoon."
+    }
+  },
+  {
+    "word": "社長",
+    "kana": "しゃちょう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "company president",
+    "example": {
+      "jp": "社長は新しい計画を説明した。",
+      "kana": "しゃちょうはあたらしいけいかくをせつめいした。",
+      "en": "The president explained the new plan."
+    }
+  },
+  {
+    "word": "課長",
+    "kana": "かちょう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "section chief",
+    "example": {
+      "jp": "課長に書類を渡した。",
+      "kana": "かちょうにしょるいをわたした。",
+      "en": "I handed the documents to the section chief."
+    }
+  },
+  {
+    "word": "工場",
+    "kana": "こうじょう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "factory",
+    "example": {
+      "jp": "この工場では車を作っている。",
+      "kana": "このこうじょうではくるまをつくっている。",
+      "en": "This factory makes cars."
+    }
+  },
+  {
+    "word": "返事",
+    "kana": "へんじ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "reply",
+    "example": {
+      "jp": "メールの返事がまだ来ない。",
+      "kana": "メールのへんじがまだこない。",
+      "en": "There is still no reply to my email."
+    }
+  },
+  {
+    "word": "書類",
+    "kana": "しょるい",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "documents",
+    "example": {
+      "jp": "大事な書類をかばんに入れた。",
+      "kana": "だいじなしょるいをかばんにいれた。",
+      "en": "I put the important documents in my bag."
+    }
+  },
+  {
+    "word": "裏",
+    "kana": "うら",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "back side",
+    "example": {
+      "jp": "封筒の裏に名前を書いてください。",
+      "kana": "ふうとうのうらになまえをかいてください。",
+      "en": "Please write your name on the back of the envelope."
+    }
+  },
+  {
+    "word": "以上",
+    "kana": "いじょう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "more than",
+    "example": {
+      "jp": "三十人以上が集まった。",
+      "kana": "さんじゅうにんいじょうがあつまった。",
+      "en": "More than thirty people gathered."
+    }
+  },
+  {
+    "word": "以下",
+    "kana": "いか",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "less than",
+    "example": {
+      "jp": "六歳以下は無料です。",
+      "kana": "ろくさいいかはむりょうです。",
+      "en": "Children six and under are free."
+    }
+  },
+  {
+    "word": "以外",
+    "kana": "いがい",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "except",
+    "example": {
+      "jp": "日曜日以外は毎日働いている。",
+      "kana": "にちようびいがいはまいにちはたらいている。",
+      "en": "I work every day except Sunday."
+    }
+  },
+  {
+    "word": "最近",
+    "kana": "さいきん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "recently",
+    "example": {
+      "jp": "最近、忙しくて寝るのが遅い。",
+      "kana": "さいきん、いそがしくてねるのがおそい。",
+      "en": "Recently I have been busy and go to bed late."
+    }
+  },
+  {
+    "word": "将来",
+    "kana": "しょうらい",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "future",
+    "example": {
+      "jp": "将来、先生になりたい。",
+      "kana": "しょうらい、せんせいになりたい。",
+      "en": "I want to become a teacher in the future."
+    }
+  },
+  {
+    "word": "過去",
+    "kana": "かこ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "past",
+    "example": {
+      "jp": "過去のことは忘れましょう。",
+      "kana": "かこのことはわすれましょう。",
+      "en": "Let's forget about the past."
+    }
+  },
+  {
+    "word": "出張",
+    "kana": "しゅっちょう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "business trip",
+    "example": {
+      "jp": "父は来週大阪へ出張する。",
+      "kana": "ちちはらいしゅうおおさかへしゅっちょうする。",
+      "en": "My father is going on a business trip to Osaka next week."
+    }
+  },
+  {
+    "word": "空港",
+    "kana": "くうこう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "airport",
+    "example": {
+      "jp": "空港までタクシーで行った。",
+      "kana": "くうこうまでタクシーでいった。",
+      "en": "I went to the airport by taxi."
+    }
+  },
+  {
+    "word": "地下鉄",
+    "kana": "ちかてつ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "subway",
+    "example": {
+      "jp": "地下鉄で会社に通っている。",
+      "kana": "ちかてつでかいしゃにかよっている。",
+      "en": "I commute to work by subway."
+    }
+  },
+  {
+    "word": "交差点",
+    "kana": "こうさてん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "intersection",
+    "example": {
+      "jp": "次の交差点を右に曲がってください。",
+      "kana": "つぎのこうさてんをみぎにまがってください。",
+      "en": "Please turn right at the next intersection."
+    }
+  },
+  {
+    "word": "温泉",
+    "kana": "おんせん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "hot spring",
+    "example": {
+      "jp": "週末に家族で温泉に行く。",
+      "kana": "しゅうまつにかぞくでおんせんにいく。",
+      "en": "I am going to a hot spring with my family this weekend."
+    }
+  },
+  {
+    "word": "旅館",
+    "kana": "りょかん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "Japanese inn",
+    "example": {
+      "jp": "古い旅館に一泊した。",
+      "kana": "ふるいりょかんにいっぱくした。",
+      "en": "I stayed one night at an old Japanese inn."
+    }
+  },
+  {
+    "word": "冷蔵庫",
+    "kana": "れいぞうこ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "refrigerator",
+    "example": {
+      "jp": "飲み物は冷蔵庫に入っている。",
+      "kana": "のみものはれいぞうこにはいっている。",
+      "en": "The drinks are in the refrigerator."
+    }
+  },
+  {
+    "word": "洗濯機",
+    "kana": "せんたくき",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "washing machine",
+    "example": {
+      "jp": "新しい洗濯機を買った。",
+      "kana": "あたらしいせんたくきをかった。",
+      "en": "I bought a new washing machine."
+    }
+  },
+  {
+    "word": "エアコン",
+    "kana": "エアコン",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "air conditioner",
+    "example": {
+      "jp": "暑いのでエアコンをつけた。",
+      "kana": "あついのでエアコンをつけた。",
+      "en": "I turned on the air conditioner because it was hot."
+    }
+  },
+  {
+    "word": "カーテン",
+    "kana": "カーテン",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "curtain",
+    "example": {
+      "jp": "カーテンを開けて部屋を明るくした。",
+      "kana": "カーテンをあけてへやをあかるくした。",
+      "en": "I opened the curtains and made the room bright."
+    }
+  },
+  {
+    "word": "マンション",
+    "kana": "マンション",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "apartment building",
+    "example": {
+      "jp": "駅の近くのマンションに住んでいる。",
+      "kana": "えきのちかくのマンションにすんでいる。",
+      "en": "I live in an apartment building near the station."
+    }
+  },
+  {
+    "word": "ビル",
+    "kana": "ビル",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "building",
+    "example": {
+      "jp": "あの高いビルは銀行です。",
+      "kana": "あのたかいビルはぎんこうです。",
+      "en": "That tall building is a bank."
+    }
+  },
+  {
+    "word": "エレベーター",
+    "kana": "エレベーター",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "elevator",
+    "example": {
+      "jp": "エレベーターで五階まで上がった。",
+      "kana": "エレベーターでごかいまであがった。",
+      "en": "I went up to the fifth floor by elevator."
+    }
+  },
+  {
+    "word": "ガソリン",
+    "kana": "ガソリン",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "gasoline",
+    "example": {
+      "jp": "ガソリンが高くなった。",
+      "kana": "ガソリンがたかくなった。",
+      "en": "Gasoline has become expensive."
+    }
+  },
+  {
+    "word": "免許",
+    "kana": "めんきょ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "license",
+    "example": {
+      "jp": "車の免許を取りたい。",
+      "kana": "くるまのめんきょをとりたい。",
+      "en": "I want to get a driver's license."
+    }
+  },
+  {
+    "word": "故障",
+    "kana": "こしょう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "breakdown",
+    "example": {
+      "jp": "エレベーターが故障している。",
+      "kana": "エレベーターがこしょうしている。",
+      "en": "The elevator is out of order."
+    }
+  },
+  {
+    "word": "修理",
+    "kana": "しゅうり",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "repair",
+    "example": {
+      "jp": "自転車の修理に三千円かかった。",
+      "kana": "じてんしゃのしゅうりにさんぜんえんかかった。",
+      "en": "The bicycle repair cost three thousand yen."
+    }
+  },
+  {
+    "word": "部品",
+    "kana": "ぶひん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "parts",
+    "example": {
+      "jp": "この機械の部品が足りない。",
+      "kana": "このきかいのぶひんがたりない。",
+      "en": "The parts for this machine are missing."
+    }
+  },
+  {
+    "word": "電池",
+    "kana": "でんち",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "battery",
+    "example": {
+      "jp": "時計の電池を交換した。",
+      "kana": "とけいのでんちをこうかんした。",
+      "en": "I replaced the watch battery."
+    }
+  },
+  {
+    "word": "メール",
+    "kana": "メール",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "email",
+    "example": {
+      "jp": "昨日のメールを読みましたか。",
+      "kana": "きのうのメールをよみましたか。",
+      "en": "Did you read yesterday's email?"
+    }
+  },
+  {
+    "word": "インターネット",
+    "kana": "インターネット",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "internet",
+    "example": {
+      "jp": "インターネットで調べてみた。",
+      "kana": "インターネットでしらべてみた。",
+      "en": "I looked it up on the internet."
+    }
+  },
+  {
+    "word": "コピー",
+    "kana": "コピー",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "copy",
+    "example": {
+      "jp": "この書類を十枚コピーしてください。",
+      "kana": "このしょるいをじゅうまいコピーしてください。",
+      "en": "Please copy these documents ten times."
+    }
+  },
+  {
+    "word": "ソフト",
+    "kana": "ソフト",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "software",
+    "example": {
+      "jp": "新しいソフトをパソコンに入れた。",
+      "kana": "あたらしいソフトをパソコンにいれた。",
+      "en": "I installed new software on my computer."
+    }
+  },
+  {
+    "word": "アニメ",
+    "kana": "アニメ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "anime",
+    "example": {
+      "jp": "子供のころからアニメが好きだ。",
+      "kana": "こどものころからアニメがすきだ。",
+      "en": "I have liked anime since I was a child."
+    }
+  },
+  {
+    "word": "雑誌",
+    "kana": "ざっし",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "magazine",
+    "example": {
+      "jp": "駅で週刊誌を買った。",
+      "kana": "えきでしゅうかんしをかった。",
+      "en": "I bought a weekly magazine at the station."
+    }
+  },
+  {
+    "word": "ピアノ",
+    "kana": "ピアノ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "piano",
+    "example": {
+      "jp": "妹はピアノを習っている。",
+      "kana": "いもうとはピアノをならっている。",
+      "en": "My little sister is taking piano lessons."
+    }
+  },
+  {
+    "word": "ギター",
+    "kana": "ギター",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "guitar",
+    "example": {
+      "jp": "兄はギターが上手だ。",
+      "kana": "あにはギターがじょうずだ。",
+      "en": "My older brother is good at guitar."
+    }
+  },
+  {
+    "word": "コンサート",
+    "kana": "コンサート",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "concert",
+    "example": {
+      "jp": "昨夜、コンサートに行った。",
+      "kana": "さくや、コンサートにいった。",
+      "en": "I went to a concert last night."
+    }
+  },
+  {
+    "word": "美術館",
+    "kana": "びじゅつかん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "art museum",
+    "example": {
+      "jp": "日曜日に美術館へ行った。",
+      "kana": "にちようびにびじゅつかんへいった。",
+      "en": "I went to the art museum on Sunday."
+    }
+  },
+  {
+    "word": "動物園",
+    "kana": "どうぶつえん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "zoo",
+    "example": {
+      "jp": "動物園でパンダを見た。",
+      "kana": "どうぶつえんでパンダをみた。",
+      "en": "I saw a panda at the zoo."
+    }
+  },
+  {
+    "word": "プール",
+    "kana": "プール",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "swimming pool",
+    "example": {
+      "jp": "夏は毎日プールで泳ぐ。",
+      "kana": "なつはまいにちプールでおよぐ。",
+      "en": "In summer I swim in the pool every day."
+    }
+  },
+  {
+    "word": "テニス",
+    "kana": "テニス",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "tennis",
+    "example": {
+      "jp": "午後からテニスをする。",
+      "kana": "ごごからテニスをする。",
+      "en": "I will play tennis from the afternoon."
+    }
+  },
+  {
+    "word": "サッカー",
+    "kana": "サッカー",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "soccer",
+    "example": {
+      "jp": "弟はサッカーの試合に出た。",
+      "kana": "おとうとはサッカーのしあいにでた。",
+      "en": "My little brother played in a soccer game."
+    }
+  },
+  {
+    "word": "野球",
+    "kana": "やきゅう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "baseball",
+    "example": {
+      "jp": "父と野球を見に行った。",
+      "kana": "ちちとやきゅうをみにいった。",
+      "en": "I went to watch baseball with my father."
+    }
+  },
+  {
+    "word": "チーム",
+    "kana": "チーム",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "team",
+    "example": {
+      "jp": "私たちのチームが勝った。",
+      "kana": "わたしたちのチームがかった。",
+      "en": "Our team won."
+    }
+  },
+  {
+    "word": "安心",
+    "kana": "あんしん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "relief",
+    "example": {
+      "jp": "無事だと聞いて安心した。",
+      "kana": "ぶじだときいてあんしんした。",
+      "en": "I was relieved to hear that he was safe."
+    }
+  },
+  {
+    "word": "今度",
+    "kana": "こんど",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "next time",
+    "example": {
+      "jp": "今度の日曜日に会いましょう。",
+      "kana": "こんどのにちようびにあいましょう。",
+      "en": "Let's meet next Sunday."
+    }
+  },
+  {
+    "word": "最初",
+    "kana": "さいしょ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "beginning",
+    "example": {
+      "jp": "最初は日本語が全然分からなかった。",
+      "kana": "さいしょはにほんごがぜんぜんわからなかった。",
+      "en": "At first I did not understand Japanese at all."
+    }
+  },
+  {
+    "word": "最後",
+    "kana": "さいご",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "end",
+    "example": {
+      "jp": "最後まで諦めないでください。",
+      "kana": "さいごまであきらめないでください。",
+      "en": "Please do not give up until the end."
+    }
+  },
+  {
+    "word": "終わり",
+    "kana": "おわり",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "end",
+    "example": {
+      "jp": "映画の終わりは五時です。",
+      "kana": "えいがのおわりはごじです。",
+      "en": "The movie ends at five."
+    }
+  },
+  {
+    "word": "匂い",
+    "kana": "におい",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "smell",
+    "example": {
+      "jp": "台所からいい匂いがする。",
+      "kana": "だいどころからいいにおいがする。",
+      "en": "There is a good smell coming from the kitchen."
+    }
+  },
+  {
+    "word": "味",
+    "kana": "あじ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "taste",
+    "example": {
+      "jp": "このスープは味が薄い。",
+      "kana": "このスープはあじがうすい。",
+      "en": "This soup tastes bland."
+    }
+  },
+  {
+    "word": "形",
+    "kana": "かたち",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "shape",
+    "example": {
+      "jp": "月の形が変わった。",
+      "kana": "つきのかたちがかわった。",
+      "en": "The shape of the moon changed."
+    }
+  },
+  {
+    "word": "種類",
+    "kana": "しゅるい",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "kind",
+    "example": {
+      "jp": "この店はパンの種類が多い。",
+      "kana": "このみせはパンのしゅるいがおおい。",
+      "en": "This shop has many kinds of bread."
+    }
+  },
+  {
+    "word": "数",
+    "kana": "かず",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "number",
+    "example": {
+      "jp": "参加者の数を数えてください。",
+      "kana": "さんかしゃのかずをかぞえてください。",
+      "en": "Please count the number of participants."
+    }
+  },
+  {
+    "word": "真ん中",
+    "kana": "まんなか",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "center",
+    "example": {
+      "jp": "部屋の真ん中に机がある。",
+      "kana": "へやのまんなかにつくえがある。",
+      "en": "There is a desk in the center of the room."
+    }
+  },
+  {
+    "word": "向こう",
+    "kana": "むこう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "other side",
+    "example": {
+      "jp": "川の向こうに山が見える。",
+      "kana": "かわのむこうにやまがみえる。",
+      "en": "You can see mountains across the river."
+    }
+  },
+  {
+    "word": "周り",
+    "kana": "まわり",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "surroundings",
+    "example": {
+      "jp": "家の周りに木が多い。",
+      "kana": "いえのまわりにきがおおい。",
+      "en": "There are many trees around the house."
+    }
+  },
+  {
+    "word": "遠く",
+    "kana": "とおく",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "distance",
+    "example": {
+      "jp": "遠くに海が見える。",
+      "kana": "とおくにうみがみえる。",
+      "en": "I can see the sea in the distance."
+    }
+  },
+  {
+    "word": "番号",
+    "kana": "ばんごう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "number",
+    "example": {
+      "jp": "電話番号を教えてください。",
+      "kana": "でんわばんごうをおしえてください。",
+      "en": "Please tell me your phone number."
+    }
+  },
+  {
+    "word": "自分",
+    "kana": "じぶん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "oneself",
+    "example": {
+      "jp": "自分のことは自分でする。",
+      "kana": "じぶんのことはじぶんでする。",
+      "en": "I do things for myself by myself."
+    }
+  },
+  {
+    "word": "客",
+    "kana": "きゃく",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "guest",
+    "example": {
+      "jp": "店に客がたくさん来た。",
+      "kana": "みせにきゃくがたくさんきた。",
+      "en": "Many customers came to the shop."
+    }
+  },
+  {
+    "word": "店員",
+    "kana": "てんいん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "shop clerk",
+    "example": {
+      "jp": "店員にサイズを聞いた。",
+      "kana": "てんいんにサイズをきいた。",
+      "en": "I asked the clerk about the size."
+    }
+  },
+  {
+    "word": "泥棒",
+    "kana": "どろぼう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "thief",
+    "example": {
+      "jp": "昨夜、家に泥棒が入った。",
+      "kana": "さくや、いえにどろぼうがはいった。",
+      "en": "A thief broke into our house last night."
+    }
+  },
+  {
+    "word": "男性",
+    "kana": "だんせい",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "man",
+    "example": {
+      "jp": "あの男性は誰ですか。",
+      "kana": "あのだんせいはだれですか。",
+      "en": "Who is that man?"
+    }
+  },
+  {
+    "word": "女性",
+    "kana": "じょせい",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "woman",
+    "example": {
+      "jp": "この店の店長は女性です。",
+      "kana": "このみせのてんちょうはじょせいです。",
+      "en": "The manager of this shop is a woman."
+    }
+  },
+  {
+    "word": "赤ちゃん",
+    "kana": "あかちゃん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "baby",
+    "example": {
+      "jp": "隣の家に赤ちゃんが生まれた。",
+      "kana": "となりのいえにあかちゃんがうまれた。",
+      "en": "A baby was born at the house next door."
+    }
+  },
+  {
+    "word": "親",
+    "kana": "おや",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "parent",
+    "example": {
+      "jp": "親の言うことをよく聞きなさい。",
+      "kana": "おやのいうことをよくききなさい。",
+      "en": "Listen carefully to what your parents say."
+    }
+  },
+  {
+    "word": "気持ち",
+    "kana": "きもち",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "feeling",
+    "example": {
+      "jp": "今の気持ちを話してください。",
+      "kana": "いまのきもちをはなしてください。",
+      "en": "Please tell me how you feel now."
+    }
+  },
+  {
+    "word": "夢",
+    "kana": "ゆめ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "dream",
+    "example": {
+      "jp": "将来の夢は医者になることだ。",
+      "kana": "しょうらいのゆめはいしゃになることだ。",
+      "en": "My dream for the future is to become a doctor."
+    }
+  },
+  {
+    "word": "チャンス",
+    "kana": "チャンス",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "chance",
+    "example": {
+      "jp": "これはいいチャンスだ。",
+      "kana": "これはいいチャンスだ。",
+      "en": "This is a good chance."
+    }
+  },
+  {
+    "word": "間違い",
+    "kana": "まちがい",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "mistake",
+    "example": {
+      "jp": "答えの間違いを直した。",
+      "kana": "こたえのまちがいをなおした。",
+      "en": "I corrected the mistakes in my answers."
+    }
+  },
+  {
+    "word": "答え",
+    "kana": "こたえ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "answer",
+    "example": {
+      "jp": "この問題の答えが分からない。",
+      "kana": "このもんだいのこたえがわからない。",
+      "en": "I do not know the answer to this question."
+    }
+  },
+  {
+    "word": "教科書",
+    "kana": "きょうかしょ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "textbook",
+    "example": {
+      "jp": "教科書を開いてください。",
+      "kana": "きょうかしょをひらいてください。",
+      "en": "Please open your textbook."
+    }
+  },
+  {
+    "word": "作文",
+    "kana": "さくぶん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "composition",
+    "example": {
+      "jp": "日本語で作文を書いた。",
+      "kana": "にほんごでさくぶんをかいた。",
+      "en": "I wrote a composition in Japanese."
+    }
+  },
+  {
+    "word": "文法",
+    "kana": "ぶんぽう",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "grammar",
+    "example": {
+      "jp": "この文法がよく分からない。",
+      "kana": "このぶんぽうがよくわからない。",
+      "en": "I do not understand this grammar well."
+    }
+  },
+  {
+    "word": "単語",
+    "kana": "たんご",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "vocabulary",
+    "example": {
+      "jp": "毎日単語を十個覚える。",
+      "kana": "まいにちたんごをじゅっこおぼえる。",
+      "en": "I memorize ten words every day."
+    }
+  },
+  {
+    "word": "意味",
+    "kana": "いみ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "meaning",
+    "example": {
+      "jp": "この言葉の意味を教えてください。",
+      "kana": "このことばのいみをおしえてください。",
+      "en": "Please tell me the meaning of this word."
+    }
+  },
+  {
+    "word": "発音",
+    "kana": "はつおん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "pronunciation",
+    "example": {
+      "jp": "発音がとてもきれいだ。",
+      "kana": "はつおんがとてもきれいだ。",
+      "en": "Your pronunciation is very beautiful."
+    }
+  },
+  {
+    "word": "会話",
+    "kana": "かいわ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "conversation",
+    "example": {
+      "jp": "英語で会話を練習した。",
+      "kana": "えいごでかいわをれんしゅうした。",
+      "en": "I practiced conversation in English."
+    }
+  },
+  {
+    "word": "ボーナス",
+    "kana": "ボーナス",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "bonus",
+    "example": {
+      "jp": "夏のボーナスで旅行に行く。",
+      "kana": "なつのボーナスでりょこうにいく。",
+      "en": "I will go on a trip with my summer bonus."
+    }
+  },
+  {
+    "word": "アルバイト",
+    "kana": "アルバイト",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "part-time job",
+    "example": {
+      "jp": "コンビニでアルバイトをしている。",
+      "kana": "コンビニでアルバイトをしている。",
+      "en": "I work part-time at a convenience store."
+    }
+  },
+  {
+    "word": "サイン",
+    "kana": "サイン",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "signature",
+    "example": {
+      "jp": "ここにサインしてください。",
+      "kana": "ここにサインしてください。",
+      "en": "Please sign here."
+    }
+  },
+  {
+    "word": "パスポート",
+    "kana": "パスポート",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "passport",
+    "example": {
+      "jp": "海外へ行くのでパスポートを作った。",
+      "kana": "かいがいへいくのでパスポートをつくった。",
+      "en": "I got a passport because I am going abroad."
+    }
+  },
+  {
+    "word": "チケット",
+    "kana": "チケット",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "ticket",
+    "example": {
+      "jp": "コンサートのチケットを二枚買った。",
+      "kana": "コンサートのチケットをにまいかった。",
+      "en": "I bought two concert tickets."
+    }
+  },
+  {
+    "word": "スーツ",
+    "kana": "スーツ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "suit",
+    "example": {
+      "jp": "面接にはスーツを着て行く。",
+      "kana": "めんせつにはスーツをきていく。",
+      "en": "I wear a suit to interviews."
+    }
+  },
+  {
+    "word": "コート",
+    "kana": "コート",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "coat",
+    "example": {
+      "jp": "寒いのでコートを着た。",
+      "kana": "さむいのでコートをきた。",
+      "en": "I put on a coat because it was cold."
+    }
+  },
+  {
+    "word": "石鹸",
+    "kana": "せっけん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "soap",
+    "example": {
+      "jp": "手を石鹸で洗った。",
+      "kana": "てをせっけんであらった。",
+      "en": "I washed my hands with soap."
+    }
+  },
+  {
+    "word": "タオル",
+    "kana": "タオル",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "towel",
+    "example": {
+      "jp": "新しいタオルを使った。",
+      "kana": "あたらしいタオルをつかった。",
+      "en": "I used a new towel."
+    }
+  },
+  {
+    "word": "カレンダー",
+    "kana": "カレンダー",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "calendar",
+    "example": {
+      "jp": "壁にカレンダーを掛けた。",
+      "kana": "かべにカレンダーをかけた。",
+      "en": "I hung a calendar on the wall."
+    }
+  },
+  {
+    "word": "手袋",
+    "kana": "てぶくろ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "gloves",
+    "example": {
+      "jp": "寒いから手袋をしよう。",
+      "kana": "さむいからてぶくろをしよう。",
+      "en": "Let's wear gloves because it is cold."
+    }
+  },
+  {
+    "word": "指輪",
+    "kana": "ゆびわ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "ring",
+    "example": {
+      "jp": "母から指輪をもらった。",
+      "kana": "ははからゆびわをもらった。",
+      "en": "I received a ring from my mother."
+    }
+  },
+  {
+    "word": "着物",
+    "kana": "きもの",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "kimono",
+    "example": {
+      "jp": "着物を着て写真を撮った。",
+      "kana": "きものをきてしゃしんをとった。",
+      "en": "I wore a kimono and took a photo."
+    }
+  },
+  {
+    "word": "バター",
+    "kana": "バター",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "butter",
+    "example": {
+      "jp": "パンにバターを塗った。",
+      "kana": "パンにバターをぬった。",
+      "en": "I spread butter on the bread."
+    }
+  },
+  {
+    "word": "チーズ",
+    "kana": "チーズ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "cheese",
+    "example": {
+      "jp": "このケーキはチーズの味がする。",
+      "kana": "このケーキはチーズのあじがする。",
+      "en": "This cake tastes like cheese."
+    }
+  },
+  {
+    "word": "ワイン",
+    "kana": "ワイン",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "wine",
+    "example": {
+      "jp": "父はワインが好きだ。",
+      "kana": "ちちはワインがすきだ。",
+      "en": "My father likes wine."
+    }
+  },
+  {
+    "word": "サラダ",
+    "kana": "サラダ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "salad",
+    "example": {
+      "jp": "野菜のサラダを作った。",
+      "kana": "やさいのサラダをつくった。",
+      "en": "I made a vegetable salad."
+    }
+  },
+  {
+    "word": "メニュー",
+    "kana": "メニュー",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "menu",
+    "example": {
+      "jp": "メニューを見て注文しよう。",
+      "kana": "メニューをみてちゅうもんしよう。",
+      "en": "Let's look at the menu and order."
+    }
+  },
+  {
+    "word": "注文",
+    "kana": "ちゅうもん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "order",
+    "example": {
+      "jp": "コーヒーを二つ注文した。",
+      "kana": "コーヒーをふたつちゅうもんした。",
+      "en": "I ordered two coffees."
+    }
+  },
+  {
+    "word": "袋",
+    "kana": "ふくろ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "bag",
+    "example": {
+      "jp": "レジ袋を一つください。",
+      "kana": "レジぶくろをひとつください。",
+      "en": "Please give me one plastic bag."
+    }
+  },
+  {
+    "word": "レジ",
+    "kana": "レジ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "checkout counter",
+    "example": {
+      "jp": "レジの前に長い列ができた。",
+      "kana": "レジのまえにながいれつができた。",
+      "en": "A long line formed in front of the checkout."
+    }
+  },
+  {
+    "word": "席",
+    "kana": "せき",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "seat",
+    "example": {
+      "jp": "窓側の席に座った。",
+      "kana": "まどがわのせきにすわった。",
+      "en": "I sat in a window seat."
+    }
+  },
+  {
+    "word": "池",
+    "kana": "いけ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "pond",
+    "example": {
+      "jp": "公園の池で釣りをした。",
+      "kana": "こうえんのいけでつりをした。",
+      "en": "I fished in the pond at the park."
+    }
+  },
+  {
+    "word": "湖",
+    "kana": "みずうみ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "lake",
+    "example": {
+      "jp": "夏に湖で泳いだ。",
+      "kana": "なつにみずうみでおよいだ。",
+      "en": "I swam in the lake in summer."
+    }
+  },
+  {
+    "word": "森",
+    "kana": "もり",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "forest",
+    "example": {
+      "jp": "森を歩くと気持ちがいい。",
+      "kana": "もりをあるときもちがいい。",
+      "en": "Walking in the forest feels good."
+    }
+  },
+  {
+    "word": "草",
+    "kana": "くさ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "grass",
+    "example": {
+      "jp": "庭の草が伸びた。",
+      "kana": "にわのくさがのびた。",
+      "en": "The grass in the garden grew."
+    }
+  },
+  {
+    "word": "石",
+    "kana": "いし",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "stone",
+    "example": {
+      "jp": "川で丸い石を拾った。",
+      "kana": "かわでまるいいしをひろった。",
+      "en": "I picked up a round stone in the river."
+    }
+  },
+  {
+    "word": "砂",
+    "kana": "すな",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "sand",
+    "example": {
+      "jp": "砂の上を歩くのは大変だ。",
+      "kana": "すなのうえをあるくのはたいへんだ。",
+      "en": "Walking on sand is tough."
+    }
+  },
+  {
+    "word": "土",
+    "kana": "つち",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "soil",
+    "example": {
+      "jp": "花を植えるために土を掘った。",
+      "kana": "はなをうえるためにつちをほった。",
+      "en": "I dug soil to plant flowers."
+    }
+  },
+  {
+    "word": "雲",
+    "kana": "くも",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "cloud",
+    "example": {
+      "jp": "空に白い雲が浮かんでいる。",
+      "kana": "そらにしろいくもがうかんでいる。",
+      "en": "White clouds are floating in the sky."
+    }
+  },
+  {
+    "word": "ガス",
+    "kana": "ガス",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "gas",
+    "example": {
+      "jp": "ガスの火を消してください。",
+      "kana": "ガスのひをけしてください。",
+      "en": "Please turn off the gas flame."
+    }
+  },
+  {
+    "word": "棚",
+    "kana": "たな",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "shelf",
+    "example": {
+      "jp": "本を棚に並べた。",
+      "kana": "ほんをたなにならべた。",
+      "en": "I lined up the books on the shelf."
+    }
+  },
+  {
+    "word": "ラジオ",
+    "kana": "ラジオ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "radio",
+    "example": {
+      "jp": "毎朝ラジオでニュースを聞く。",
+      "kana": "まいあさラジオでニュースをきく。",
+      "en": "I listen to the news on the radio every morning."
+    }
+  },
+  {
+    "word": "ニュース",
+    "kana": "ニュース",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "news",
+    "example": {
+      "jp": "今日のニュースを見た。",
+      "kana": "きょうのニュースをみた。",
+      "en": "I watched today's news."
+    }
+  },
+  {
+    "word": "ドラマ",
+    "kana": "ドラマ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "drama",
+    "example": {
+      "jp": "毎週ドラマを楽しみにしている。",
+      "kana": "まいしゅうドラマをたのしみにしている。",
+      "en": "I look forward to the drama every week."
+    }
+  },
+  {
+    "word": "漫画",
+    "kana": "まんが",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "manga",
+    "example": {
+      "jp": "電車で漫画を読む。",
+      "kana": "でんしゃでまんがをよむ。",
+      "en": "I read manga on the train."
+    }
+  },
+  {
+    "word": "遊園地",
+    "kana": "ゆうえんち",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "amusement park",
+    "example": {
+      "jp": "子供と遊園地へ行った。",
+      "kana": "こどもとゆうえんちへいった。",
+      "en": "I went to an amusement park with my child."
+    }
+  },
+  {
+    "word": "水族館",
+    "kana": "すいぞくかん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "aquarium",
+    "example": {
+      "jp": "水族館で魚を見た。",
+      "kana": "すいぞくかんでさかなをみた。",
+      "en": "I saw fish at the aquarium."
+    }
+  },
+  {
+    "word": "怪我",
+    "kana": "けが",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "injury",
+    "example": {
+      "jp": "転んで足に怪我をした。",
+      "kana": "ころんであしにけがをした。",
+      "en": "I fell and hurt my leg."
+    }
+  },
+  {
+    "word": "入院",
+    "kana": "にゅういん",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "hospitalization",
+    "example": {
+      "jp": "祖父が一週間入院した。",
+      "kana": "そふがいっしゅうかんにゅういんした。",
+      "en": "My grandfather was hospitalized for a week."
+    }
+  },
+  {
+    "word": "歯医者",
+    "kana": "はいしゃ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "dentist",
+    "example": {
+      "jp": "歯が痛いので歯医者に行く。",
+      "kana": "はがいたいのではいしゃにいく。",
+      "en": "My tooth hurts, so I am going to the dentist."
+    }
+  },
+  {
+    "word": "紅茶",
+    "kana": "こうちゃ",
+    "level": 4,
+    "pos": "noun",
+    "meaning": "black tea",
+    "example": {
+      "jp": "朝は紅茶を飲む。",
+      "kana": "あさはこうちゃをのむ。",
+      "en": "I drink black tea in the morning."
+    }
+  },
+  {
+    "word": "急ぐ",
+    "kana": "いそぐ",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to hurry",
+    "example": {
+      "jp": "時間がないから急ごう。",
+      "kana": "じかんがないからいそごう。",
+      "en": "There is no time, so let's hurry."
+    }
+  },
+  {
+    "word": "戻る",
+    "kana": "もどる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to return",
+    "example": {
+      "jp": "忘れ物をして家に戻った。",
+      "kana": "わすれものをしていえにもどった。",
+      "en": "I forgot something and returned home."
+    }
+  },
+  {
+    "word": "育つ",
+    "kana": "そだつ",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to grow up",
+    "example": {
+      "jp": "子供は元気に育っている。",
+      "kana": "こどもはげんきにそだっている。",
+      "en": "The child is growing up healthy."
+    }
+  },
+  {
+    "word": "亡くなる",
+    "kana": "なくなる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to pass away",
+    "example": {
+      "jp": "祖母は去年亡くなった。",
+      "kana": "そぼはきょねんなくなった。",
+      "en": "My grandmother passed away last year."
+    }
+  },
+  {
+    "word": "見つかる",
+    "kana": "みつかる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to be found",
+    "example": {
+      "jp": "なくした鍵が見つかった。",
+      "kana": "なくしたかぎがみつかった。",
+      "en": "The lost key was found."
+    }
+  },
+  {
+    "word": "続く",
+    "kana": "つづく",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to continue",
+    "example": {
+      "jp": "雨が三日続いている。",
+      "kana": "あめがみっかつづいている。",
+      "en": "The rain has continued for three days."
+    }
+  },
+  {
+    "word": "始まる",
+    "kana": "はじまる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to begin",
+    "example": {
+      "jp": "試合は十時に始まる。",
+      "kana": "しあいはじゅうじにはじまる。",
+      "en": "The game begins at ten."
+    }
+  },
+  {
+    "word": "終わる",
+    "kana": "おわる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to end",
+    "example": {
+      "jp": "授業は三時に終わる。",
+      "kana": "じゅぎょうはさんじにおわる。",
+      "en": "Class ends at three."
+    }
+  },
+  {
+    "word": "閉まる",
+    "kana": "しまる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to close",
+    "example": {
+      "jp": "店は八時に閉まる。",
+      "kana": "みせははちじにしまる。",
+      "en": "The shop closes at eight."
+    }
+  },
+  {
+    "word": "止まる",
+    "kana": "とまる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to stop",
+    "example": {
+      "jp": "バスが駅の前で止まった。",
+      "kana": "バスがえきのまえでとまった。",
+      "en": "The bus stopped in front of the station."
+    }
+  },
+  {
+    "word": "渡る",
+    "kana": "わたる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to cross",
+    "example": {
+      "jp": "橋を渡って向こう岸へ行く。",
+      "kana": "はしをわたってむこうぎしへいく。",
+      "en": "I cross the bridge to the other bank."
+    }
+  },
+  {
+    "word": "渡す",
+    "kana": "わたす",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to hand over",
+    "example": {
+      "jp": "先生にレポートを渡した。",
+      "kana": "せんせいにレポートをわたした。",
+      "en": "I handed the report to the teacher."
+    }
+  },
+  {
+    "word": "曲がる",
+    "kana": "まがる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to turn",
+    "example": {
+      "jp": "次の角を左に曲がる。",
+      "kana": "つぎのかどをひだりにまがる。",
+      "en": "Turn left at the next corner."
+    }
+  },
+  {
+    "word": "折る",
+    "kana": "おる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to fold",
+    "example": {
+      "jp": "紙を半分に折った。",
+      "kana": "かみをはんぶんにおった。",
+      "en": "I folded the paper in half."
+    }
+  },
+  {
+    "word": "冷やす",
+    "kana": "ひやす",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to cool",
+    "example": {
+      "jp": "ビールを冷蔵庫で冷やしておく。",
+      "kana": "ビールをれいぞうこでひやしておく。",
+      "en": "I will chill the beer in the refrigerator."
+    }
+  },
+  {
+    "word": "沸かす",
+    "kana": "わかす",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to boil",
+    "example": {
+      "jp": "お湯を沸かしてお茶を入れる。",
+      "kana": "おゆをわかしておちゃをいれる。",
+      "en": "I boil water and make tea."
+    }
+  },
+  {
+    "word": "炊く",
+    "kana": "たく",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to cook rice",
+    "example": {
+      "jp": "毎日ご飯を炊く。",
+      "kana": "まいにちごはんをたく。",
+      "en": "I cook rice every day."
+    }
+  },
+  {
+    "word": "拭く",
+    "kana": "ふく",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to wipe",
+    "example": {
+      "jp": "机をきれいに拭いた。",
+      "kana": "つくえをきれいにふいた。",
+      "en": "I wiped the desk clean."
+    }
+  },
+  {
+    "word": "干す",
+    "kana": "ほす",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to dry in the sun",
+    "example": {
+      "jp": "洗濯物を外に干した。",
+      "kana": "せんたくものをそとにほした。",
+      "en": "I hung the laundry outside to dry."
+    }
+  },
+  {
+    "word": "畳む",
+    "kana": "たたむ",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to fold up",
+    "example": {
+      "jp": "洗濯物を畳んでください。",
+      "kana": "せんたくものをたたんでください。",
+      "en": "Please fold the laundry."
+    }
+  },
+  {
+    "word": "運ぶ",
+    "kana": "はこぶ",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to carry",
+    "example": {
+      "jp": "重い荷物を二階まで運んだ。",
+      "kana": "おもいにもつをにかいまではこんだ。",
+      "en": "I carried the heavy luggage to the second floor."
+    }
+  },
+  {
+    "word": "拾う",
+    "kana": "ひろう",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to pick up",
+    "example": {
+      "jp": "道でお金を拾った。",
+      "kana": "みちでおかねをひろった。",
+      "en": "I picked up some money on the street."
+    }
+  },
+  {
+    "word": "残す",
+    "kana": "のこす",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to leave behind",
+    "example": {
+      "jp": "好きな食べ物を残してしまった。",
+      "kana": "すきなたべものをのこしてしまった。",
+      "en": "I ended up leaving my favorite food."
+    }
+  },
+  {
+    "word": "残る",
+    "kana": "のこる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to remain",
+    "example": {
+      "jp": "家に一人で残った。",
+      "kana": "いえにひとりでのこった。",
+      "en": "I stayed home alone."
+    }
+  },
+  {
+    "word": "頼む",
+    "kana": "たのむ",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to request",
+    "example": {
+      "jp": "タクシーを頼んでください。",
+      "kana": "タクシーをたのんでください。",
+      "en": "Please call a taxi."
+    }
+  },
+  {
+    "word": "気づく",
+    "kana": "きづく",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to notice",
+    "example": {
+      "jp": "自分の間違いに気づいた。",
+      "kana": "じぶんのまちがいにきづいた。",
+      "en": "I noticed my mistake."
+    }
+  },
+  {
+    "word": "困る",
+    "kana": "こまる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to be troubled",
+    "example": {
+      "jp": "お金がなくて困っている。",
+      "kana": "おかねがなくてこまっている。",
+      "en": "I am in trouble because I have no money."
+    }
+  },
+  {
+    "word": "間に合う",
+    "kana": "まにあう",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to be in time",
+    "example": {
+      "jp": "急げば電車に間に合う。",
+      "kana": "いそげばでんしゃにまにあう。",
+      "en": "If we hurry, we will make the train."
+    }
+  },
+  {
+    "word": "通る",
+    "kana": "とおる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to pass through",
+    "example": {
+      "jp": "この道は車がよく通る。",
+      "kana": "このみちはくるまがよくとおる。",
+      "en": "Cars often pass along this road."
+    }
+  },
+  {
+    "word": "回る",
+    "kana": "まわる",
+    "level": 4,
+    "pos": "godan verb",
+    "meaning": "to go around",
+    "example": {
+      "jp": "地球は太陽の周りを回る。",
+      "kana": "ちきゅうはたいようのまわりをまわる。",
+      "en": "The earth goes around the sun."
+    }
+  },
+  {
+    "word": "届ける",
+    "kana": "とどける",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to deliver",
+    "example": {
+      "jp": "荷物を届ける。",
+      "kana": "にもつをとどける。",
+      "en": "I deliver the luggage."
+    }
+  },
+  {
+    "word": "伝える",
+    "kana": "つたえる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to convey",
+    "example": {
+      "jp": "よろしくと伝える。",
+      "kana": "よろしくとつたえる。",
+      "en": "I convey my regards."
+    }
+  },
+  {
+    "word": "増える",
+    "kana": "ふえる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to increase",
+    "example": {
+      "jp": "人口が増えている。",
+      "kana": "じんこうがふえている。",
+      "en": "The population is increasing."
+    }
+  },
+  {
+    "word": "育てる",
+    "kana": "そだてる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to raise",
+    "example": {
+      "jp": "花を大切に育てる。",
+      "kana": "はなをたいせつにそだてる。",
+      "en": "I take good care of growing flowers."
+    }
+  },
+  {
+    "word": "痩せる",
+    "kana": "やせる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to lose weight",
+    "example": {
+      "jp": "運動して少し痩せた。",
+      "kana": "うんどうしてすこしやせた。",
+      "en": "I exercised and lost a little weight."
+    }
+  },
+  {
+    "word": "褒める",
+    "kana": "ほめる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to praise",
+    "example": {
+      "jp": "先生に褒められた。",
+      "kana": "せんせいにほめられた。",
+      "en": "I was praised by my teacher."
+    }
+  },
+  {
+    "word": "投げる",
+    "kana": "なげる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to throw",
+    "example": {
+      "jp": "ボールを投げる。",
+      "kana": "ぼーるをなげる。",
+      "en": "I throw the ball."
+    }
+  },
+  {
+    "word": "揺れる",
+    "kana": "ゆれる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to shake",
+    "example": {
+      "jp": "地震で家が揺れた。",
+      "kana": "じしんでいえがゆれた。",
+      "en": "The house shook during the earthquake."
+    }
+  },
+  {
+    "word": "慣れる",
+    "kana": "なれる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to get used to",
+    "example": {
+      "jp": "新しい仕事に慣れた。",
+      "kana": "あたらしいしごとになれた。",
+      "en": "I got used to the new job."
+    }
+  },
+  {
+    "word": "遅れる",
+    "kana": "おくれる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to be late",
+    "example": {
+      "jp": "電車が十分遅れた。",
+      "kana": "でんしゃがじゅっぷんおくれた。",
+      "en": "The train was delayed ten minutes."
+    }
+  },
+  {
+    "word": "迎える",
+    "kana": "むかえる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to welcome",
+    "example": {
+      "jp": "空港で客を迎える。",
+      "kana": "くうこうできゃくをむかえる。",
+      "en": "I welcome the guest at the airport."
+    }
+  },
+  {
+    "word": "乗り換える",
+    "kana": "のりかえる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to transfer trains",
+    "example": {
+      "jp": "次の駅で乗り換える。",
+      "kana": "つぎのえきでのりかえる。",
+      "en": "I transfer at the next station."
+    }
+  },
+  {
+    "word": "逃げる",
+    "kana": "にげる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to escape",
+    "example": {
+      "jp": "泥棒が逃げた。",
+      "kana": "どろぼうがにげた。",
+      "en": "The thief escaped."
+    }
+  },
+  {
+    "word": "落ちる",
+    "kana": "おちる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to fall",
+    "example": {
+      "jp": "木の葉が落ちる。",
+      "kana": "きのはがおちる。",
+      "en": "Leaves fall from the tree."
+    }
+  },
+  {
+    "word": "閉める",
+    "kana": "しめる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to close",
+    "example": {
+      "jp": "窓を閉めてください。",
+      "kana": "まどをしめてください。",
+      "en": "Please close the window."
+    }
+  },
+  {
+    "word": "止める",
+    "kana": "とめる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to park; to stop",
+    "example": {
+      "jp": "車を駐車場に止める。",
+      "kana": "くるまをちゅうしゃじょうにとめる。",
+      "en": "I park the car in the parking lot."
+    }
+  },
+  {
+    "word": "並べる",
+    "kana": "ならべる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to line up",
+    "example": {
+      "jp": "机の上に本を並べる。",
+      "kana": "つくえのうえにほんをならべる。",
+      "en": "I arrange books on the desk."
+    }
+  },
+  {
+    "word": "晴れる",
+    "kana": "はれる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to clear up",
+    "example": {
+      "jp": "午後から晴れた。",
+      "kana": "ごごからはれた。",
+      "en": "It cleared up in the afternoon."
+    }
+  },
+  {
+    "word": "割れる",
+    "kana": "われる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to break",
+    "example": {
+      "jp": "コップが割れた。",
+      "kana": "こっぷがわれた。",
+      "en": "The cup broke."
+    }
+  },
+  {
+    "word": "折れる",
+    "kana": "おれる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to snap",
+    "example": {
+      "jp": "木の枝が折れた。",
+      "kana": "きのえだがおれた。",
+      "en": "The tree branch snapped."
+    }
+  },
+  {
+    "word": "汚れる",
+    "kana": "よごれる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to get dirty",
+    "example": {
+      "jp": "服が泥で汚れた。",
+      "kana": "ふくがどろでよごれた。",
+      "en": "My clothes got dirty with mud."
+    }
+  },
+  {
+    "word": "訪ねる",
+    "kana": "たずねる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to visit",
+    "example": {
+      "jp": "友人の家を訪ねる。",
+      "kana": "ゆうじんのいえをたずねる。",
+      "en": "I visit my friend's house."
+    }
+  },
+  {
+    "word": "比べる",
+    "kana": "くらべる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to compare",
+    "example": {
+      "jp": "二つの商品を比べる。",
+      "kana": "ふたつのしょうひんをくらべる。",
+      "en": "I compare the two products."
+    }
+  },
+  {
+    "word": "調べる",
+    "kana": "しらべる",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to investigate",
+    "example": {
+      "jp": "辞書で意味を調べる。",
+      "kana": "じしょでいみをしらべる。",
+      "en": "I look up the meaning in the dictionary."
+    }
+  },
+  {
+    "word": "助ける",
+    "kana": "たすける",
+    "level": 4,
+    "pos": "ichidan verb",
+    "meaning": "to help",
+    "example": {
+      "jp": "困っている人を助ける。",
+      "kana": "こまっているひとをたすける。",
+      "en": "I help someone in trouble."
+    }
+  },
+  {
+    "word": "珍しい",
+    "kana": "めずらしい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "rare",
+    "example": {
+      "jp": "珍しい鳥を見つけた。",
+      "kana": "めずらしいとりをみつけた。",
+      "en": "I found a rare bird."
+    }
+  },
+  {
+    "word": "厳しい",
+    "kana": "きびしい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "strict",
+    "example": {
+      "jp": "先生はとても厳しい。",
+      "kana": "せんせいはとてもきびしい。",
+      "en": "The teacher is very strict."
+    }
+  },
+  {
+    "word": "苦い",
+    "kana": "にがい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "bitter",
+    "example": {
+      "jp": "この薬はとても苦い。",
+      "kana": "このくすりはとてもにがい。",
+      "en": "This medicine is very bitter."
+    }
+  },
+  {
+    "word": "詳しい",
+    "kana": "くわしい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "detailed",
+    "example": {
+      "jp": "彼はパソコンに詳しい。",
+      "kana": "かれはぱそこんにくわしい。",
+      "en": "He knows a lot about computers."
+    }
+  },
+  {
+    "word": "寂しい",
+    "kana": "さびしい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "lonely",
+    "example": {
+      "jp": "一人でいると寂しい。",
+      "kana": "ひとりでいるとさびしい。",
+      "en": "I feel lonely when I am alone."
+    }
+  },
+  {
+    "word": "悔しい",
+    "kana": "くやしい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "frustrating",
+    "example": {
+      "jp": "試合に負けて悔しい。",
+      "kana": "しあいにまけてくやしい。",
+      "en": "It is frustrating to lose the match."
+    }
+  },
+  {
+    "word": "悲しい",
+    "kana": "かなしい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "sad",
+    "example": {
+      "jp": "悲しい映画を見て泣いた。",
+      "kana": "かなしいえいがをみてないた。",
+      "en": "I watched a sad movie and cried."
+    }
+  },
+  {
+    "word": "美しい",
+    "kana": "うつくしい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "beautiful",
+    "example": {
+      "jp": "夕日がとても美しい。",
+      "kana": "ゆうひがとてもうつくしい。",
+      "en": "The setting sun is very beautiful."
+    }
+  },
+  {
+    "word": "恥ずかしい",
+    "kana": "はずかしい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "embarrassing",
+    "example": {
+      "jp": "人前で話すのは恥ずかしい。",
+      "kana": "ひとまえではなすのははずかしい。",
+      "en": "It is embarrassing to speak in public."
+    }
+  },
+  {
+    "word": "細かい",
+    "kana": "こまかい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "small; detailed",
+    "example": {
+      "jp": "細かいお金がありません。",
+      "kana": "こまかいおかねがありません。",
+      "en": "I don't have small change."
+    }
+  },
+  {
+    "word": "柔らかい",
+    "kana": "やわらかい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "soft",
+    "example": {
+      "jp": "このパンは柔らかい。",
+      "kana": "このぱんはやわらかい。",
+      "en": "This bread is soft."
+    }
+  },
+  {
+    "word": "硬い",
+    "kana": "かたい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "hard",
+    "example": {
+      "jp": "この肉は少し硬い。",
+      "kana": "このにくはすこしかたい。",
+      "en": "This meat is a bit tough."
+    }
+  },
+  {
+    "word": "浅い",
+    "kana": "あさい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "shallow",
+    "example": {
+      "jp": "この川は浅いので渡れる。",
+      "kana": "このかわはあさいのでわたれる。",
+      "en": "This river is shallow, so we can cross it."
+    }
+  },
+  {
+    "word": "深い",
+    "kana": "ふかい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "deep",
+    "example": {
+      "jp": "この池はとても深い。",
+      "kana": "このいけはとてもふかい。",
+      "en": "This pond is very deep."
+    }
+  },
+  {
+    "word": "眠い",
+    "kana": "ねむい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "sleepy",
+    "example": {
+      "jp": "昨夜は遅くまで起きていて眠い。",
+      "kana": "ゆうべはおそくまでおきていてねむい。",
+      "en": "I stayed up late last night and feel sleepy."
+    }
+  },
+  {
+    "word": "凄い",
+    "kana": "すごい",
+    "level": 4,
+    "pos": "い-adjective",
+    "meaning": "amazing; great",
+    "example": {
+      "jp": "あの選手は凄い。",
+      "kana": "あのせんしゅはすごい。",
+      "en": "That athlete is amazing."
+    }
+  },
+  {
+    "word": "特別",
+    "kana": "とくべつ",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "special",
+    "example": {
+      "jp": "今日は特別な日です。",
+      "kana": "きょうはとくべつなひです。",
+      "en": "Today is a special day."
+    }
+  },
+  {
+    "word": "丁寧",
+    "kana": "ていねい",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "polite",
+    "example": {
+      "jp": "丁寧な言葉で話す。",
+      "kana": "ていねいなことばではなす。",
+      "en": "I speak in polite language."
+    }
+  },
+  {
+    "word": "複雑",
+    "kana": "ふくざつ",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "complicated",
+    "example": {
+      "jp": "この機械の使い方は複雑だ。",
+      "kana": "このきかいのつかいかたはふくざつだ。",
+      "en": "Using this machine is complicated."
+    }
+  },
+  {
+    "word": "盛ん",
+    "kana": "さかん",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "prosperous; popular",
+    "example": {
+      "jp": "この町は商業が盛んだ。",
+      "kana": "このまちはしょうぎょうがさかんだ。",
+      "en": "Commerce is flourishing in this town."
+    }
+  },
+  {
+    "word": "残念",
+    "kana": "ざんねん",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "regrettable; unfortunate",
+    "example": {
+      "jp": "旅行に行けなくて残念だ。",
+      "kana": "りょこうにいけなくてざんねんだ。",
+      "en": "It is unfortunate that I cannot go on the trip."
+    }
+  },
+  {
+    "word": "自由",
+    "kana": "じゆう",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "free",
+    "example": {
+      "jp": "休日は自由に過ごす。",
+      "kana": "きゅうじつはじゆうにすごす。",
+      "en": "I spend my holidays freely."
+    }
+  },
+  {
+    "word": "危険",
+    "kana": "きけん",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "dangerous",
+    "example": {
+      "jp": "夜の一人歩きは危険だ。",
+      "kana": "よるのひとりあるきはきけんだ。",
+      "en": "Walking alone at night is dangerous."
+    }
+  },
+  {
+    "word": "安全",
+    "kana": "あんぜん",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "safe",
+    "example": {
+      "jp": "この町は治安が良くて安全だ。",
+      "kana": "このまちはちあんがよくてあんぜんだ。",
+      "en": "This town has good public safety and is safe."
+    }
+  },
+  {
+    "word": "確か",
+    "kana": "たしか",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "certain; sure",
+    "example": {
+      "jp": "彼の話は確かだ。",
+      "kana": "かれのはなしはたしかだ。",
+      "en": "His story is certain."
+    }
+  },
+  {
+    "word": "邪魔",
+    "kana": "じゃま",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "in the way; nuisance",
+    "example": {
+      "jp": "荷物が邪魔になっている。",
+      "kana": "にもつがじゃまになっている。",
+      "en": "The luggage is in the way."
+    }
+  },
+  {
+    "word": "無駄",
+    "kana": "むだ",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "wasteful; useless",
+    "example": {
+      "jp": "時間を無駄にしてはいけない。",
+      "kana": "じかんをむだにしてはいけない。",
+      "en": "You must not waste time."
+    }
+  },
+  {
+    "word": "苦手",
+    "kana": "にがて",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "poor at; weak point",
+    "example": {
+      "jp": "私は数学が苦手です。",
+      "kana": "わたしはすうがくがにがてです。",
+      "en": "I am poor at mathematics."
+    }
+  },
+  {
+    "word": "得意",
+    "kana": "とくい",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "good at",
+    "example": {
+      "jp": "彼は料理が得意だ。",
+      "kana": "かれはりょうりがとくいだ。",
+      "en": "He is good at cooking."
+    }
+  },
+  {
+    "word": "必要",
+    "kana": "ひつよう",
+    "level": 4,
+    "pos": "な-adjective",
+    "meaning": "necessary",
+    "example": {
+      "jp": "パスポートのコピーが必要です。",
+      "kana": "ぱすぽーとのこぴーがひつようです。",
+      "en": "A copy of the passport is necessary."
+    }
+  },
+  {
+    "word": "すっかり",
+    "kana": "すっかり",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "completely",
+    "example": {
+      "jp": "風邪がすっかり治った。",
+      "kana": "かぜがすっかりなおった。",
+      "en": "My cold has completely cleared up."
+    }
+  },
+  {
+    "word": "はっきり",
+    "kana": "はっきり",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "clearly",
+    "example": {
+      "jp": "遠くの山がはっきり見える。",
+      "kana": "とおくのやまがはっきりみえる。",
+      "en": "The distant mountains can be seen clearly."
+    }
+  },
+  {
+    "word": "うっかり",
+    "kana": "うっかり",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "carelessly",
+    "example": {
+      "jp": "傘をうっかり忘れた。",
+      "kana": "かさをうっかりわすれた。",
+      "en": "I carelessly forgot my umbrella."
+    }
+  },
+  {
+    "word": "ぐっすり",
+    "kana": "ぐっすり",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "soundly (sleeping)",
+    "example": {
+      "jp": "昨夜はぐっすり眠った。",
+      "kana": "ゆうべはぐっすりねむった。",
+      "en": "I slept soundly last night."
+    }
+  },
+  {
+    "word": "たいてい",
+    "kana": "たいてい",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "usually",
+    "example": {
+      "jp": "日曜日はたいてい家にいる。",
+      "kana": "にちようびはたいていいえにいる。",
+      "en": "On Sundays I am usually at home."
+    }
+  },
+  {
+    "word": "やっと",
+    "kana": "やっと",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "at last; finally",
+    "example": {
+      "jp": "仕事がやっと終わった。",
+      "kana": "しごとがやっとおわった。",
+      "en": "Work is finally finished."
+    }
+  },
+  {
+    "word": "とうとう",
+    "kana": "とうとう",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "finally; in the end",
+    "example": {
+      "jp": "雨がとうとう降り始めた。",
+      "kana": "あめがとうとうふりはじめた。",
+      "en": "It finally started to rain."
+    }
+  },
+  {
+    "word": "ぜひ",
+    "kana": "ぜひ",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "by all means",
+    "example": {
+      "jp": "ぜひ日本へ来てください。",
+      "kana": "ぜひにほんへきてください。",
+      "en": "Please come to Japan by all means."
+    }
+  },
+  {
+    "word": "かならず",
+    "kana": "かならず",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "without fail; certainly",
+    "example": {
+      "jp": "明日は必ず行きます。",
+      "kana": "あしたはかならずいきます。",
+      "en": "I will certainly go tomorrow."
+    }
+  },
+  {
+    "word": "たまに",
+    "kana": "たまに",
+    "level": 4,
+    "pos": "adverb",
+    "meaning": "occasionally",
+    "example": {
+      "jp": "たまに外食をする。",
+      "kana": "たまにがいしょくをする。",
+      "en": "I eat out occasionally."
+    }
+  },
+  {
+    "word": "それに",
+    "kana": "それに",
+    "level": 4,
+    "pos": "conjunction",
+    "meaning": "moreover; in addition",
+    "example": {
+      "jp": "この店は安くて、それに美味しい。",
+      "kana": "このみせはやすくて、それにおいしい。",
+      "en": "This restaurant is cheap and, moreover, delicious."
+    }
+  },
+  {
+    "word": "それで",
+    "kana": "それで",
+    "level": 4,
+    "pos": "conjunction",
+    "meaning": "and so; because of that",
+    "example": {
+      "jp": "雨が降った。それで試合は中止になった。",
+      "kana": "あめがふった。それでしあいはちゅうしになった。",
+      "en": "It rained. And so the match was cancelled."
+    }
+  },
+  {
+    "word": "それなら",
+    "kana": "それなら",
+    "level": 4,
+    "pos": "conjunction",
+    "meaning": "in that case",
+    "example": {
+      "jp": "それなら、明日行きましょう。",
+      "kana": "それなら、あしたいきましょう。",
+      "en": "In that case, let's go tomorrow."
+    }
+  },
+  {
+    "word": "おかげさまで",
+    "kana": "おかげさまで",
+    "level": 4,
+    "pos": "expression",
+    "meaning": "thanks to you",
+    "example": {
+      "jp": "おかげさまで元気です。",
+      "kana": "おかげさまでげんきです。",
+      "en": "Thanks to you, I am doing well."
+    }
+  },
+  {
+    "word": "お大事に",
+    "kana": "おだいじに",
+    "level": 4,
+    "pos": "expression",
+    "meaning": "take care of yourself",
+    "example": {
+      "jp": "風邪ですか。お大事に。",
+      "kana": "かぜですか。おだいじに。",
+      "en": "Do you have a cold? Take care."
+    }
+  },
+  {
+    "word": "ご馳走様",
+    "kana": "ごちそうさま",
+    "level": 4,
+    "pos": "expression",
+    "meaning": "thank you for the meal",
+    "example": {
+      "jp": "とても美味しかったです。ごちそうさま。",
+      "kana": "とてもおいしかったです。ごちそうさま。",
+      "en": "It was very delicious. Thank you for the meal."
+    }
+  }
+]

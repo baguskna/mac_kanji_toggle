@@ -75,23 +75,51 @@ static void DrawPill(NSRect rect, NSColor *fill, NSString *text, NSFont *font,
     Draw(a, NSMakeRect(rect.origin.x, NSMidY(rect) - h / 2.0, rect.size.width, h));
 }
 
-static void DrawButton(NSRect rect, NSString *title, BOOL primary) {
-    NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:rect xRadius:8 yRadius:8];
-    NSColor *fill = primary ? [[NSColor controlAccentColor] colorWithAlphaComponent:0.16]
-                            : [[NSColor labelColor] colorWithAlphaComponent:0.06];
-    [fill setFill];
-    [p fill];
-    NSColor *stroke = primary ? [[NSColor controlAccentColor] colorWithAlphaComponent:0.35]
-                              : [[NSColor labelColor] colorWithAlphaComponent:0.12];
-    [stroke setStroke];
-    p.lineWidth = 1.0;
-    [p stroke];
+// Button kinds for the footer.
+typedef NS_ENUM(NSInteger, KBButtonKind) {
+    KBButtonPlain = 0,   // quiet frosted capsule
+    KBButtonPrimary = 1, // solid accent capsule (next card)
+};
 
-    NSColor *fg = primary ? [NSColor controlAccentColor] : [NSColor labelColor];
+// hover/press are 0..1 animation states driven by KBCardView.
+static void DrawButton(NSRect rect, NSString *title, KBButtonKind kind,
+                       CGFloat hover, CGFloat press) {
+    if (rect.size.width <= 0 || rect.size.height <= 0) return;
+    // Press dips the capsule slightly; hover lifts the fill.
+    NSRect r = NSInsetRect(rect, press * 0.8, press * 0.8);
+    CGFloat radius = r.size.height / 2.0;
+    NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:r xRadius:radius yRadius:radius];
+
+    NSColor *accent = [NSColor controlAccentColor];
+    NSColor *fg;
+    if (kind == KBButtonPrimary) {
+        NSColor *top = [accent blendedColorWithFraction:(0.14 * hover + 0.10 * press)
+                                                ofColor:[NSColor whiteColor]];
+        NSColor *bottom = [accent blendedColorWithFraction:0.10 * press
+                                                   ofColor:[NSColor blackColor]];
+        NSGradient *g = [[[NSGradient alloc] initWithStartingColor:top endingColor:bottom] autorelease];
+        [g drawInBezierPath:p angle:-90];
+        // Faint top-edge highlight gives the capsule a soft 3D lift.
+        NSBezierPath *shine = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(r, 0.5, 0.5)
+                                                              xRadius:radius yRadius:radius];
+        [[[NSColor whiteColor] colorWithAlphaComponent:0.22] setStroke];
+        shine.lineWidth = 1.0;
+        [shine stroke];
+        fg = [NSColor whiteColor];
+    } else {
+        CGFloat alpha = 0.055 + 0.075 * hover + 0.06 * press;
+        [[[NSColor labelColor] colorWithAlphaComponent:alpha] setFill];
+        [p fill];
+        [[[NSColor labelColor] colorWithAlphaComponent:(0.10 + 0.10 * hover)] setStroke];
+        p.lineWidth = 1.0;
+        [p stroke];
+        fg = [[NSColor labelColor] colorWithAlphaComponent:0.85 + 0.15 * hover];
+    }
+
     NSAttributedString *a = Text(title, SysFont(12.0, NSFontWeightSemibold), fg,
-                                 NSTextAlignmentCenter, 0);
-    CGFloat h = TextHeight(a, rect.size.width);
-    Draw(a, NSMakeRect(rect.origin.x, NSMidY(rect) - h / 2.0, rect.size.width, h));
+                                 NSTextAlignmentCenter, 0.2);
+    CGFloat h = TextHeight(a, r.size.width);
+    Draw(a, NSMakeRect(r.origin.x, NSMidY(r) - h / 2.0, r.size.width, h));
 }
 
 static void DrawSeparator(NSRect rect) {
@@ -152,6 +180,17 @@ static NSEvent *HandleKey(NSEvent *event);
     CGFloat _minHeight;
     BOOL _embedded;   // yes when drawn inside an NSPopover (no card chrome)
     CGFloat _margin;  // 0 when embedded, kShadowMargin for the standalone PNG
+
+    // Footer button animation state (0..1), one slot per button in hit order:
+    // 0 prev, 1 next, 2 mode, 3 copy.
+    CGFloat _hoverAmt[4], _pressAmt[4];
+    NSInteger _hovered;    // index under the cursor, -1 none
+    NSInteger _pressed;    // index being pressed, -1 none
+    NSTrackingArea *_tracking;
+    NSTimer *_animTimer;
+    NSDate *_animLast;
+    BOOL _copied;          // copy button shows a checkmark briefly
+    NSTimer *_copiedTimer;
 }
 
 - (void)setCardJSON:(NSDictionary *)dict;
@@ -165,8 +204,124 @@ static NSEvent *HandleKey(NSEvent *event);
 
 @implementation KBCardView
 
+- (id)initWithFrame:(NSRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        _hovered = -1;
+        _pressed = -1;
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [_animTimer invalidate];
+    [_animTimer release];
+    [_animLast release];
+    [_copiedTimer invalidate];
+    [_copiedTimer release];
+    [_tracking release];
+    [_card release];
+    [super dealloc];
+}
+
 - (BOOL)isFlipped {
     return YES;
+}
+
+#pragma mark Button animation
+
+- (NSRect *)buttonRects {
+    static NSRect rects[4];
+    rects[0] = _prevButtonRect;
+    rects[1] = _nextButtonRect;
+    rects[2] = _modeButtonRect;
+    rects[3] = _copyButtonRect;
+    return rects;
+}
+
+- (NSInteger)buttonIndexAt:(NSPoint)p {
+    NSRect *rects = [self buttonRects];
+    for (int i = 0; i < 4; i++) {
+        if (NSPointInRect(p, rects[i])) return i;
+    }
+    return -1;
+}
+
+- (void)updateTrackingAreas {
+    [super updateTrackingAreas];
+    if (_tracking) {
+        [self removeTrackingArea:_tracking];
+        [_tracking release];
+    }
+    _tracking = [[NSTrackingArea alloc] initWithRect:self.bounds
+                                             options:(NSTrackingMouseEnteredAndExited |
+                                                      NSTrackingMouseMoved |
+                                                      NSTrackingActiveInActiveApp |
+                                                      NSTrackingInVisibleRect)
+                                               owner:self
+                                            userInfo:nil];
+    [self addTrackingArea:_tracking];
+}
+
+- (void)mouseMoved:(NSEvent *)event {
+    NSPoint p = [self convertPoint:event.locationInWindow fromView:nil];
+    NSInteger idx = [self buttonIndexAt:p];
+    if (idx != _hovered) {
+        _hovered = idx;
+        [self startAnim];
+    }
+}
+
+- (void)mouseEntered:(NSEvent *)event {
+    [self mouseMoved:event];
+}
+
+- (void)mouseExited:(NSEvent *)event {
+    if (_hovered != -1) {
+        _hovered = -1;
+        [self startAnim];
+    }
+}
+
+// Drives hover/press amounts toward their targets with a fast ease-out.
+- (void)startAnim {
+    if (_animTimer) return;
+    [_animLast release];
+    _animLast = [[NSDate alloc] init];
+    _animTimer = [[NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
+                                                   target:self
+                                                 selector:@selector(animTick:)
+                                                 userInfo:nil
+                                                  repeats:YES] retain];
+}
+
+- (void)animTick:(NSTimer *)timer {
+    NSDate *now = [NSDate date];
+    CGFloat dt = MIN([now timeIntervalSinceDate:_animLast], 0.05);
+    [_animLast release];
+    _animLast = [now retain];
+
+    CGFloat k = MIN(dt * 16.0, 1.0); // ease factor per frame
+    BOOL settled = YES;
+    for (int i = 0; i < 4; i++) {
+        CGFloat hoverTarget = (i == _hovered) ? 1.0 : 0.0;
+        CGFloat pressTarget = (i == _pressed && i == _hovered) ? 1.0 : 0.0;
+        _hoverAmt[i] += (hoverTarget - _hoverAmt[i]) * k;
+        _pressAmt[i] += (pressTarget - _pressAmt[i]) * MIN(dt * 24.0, 1.0);
+        if (fabs(_hoverAmt[i] - hoverTarget) > 0.01 ||
+            fabs(_pressAmt[i] - pressTarget) > 0.01) {
+            settled = NO;
+        } else {
+            _hoverAmt[i] = hoverTarget;
+            _pressAmt[i] = pressTarget;
+        }
+    }
+    [self setNeedsDisplay:YES];
+    if (settled) {
+        [_animTimer invalidate];
+        [_animTimer release];
+        _animTimer = nil;
+    }
 }
 
 - (void)setCardJSON:(NSDictionary *)dict {
@@ -352,20 +507,27 @@ static NSEvent *HandleKey(NSEvent *event);
         _exampleJPRect = _exampleKanaRect = _exampleENRect = NSZeroRect;
     }
 
-    // Footer: navigation buttons and a hint line.
+    // Footer: navigation capsules left, mode + copy right.
     _divider2Rect = NSMakeRect(innerX, y, kContentWidth, 1);
     y = NSMaxY(_divider2Rect) + 14.0;
 
-    CGFloat buttonHeight = 30.0;
+    CGFloat buttonHeight = 32.0;
+    CGFloat gap = 8.0;
+    CGFloat navW = 44.0;
     CGFloat bx = innerX;
-    _prevButtonRect = NSMakeRect(bx, y, 34, buttonHeight);
-    bx += 34 + 8;
-    _nextButtonRect = NSMakeRect(bx, y, 34, buttonHeight);
-    bx += 34 + 8;
+    _prevButtonRect = NSMakeRect(bx, y, navW, buttonHeight);
+    bx += navW + gap;
+    _nextButtonRect = NSMakeRect(bx, y, navW, buttonHeight);
 
-    _modeButtonRect = NSMakeRect(bx, y, 74, buttonHeight);
-    bx += 74 + 8;
-    _copyButtonRect = NSMakeRect(bx, y, 56, buttonHeight);
+    NSAttributedString *modeA2 = Text([self modeButtonTitle], SysFont(12.0, NSFontWeightSemibold),
+                                      [NSColor labelColor], NSTextAlignmentCenter, 0.2);
+    CGFloat modeBtnW = MAX(TextWidth(modeA2) + 26.0, 84.0);
+    // Keep the copy capsule a constant width so "✓ Copied" never shifts layout.
+    NSAttributedString *copyA = Text(@"✓ Copied", SysFont(12.0, NSFontWeightSemibold),
+                                     [NSColor labelColor], NSTextAlignmentCenter, 0.2);
+    CGFloat copyW = MAX(TextWidth(copyA) + 26.0, 64.0);
+    _copyButtonRect = NSMakeRect(innerX + kContentWidth - copyW, y, copyW, buttonHeight);
+    _modeButtonRect = NSMakeRect(NSMinX(_copyButtonRect) - gap - modeBtnW, y, modeBtnW, buttonHeight);
     y += buttonHeight;
 
     NSAttributedString *hintA = Text(@"← → cards   T mode   Esc close", SysFont(10.0, NSFontWeightRegular),
@@ -440,7 +602,14 @@ static NSEvent *HandleKey(NSEvent *event);
     DrawPill(_modePill, [[NSColor controlAccentColor] colorWithAlphaComponent:0.15],
              Str(_card, @"modeLabel"), SysFont(9.5, NSFontWeightSemibold),
              [NSColor controlAccentColor], 1.4);
-    DrawPill(_badgePill, [NSColor systemOrangeColor], Str(_card, @"badge"),
+    NSString *badge = Str(_card, @"badge");
+    NSColor *badgeColor = [NSColor systemOrangeColor]; // N3
+    if ([badge isEqualToString:@"N5"]) {
+        badgeColor = [NSColor systemGreenColor];
+    } else if ([badge isEqualToString:@"N4"]) {
+        badgeColor = [NSColor systemBlueColor];
+    }
+    DrawPill(_badgePill, badgeColor, badge,
              SysFont(10.5, NSFontWeightBold), [NSColor whiteColor], 0.6);
 
     // Headword + meta.
@@ -525,20 +694,68 @@ static NSEvent *HandleKey(NSEvent *event);
 
     // Footer.
     DrawSeparator(_divider2Rect);
-    DrawButton(_prevButtonRect, @"‹", NO);
-    DrawButton(_nextButtonRect, @"›", YES);
-    DrawButton(_modeButtonRect, [self modeButtonTitle], NO);
-    DrawButton(_copyButtonRect, @"Copy", NO);
+    DrawButton(_prevButtonRect, @"‹", KBButtonPlain, _hoverAmt[0], _pressAmt[0]);
+    DrawButton(_nextButtonRect, @"›", KBButtonPrimary, _hoverAmt[1], _pressAmt[1]);
+    DrawButton(_modeButtonRect, [self modeButtonTitle], KBButtonPlain, _hoverAmt[2], _pressAmt[2]);
+    DrawButton(_copyButtonRect, _copied ? @"✓ Copied" : @"Copy", KBButtonPlain,
+               _hoverAmt[3], _pressAmt[3]);
     Draw(Text(@"← → cards   T mode   Esc close", SysFont(10.0, NSFontWeightRegular),
               [NSColor tertiaryLabelColor], NSTextAlignmentCenter, 0), _hintRect);
 }
 
 - (void)mouseDown:(NSEvent *)event {
     NSPoint p = [self convertPoint:event.locationInWindow fromView:nil];
-    if (NSPointInRect(p, _prevButtonRect)) { GoPrev(); return; }
-    if (NSPointInRect(p, _nextButtonRect)) { GoNext(); return; }
-    if (NSPointInRect(p, _modeButtonRect)) { GoToggleMode(); return; }
-    if (NSPointInRect(p, _copyButtonRect)) { CopyCardToPasteboard(_card); return; }
+    NSInteger idx = [self buttonIndexAt:p];
+    if (idx >= 0) {
+        _pressed = idx;
+        [self startAnim];
+    }
+}
+
+- (void)mouseDragged:(NSEvent *)event {
+    if (_pressed < 0) return;
+    NSPoint p = [self convertPoint:event.locationInWindow fromView:nil];
+    // Press visual stays only while the cursor remains on the pressed button.
+    _hovered = [self buttonIndexAt:p];
+    [self startAnim];
+}
+
+- (void)mouseUp:(NSEvent *)event {
+    NSPoint p = [self convertPoint:event.locationInWindow fromView:nil];
+    NSInteger idx = [self buttonIndexAt:p];
+    NSInteger pressed = _pressed;
+    _pressed = -1;
+    [self startAnim];
+    if (pressed < 0 || idx != pressed) return; // released outside: cancel
+    switch (pressed) {
+        case 0: GoPrev(); break;
+        case 1: GoNext(); break;
+        case 2: GoToggleMode(); break;
+        case 3:
+            CopyCardToPasteboard(_card);
+            [self flashCopied];
+            break;
+    }
+}
+
+// Brief "✓ Copied" confirmation on the copy capsule.
+- (void)flashCopied {
+    _copied = YES;
+    [self setNeedsDisplay:YES];
+    [_copiedTimer invalidate];
+    [_copiedTimer release];
+    _copiedTimer = [[NSTimer scheduledTimerWithTimeInterval:1.4
+                                                     target:self
+                                                   selector:@selector(copiedReset:)
+                                                   userInfo:nil
+                                                    repeats:NO] retain];
+}
+
+- (void)copiedReset:(NSTimer *)timer {
+    _copied = NO;
+    [_copiedTimer release];
+    _copiedTimer = nil;
+    [self setNeedsDisplay:YES];
 }
 
 @end
@@ -553,6 +770,7 @@ static NSEvent *HandleKey(NSEvent *event);
 - (void)menuToggleAuto:(id)sender;
 - (void)menuToggleRomaji:(id)sender;
 - (void)menuToggleFurigana:(id)sender;
+- (void)menuSetLevel:(id)sender;
 - (void)menuCopy:(id)sender;
 - (void)menuQuit:(id)sender;
 @end
@@ -569,6 +787,7 @@ static id gClickMonitor = nil;
 static NSMenuItem *gAutoItem = nil;
 static NSMenuItem *gRomajiItem = nil;
 static NSMenuItem *gFuriganaItem = nil;
+static NSMutableArray *gLevelItems = nil; // N5/N4/N3 items, tag = level
 static BOOL gPopoverShownAtMouseDown = NO;     // was the card open when this click started?
 static BOOL gWantedOpen = NO;                  // clicked intent, also survives the close animation
 static double gFixedCardHeight = 0;
@@ -675,6 +894,7 @@ static NSEvent *HandleKey(NSEvent *event) {
     if ([chars isEqualToString:@"a"]) { GoToggleAuto(); return nil; }
     if ([chars isEqualToString:@"r"]) { GoToggleRomaji(); return nil; }
     if ([chars isEqualToString:@"f"]) { GoToggleFurigana(); return nil; }
+    if ([chars isEqualToString:@"l"]) { GoCycleLevel(); return nil; }
     if ([chars isEqualToString:@"c"]) { CopyCardToPasteboard([gCard cardDictionary]); return nil; }
     if ([chars isEqualToString:@"q"]) { [NSApp terminate:nil]; return nil; }
     return event;
@@ -695,6 +915,22 @@ static void BuildMenu(void) {
     AddMenuItem(gMenu, @"Next Card", @selector(menuNext:), nil);
     AddMenuItem(gMenu, @"Previous Card", @selector(menuPrev:), nil);
     AddMenuItem(gMenu, @"Toggle Kanji / Kotoba", @selector(menuToggleMode:), @"t");
+    [gMenu addItem:[NSMenuItem separatorItem]];
+    gLevelItems = [[NSMutableArray alloc] init];
+    NSMenu *levelMenu = [[[NSMenu alloc] init] autorelease];
+    levelMenu.autoenablesItems = NO;
+    for (NSNumber *level in @[@5, @4, @3]) {
+        NSMenuItem *item = [[[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"N%@", level]
+                                                       action:@selector(menuSetLevel:)
+                                                keyEquivalent:@""] autorelease];
+        item.tag = level.integerValue;
+        item.target = gDelegate;
+        [levelMenu addItem:item];
+        [gLevelItems addObject:item];
+    }
+    NSMenuItem *levelRoot = [[[NSMenuItem alloc] initWithTitle:@"JLPT Level" action:nil keyEquivalent:@"l"] autorelease];
+    levelRoot.submenu = levelMenu;
+    [gMenu addItem:levelRoot];
     [gMenu addItem:[NSMenuItem separatorItem]];
     gAutoItem = AddMenuItem(gMenu, @"Auto-switch 漢字/言葉 every 5 s", @selector(menuToggleAuto:), @"a");
     gFuriganaItem = AddMenuItem(gMenu, @"Show Furigana in Menu Bar", @selector(menuToggleFurigana:), @"f");
@@ -724,6 +960,11 @@ static void BuildMenu(void) {
 - (void)menuToggleAuto:(id)sender { GoToggleAuto(); }
 - (void)menuToggleRomaji:(id)sender { GoToggleRomaji(); }
 - (void)menuToggleFurigana:(id)sender { GoToggleFurigana(); }
+- (void)menuSetLevel:(id)sender {
+    if ([sender isKindOfClass:[NSMenuItem class]]) {
+        GoSetLevel((int)[(NSMenuItem *)sender tag]);
+    }
+}
 - (void)menuCopy:(id)sender { CopyCardToPasteboard([gCard cardDictionary]); }
 - (void)menuQuit:(id)sender { [NSApp terminate:nil]; }
 
@@ -868,12 +1109,15 @@ void KBSetTitle(const char *title) {
     });
 }
 
-void KBSetMenuState(int autoOn, int romajiOn, int furiganaOn) {
+void KBSetMenuState(int autoOn, int romajiOn, int furiganaOn, int level) {
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
             if (gAutoItem) gAutoItem.state = autoOn ? NSControlStateValueOn : NSControlStateValueOff;
             if (gRomajiItem) gRomajiItem.state = romajiOn ? NSControlStateValueOn : NSControlStateValueOff;
             if (gFuriganaItem) gFuriganaItem.state = furiganaOn ? NSControlStateValueOn : NSControlStateValueOff;
+            for (NSMenuItem *item in gLevelItems) {
+                item.state = (item.tag == level) ? NSControlStateValueOn : NSControlStateValueOff;
+            }
         }
     });
 }

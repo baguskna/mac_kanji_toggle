@@ -1,9 +1,9 @@
 # KanjiBar
 
-A small macOS **menu bar widget** that shows a JLPT **N3** kanji or vocabulary
-word together with its **furigana**, **romaji** and English meaning — one click,
-no app window, no Dock icon. The widget rotates between the 漢字 and 言葉 decks
-every 5 seconds and pauses while you are reading a card.
+A small macOS **menu bar widget** that shows a JLPT **N5 / N4 / N3** kanji or
+vocabulary word together with its **furigana**, **romaji** and English meaning —
+one click, no app window, no Dock icon. The widget rotates between the 漢字 and
+言葉 decks every 5 seconds and pauses while you are reading a card.
 
 Built with **Go** (state, data, romaji, timer) and **AppKit/Objective-C** (the
 native status item and popover-style card). It compiles with the Command Line
@@ -62,8 +62,10 @@ end-user install flow, and what is required to get into the official
   (`政 セイ sei`, `経験 けいけん keiken`). Every 5 s it flips between the two
   decks — but **not while the card is open**, so reading is never interrupted.
 - **Left-click the menu bar item** — opens the card.
-- **Right-click** — context menu (next / previous / toggle deck / auto-switch /
-  menu bar furigana & romaji / copy / quit).
+- **L** — cycle the JLPT level (N5 → N4 → N3 → N5); the current level is the
+  one the 5-second rotation stays inside.
+- **Right-click** — context menu (next / previous / toggle deck / JLPT Level /
+  auto-switch / menu bar furigana & romaji / copy / quit).
 - **← →** or **space** — previous / next card while the card is open.
 - **T** — switch between the kanji deck (漢字) and the vocabulary deck (言葉).
 - **A** — toggle the 5 s deck auto-switch (paused while the card is open).
@@ -97,17 +99,20 @@ needs a second click.
 
 ## The decks
 
-| Deck | File | Entries | Contents |
-| --- | --- | --- | --- |
-| 漢字 Kanji | `data/kanji.json` | 200 N3 kanji | on'yomi (katakana), kun'yomi (hiragana), English gloss, 3 common compounds with kana + meaning |
-| 言葉 Kotoba | `data/kotoba.json` | 210 N3 words | kana reading, part of speech, English gloss, example sentence with kana transcript + translation |
+| Level | Kanji deck | Kotoba deck |
+| --- | --- | --- |
+| **N5** | `data/kanji_n5.json` — ~90 kanji | `data/kotoba_n5.json` — ~220 words |
+| **N4** | `data/kanji_n4.json` — ~175 kanji | `data/kotoba_n4.json` — ~230 words |
+| **N3** | `data/kanji.json` — 200 kanji | `data/kotoba.json` — 210 words |
 
-Both decks are **N3 only** (`"level": 3`); the mode pill and the orange `N3`
-badge reflect that. To study another level, replace the JSON files — the schema
-is validated at startup and by `go test`:
+Every entry carries its `level`; the badge in the card is colour-coded (N5
+green, N4 blue, N3 orange). Files are embedded in the binary and validated at
+startup and by `go test` — entries must match the deck's level, readings must be
+in the right script, and every kanji needs compounds. To add a level, drop in a
+new pair of files and register them in `data.go`:
 
 ```jsonc
-// data/kanji.json (array of entries)
+// data/kanji_n5.json / data/kanji_n4.json / data/kanji.json (array of entries)
 {
   "char": "連", "level": 3, "strokes": 10,
   "on": ["レン"], "kun": ["つら"],
@@ -119,7 +124,7 @@ is validated at startup and by `go test`:
   ]
 }
 
-// data/kotoba.json (array of entries)
+// data/kotoba_n5.json / data/kotoba_n4.json / data/kotoba.json (array of entries)
 {
   "word": "経験", "kana": "けいけん", "level": 3, "pos": "noun",
   "meaning": "experience",
@@ -130,6 +135,17 @@ is validated at startup and by `go test`:
   }
 }
 ```
+
+### Where the data comes from
+
+The N5/N4 decks are assembled from open datasets: kanji readings, stroke
+counts and meanings from [KANJIDIC2](https://www.edrdg.org/wiki/index.php/KANJIDIC_Project),
+word readings and glosses from [JMdict](https://www.edrdg.org/wiki/index.php/JMdict_Project)
+(both © the [Electronic Dictionary Research & Development Group](https://www.edrdg.org/),
+CC BY-SA 4.0), JLPT level lists from
+[open-anki-jlpt-decks](https://github.com/jamsinclair/open-anki-jlpt-decks), and
+example sentences from [Tatoeba](https://tatoeba.org/) (CC BY 2.0 FR), curated
+and trimmed for beginner study. The N3 deck is hand-curated.
 
 ### Where furigana and romaji come from
 
@@ -196,7 +212,8 @@ Useful dev flags (run the binary directly, not through `open`):
 ```bash
 dist/KanjiBar.app/Contents/MacOS/KanjiBar --show --exit-after 8   # open card, quit after 8s
 dist/KanjiBar.app/Contents/MacOS/KanjiBar --cycle 2               # advance every 2s
-dist/KanjiBar.app/Contents/MacOS/KanjiBar --snapshot out.png --mode kotoba --index 7 [--dark]
+dist/KanjiBar.app/Contents/MacOS/KanjiBar --snapshot out.png --level 4 --mode kotoba --index 7 [--dark]
+dist/KanjiBar.app/Contents/MacOS/KanjiBar --level 5        # start on N5
 dist/KanjiBar.app/Contents/MacOS/KanjiBar --logfile /tmp/kb.log
 ```
 

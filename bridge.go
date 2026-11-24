@@ -60,6 +60,20 @@ func GoToggleFurigana() {
 	}
 }
 
+//export GoCycleLevel
+func GoCycleLevel() {
+	if appRef != nil {
+		appRef.CycleLevel()
+	}
+}
+
+//export GoSetLevel
+func GoSetLevel(level C.int) {
+	if appRef != nil {
+		appRef.SetLevel(int(level))
+	}
+}
+
 // uiStart creates the status item, panel and popover-free card window.
 func uiStart() {
 	C.KBStart()
@@ -112,8 +126,8 @@ func uiSetFixedCardHeight(height float64) {
 }
 
 // uiSetMenuState syncs the checkmarks in the context menu.
-func uiSetMenuState(auto, romaji, furigana bool) {
-	C.KBSetMenuState(cBool(auto), cBool(romaji), cBool(furigana))
+func uiSetMenuState(auto, romaji, furigana bool, level int) {
+	C.KBSetMenuState(cBool(auto), cBool(romaji), cBool(furigana), C.int(level))
 }
 
 // uiShowNow opens the panel shortly after launch (dev flag --show).
