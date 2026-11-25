@@ -78,8 +78,8 @@ func TestDecksCoverN5N4N3(t *testing.T) {
 		}
 	}
 
-	minKanji := map[int]int{5: 80, 4: 160, 3: 180}
-	minKotoba := map[int]int{5: 200, 4: 200, 3: 200}
+	minKanji := map[int]int{5: 100, 4: 170, 3: 180}
+	minKotoba := map[int]int{5: 680, 4: 670, 3: 200}
 	for _, level := range want {
 		if got := len(d.Kanji[level]); got < minKanji[level] {
 			t.Errorf("N%d kanji deck has %d entries, want >= %d", level, got, minKanji[level])

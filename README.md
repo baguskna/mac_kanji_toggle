@@ -101,8 +101,8 @@ needs a second click.
 
 | Level | Kanji deck | Kotoba deck |
 | --- | --- | --- |
-| **N5** | `data/kanji_n5.json` — ~90 kanji | `data/kotoba_n5.json` — ~220 words |
-| **N4** | `data/kanji_n4.json` — ~175 kanji | `data/kotoba_n4.json` — ~230 words |
+| **N5** | `data/kanji_n5.json` — 100 kanji | `data/kotoba_n5.json` — 692 words |
+| **N4** | `data/kanji_n4.json` — 171 kanji | `data/kotoba_n4.json` — 685 words |
 | **N3** | `data/kanji.json` — 200 kanji | `data/kotoba.json` — 210 words |
 
 Every entry carries its `level`; the badge in the card is colour-coded (N5

@@ -4772,5 +4772,184 @@
         "meaning": "herbal medicine"
       }
     ]
+  },
+  {
+    "char": "公",
+    "level": 4,
+    "strokes": 4,
+    "on": [
+      "コウ",
+      "ク"
+    ],
+    "kun": [
+      "おおやけ"
+    ],
+    "meaning": "public; official",
+    "compounds": [
+      {
+        "word": "公園",
+        "kana": "こうえん",
+        "meaning": "park"
+      },
+      {
+        "word": "公共",
+        "kana": "こうきょう",
+        "meaning": "public; communal"
+      },
+      {
+        "word": "公平",
+        "kana": "こうへい",
+        "meaning": "fair; impartial"
+      }
+    ]
+  },
+  {
+    "char": "力",
+    "level": 4,
+    "strokes": 2,
+    "on": [
+      "リョク",
+      "リキ"
+    ],
+    "kun": [
+      "ちから"
+    ],
+    "meaning": "power; strength",
+    "compounds": [
+      {
+        "word": "力",
+        "kana": "ちから",
+        "meaning": "force; strength"
+      },
+      {
+        "word": "体力",
+        "kana": "たいりょく",
+        "meaning": "physical strength"
+      },
+      {
+        "word": "努力",
+        "kana": "どりょく",
+        "meaning": "effort"
+      }
+    ]
+  },
+  {
+    "char": "田",
+    "level": 4,
+    "strokes": 5,
+    "on": [
+      "デン"
+    ],
+    "kun": [
+      "た"
+    ],
+    "meaning": "rice field; paddy",
+    "compounds": [
+      {
+        "word": "田んぼ",
+        "kana": "たんぼ",
+        "meaning": "rice field"
+      },
+      {
+        "word": "田舎",
+        "kana": "いなか",
+        "meaning": "countryside"
+      },
+      {
+        "word": "水田",
+        "kana": "すいでん",
+        "meaning": "rice paddy"
+      }
+    ]
+  },
+  {
+    "char": "私",
+    "level": 4,
+    "strokes": 7,
+    "on": [
+      "シ"
+    ],
+    "kun": [
+      "わたくし",
+      "わたし"
+    ],
+    "meaning": "I; private",
+    "compounds": [
+      {
+        "word": "私",
+        "kana": "わたし",
+        "meaning": "I; me"
+      },
+      {
+        "word": "私立",
+        "kana": "しりつ",
+        "meaning": "private (institution)"
+      },
+      {
+        "word": "私生活",
+        "kana": "しせいかつ",
+        "meaning": "private life"
+      }
+    ]
+  },
+  {
+    "char": "足",
+    "level": 4,
+    "strokes": 7,
+    "on": [
+      "ソク"
+    ],
+    "kun": [
+      "あし",
+      "た"
+    ],
+    "meaning": "foot; leg; sufficient",
+    "compounds": [
+      {
+        "word": "足",
+        "kana": "あし",
+        "meaning": "foot; leg"
+      },
+      {
+        "word": "足りる",
+        "kana": "たりる",
+        "meaning": "to be enough"
+      },
+      {
+        "word": "遠足",
+        "kana": "えんそく",
+        "meaning": "excursion; field trip"
+      }
+    ]
+  },
+  {
+    "char": "魚",
+    "level": 4,
+    "strokes": 11,
+    "on": [
+      "ギョ"
+    ],
+    "kun": [
+      "うお",
+      "さかな"
+    ],
+    "meaning": "fish",
+    "compounds": [
+      {
+        "word": "魚",
+        "kana": "さかな",
+        "meaning": "fish"
+      },
+      {
+        "word": "金魚",
+        "kana": "きんぎょ",
+        "meaning": "goldfish"
+      },
+      {
+        "word": "魚屋",
+        "kana": "さかなや",
+        "meaning": "fish shop"
+      }
+    ]
   }
 ]
