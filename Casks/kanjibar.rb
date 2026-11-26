@@ -1,10 +1,10 @@
 cask "kanjibar" do
-  version "1.0.1"
-  sha256 "907ba00d4687f6379e93834bbb5c04beae59e5600d7d42282a68ac009d7dd3c0"
+  version "1.0.2"
+  sha256 "606660d4c87956182d047ed997d2b44b1b60d127a085034eed30bc5264efb41b"
 
   url "https://github.com/baguskna/mac_kanji_toggle/releases/download/v#{version}/KanjiBar-#{version}.zip"
   name "KanjiBar"
-  desc "JLPT N3 kanji and vocabulary widget for the macOS menu bar"
+  desc "JLPT N5–N3 kanji and vocabulary widget for the macOS menu bar"
   homepage "https://github.com/baguskna/mac_kanji_toggle"
 
   livecheck do

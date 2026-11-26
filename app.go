@@ -18,9 +18,9 @@ const (
 	ModeKotoba
 )
 
-// autoSwitchInterval is how often the widget flips between the 漢字 and 言葉
-// decks. The flip pauses while the card panel is open so reading is not
-// interrupted.
+// autoSwitchInterval is how often the widget rotates between the 漢字 and
+// 言葉 decks and between JLPT levels. The rotation pauses while the card panel
+// is open so reading is not interrupted.
 const autoSwitchInterval = 5 * time.Second
 
 // defaultLevel is the JLPT level shown on a fresh install.
@@ -59,10 +59,10 @@ type savedState struct {
 	Level   int            `json:"level,omitempty"`
 	Indices map[string]int `json:"indices,omitempty"`
 	// Legacy fields from the single-level (N3-only) version.
-	KanjiIndex  int   `json:"kanjiIndex,omitempty"`
-	KotobaIndex int   `json:"kotobaIndex,omitempty"`
-	AutoSwitch  *bool `json:"autoSwitch,omitempty"`
-	ShowRomaji  *bool `json:"showRomaji,omitempty"`
+	KanjiIndex   int   `json:"kanjiIndex,omitempty"`
+	KotobaIndex  int   `json:"kotobaIndex,omitempty"`
+	AutoSwitch   *bool `json:"autoSwitch,omitempty"`
+	ShowRomaji   *bool `json:"showRomaji,omitempty"`
 	ShowFurigana *bool `json:"showFurigana,omitempty"`
 }
 
@@ -303,7 +303,7 @@ func (a *App) setLevelSilent(level int) bool {
 	return true
 }
 
-// ToggleAuto flips the 5-second deck auto-switch.
+// ToggleAuto flips the 5-second deck/level auto-switch.
 func (a *App) ToggleAuto() {
 	a.mu.Lock()
 	a.auto = !a.auto
@@ -370,8 +370,9 @@ func (a *App) refresh() {
 	a.SaveState()
 }
 
-// StartAuto flips the deck every autoInterval. A tick is skipped while the
-// user has the card open, so the widget never changes underneath them.
+// StartAuto rotates decks and levels every autoInterval. A tick is skipped
+// while the user has the card open, so the widget never changes underneath
+// them.
 func (a *App) StartAuto() {
 	go func() {
 		t := time.NewTicker(a.autoInterval)
@@ -391,8 +392,33 @@ func (a *App) StartAuto() {
 	}()
 }
 
+// nextLevelLocked returns the next JLPT level in the deck's cycle (N5 -> N4 ->
+// N3 -> N5). It skips levels without a complete pair of decks.
+func (a *App) nextLevelLocked() int {
+	levels := a.deck.Levels
+	if len(levels) == 0 {
+		return a.level
+	}
+	start := 0
+	for i, level := range levels {
+		if level == a.level {
+			start = i
+			break
+		}
+	}
+	for step := 1; step <= len(levels); step++ {
+		level := levels[(start+step)%len(levels)]
+		if a.deck.HasLevel(level) {
+			return level
+		}
+	}
+	return a.level
+}
+
 // tickAutoSwitch advances the deck it is about to show, then flips to it, so
 // the widget rotates through new material instead of alternating the same pair.
+// The rotation runs kanji -> kotoba within a level, then moves to the next
+// level: N5 kanji -> N5 kotoba -> N4 kanji -> N4 kotoba -> N3 ...
 func (a *App) tickAutoSwitch() {
 	a.mu.Lock()
 	if a.mode == ModeKanji {
@@ -403,6 +429,7 @@ func (a *App) tickAutoSwitch() {
 		}
 		a.mode = ModeKotoba
 	} else {
+		a.level = a.nextLevelLocked()
 		pos := deckPos{a.level, ModeKanji}
 		n := a.deckLenLocked(a.level, ModeKanji)
 		if n > 0 {

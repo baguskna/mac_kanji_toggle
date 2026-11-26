@@ -59,16 +59,17 @@ end-user install flow, and what is required to get into the official
 ## Use
 
 - The menu bar title shows the kanji/word, its **furigana** and its **romaji**
-  (`政 セイ sei`, `経験 けいけん keiken`). Every 5 s it flips between the two
-  decks — but **not while the card is open**, so reading is never interrupted.
+  (`政 セイ sei`, `経験 けいけん keiken`). Every 5 s it rotates through both
+  decks and all levels — N5 kanji → N5 kotoba → N4 kanji → N4 kotoba → N3 … —
+  but **not while the card is open**, so reading is never interrupted.
 - **Left-click the menu bar item** — opens the card.
-- **L** — cycle the JLPT level (N5 → N4 → N3 → N5); the current level is the
-  one the 5-second rotation stays inside.
+- **L** — jump to the next JLPT level (N5 → N4 → N3 → N5); the 5-second
+  rotation continues from the selected level.
 - **Right-click** — context menu (next / previous / toggle deck / JLPT Level /
   auto-switch / menu bar furigana & romaji / copy / quit).
 - **← →** or **space** — previous / next card while the card is open.
 - **T** — switch between the kanji deck (漢字) and the vocabulary deck (言葉).
-- **A** — toggle the 5 s deck auto-switch (paused while the card is open).
+- **A** — toggle the 5 s deck/level auto-switch (paused while the card is open).
 - **F** — toggle furigana in the menu bar title (`政 セイ  sei` ⇄ `政  sei`).
 - **R** — toggle romaji in the menu bar title (`政 セイ  sei` ⇄ `政  セイ`).
 - **C** — copy the current card as text.

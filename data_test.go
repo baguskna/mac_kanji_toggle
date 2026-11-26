@@ -292,3 +292,33 @@ func TestAutoSwitchDefaultsOnAndMovesCards(t *testing.T) {
 		t.Errorf("auto-switch looks stuck: only %d distinct cards over 6 ticks", len(seen))
 	}
 }
+
+func TestAutoSwitchCyclesLevelsAndDecks(t *testing.T) {
+	d := loadTestDeck(t)
+	app := NewApp(d, filepath.Join(t.TempDir(), "state.json"))
+
+	type step struct{ badge, mode string }
+	got := []step{{app.CurrentCard().Badge, app.CurrentCard().ModeKind}}
+	for i := 0; i < 6; i++ {
+		app.tickAutoSwitch()
+		card := app.CurrentCard()
+		got = append(got, step{card.Badge, card.ModeKind})
+	}
+	want := []step{
+		{"N3", "kanji"},
+		{"N3", "kotoba"},
+		{"N5", "kanji"},
+		{"N5", "kotoba"},
+		{"N4", "kanji"},
+		{"N4", "kotoba"},
+		{"N3", "kanji"},
+	}
+	if len(got) != len(want) {
+		t.Fatalf("auto-switch sequence length = %d, want %d", len(got), len(want))
+	}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Fatalf("auto-switch sequence[%d] = %+v, want %+v (full: %+v)", i, got[i], want[i], got)
+		}
+	}
+}
