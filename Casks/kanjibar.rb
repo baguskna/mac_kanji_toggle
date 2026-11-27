@@ -1,6 +1,6 @@
 cask "kanjibar" do
-  version "1.0.2"
-  sha256 "606660d4c87956182d047ed997d2b44b1b60d127a085034eed30bc5264efb41b"
+  version "1.0.3"
+  sha256 "348535fecfbc3c15cfd446476c7da265eb0eaaab9b0ec6edf2fd497c0081fe5b"
 
   url "https://github.com/baguskna/mac_kanji_toggle/releases/download/v#{version}/KanjiBar-#{version}.zip"
   name "KanjiBar"

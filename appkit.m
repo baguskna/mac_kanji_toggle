@@ -77,8 +77,8 @@ static void DrawPill(NSRect rect, NSColor *fill, NSString *text, NSFont *font,
 
 // Button kinds for the footer.
 typedef NS_ENUM(NSInteger, KBButtonKind) {
-    KBButtonPlain = 0,   // quiet frosted capsule
-    KBButtonPrimary = 1, // solid accent capsule (next card)
+    KBButtonPlain = 0,      // quiet frosted capsule
+    KBButtonNavigation = 1, // matched prev/next capsule
 };
 
 // hover/press are 0..1 animation states driven by KBCardView.
@@ -92,20 +92,26 @@ static void DrawButton(NSRect rect, NSString *title, KBButtonKind kind,
 
     NSColor *accent = [NSColor controlAccentColor];
     NSColor *fg;
-    if (kind == KBButtonPrimary) {
-        NSColor *top = [accent blendedColorWithFraction:(0.14 * hover + 0.10 * press)
-                                                ofColor:[NSColor whiteColor]];
-        NSColor *bottom = [accent blendedColorWithFraction:0.10 * press
-                                                   ofColor:[NSColor blackColor]];
-        NSGradient *g = [[[NSGradient alloc] initWithStartingColor:top endingColor:bottom] autorelease];
-        [g drawInBezierPath:p angle:-90];
-        // Faint top-edge highlight gives the capsule a soft 3D lift.
-        NSBezierPath *shine = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(r, 0.5, 0.5)
-                                                              xRadius:radius yRadius:radius];
-        [[[NSColor whiteColor] colorWithAlphaComponent:0.22] setStroke];
-        shine.lineWidth = 1.0;
-        [shine stroke];
-        fg = [NSColor whiteColor];
+    if (kind == KBButtonNavigation) {
+        // Prev/next are a matched pair. They stay neutral at rest and only
+        // pick up the accent tint while hovered or pressed.
+        BOOL hot = hover > 0.01 || press > 0.01;
+        if (hot) {
+            CGFloat alpha = 0.10 + 0.08 * hover + 0.06 * press;
+            [[accent colorWithAlphaComponent:alpha] setFill];
+            [p fill];
+            [[accent colorWithAlphaComponent:(0.28 + 0.20 * hover)] setStroke];
+            p.lineWidth = 1.0;
+            [p stroke];
+            fg = accent;
+        } else {
+            [[[NSColor labelColor] colorWithAlphaComponent:0.065] setFill];
+            [p fill];
+            [[[NSColor labelColor] colorWithAlphaComponent:0.12] setStroke];
+            p.lineWidth = 1.0;
+            [p stroke];
+            fg = [[NSColor labelColor] colorWithAlphaComponent:0.90];
+        }
     } else {
         CGFloat alpha = 0.055 + 0.075 * hover + 0.06 * press;
         [[[NSColor labelColor] colorWithAlphaComponent:alpha] setFill];
@@ -116,8 +122,10 @@ static void DrawButton(NSRect rect, NSString *title, KBButtonKind kind,
         fg = [[NSColor labelColor] colorWithAlphaComponent:0.85 + 0.15 * hover];
     }
 
-    NSAttributedString *a = Text(title, SysFont(12.0, NSFontWeightSemibold), fg,
-                                 NSTextAlignmentCenter, 0.2);
+    NSFont *font = (kind == KBButtonNavigation)
+        ? SysFont(16.0, NSFontWeightSemibold)
+        : SysFont(12.0, NSFontWeightSemibold);
+    NSAttributedString *a = Text(title, font, fg, NSTextAlignmentCenter, 0.2);
     CGFloat h = TextHeight(a, r.size.width);
     Draw(a, NSMakeRect(r.origin.x, NSMidY(r) - h / 2.0, r.size.width, h));
 }
@@ -694,8 +702,8 @@ static NSEvent *HandleKey(NSEvent *event);
 
     // Footer.
     DrawSeparator(_divider2Rect);
-    DrawButton(_prevButtonRect, @"‹", KBButtonPlain, _hoverAmt[0], _pressAmt[0]);
-    DrawButton(_nextButtonRect, @"›", KBButtonPrimary, _hoverAmt[1], _pressAmt[1]);
+    DrawButton(_prevButtonRect, @"‹", KBButtonNavigation, _hoverAmt[0], _pressAmt[0]);
+    DrawButton(_nextButtonRect, @"›", KBButtonNavigation, _hoverAmt[1], _pressAmt[1]);
     DrawButton(_modeButtonRect, [self modeButtonTitle], KBButtonPlain, _hoverAmt[2], _pressAmt[2]);
     DrawButton(_copyButtonRect, _copied ? @"✓ Copied" : @"Copy", KBButtonPlain,
                _hoverAmt[3], _pressAmt[3]);
